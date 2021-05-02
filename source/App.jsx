@@ -22,7 +22,7 @@ const App = props => {
     <main class={BtnClassName}>
       <h1 class='title'>{message}</h1>
     </main>
-	 <Title>789</Title>
+	 <Title>789</Title>	 
   </>
 }
 
