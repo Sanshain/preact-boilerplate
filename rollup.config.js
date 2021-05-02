@@ -1,16 +1,18 @@
+//@ts-check
 import babel from 'rollup-plugin-babel'
 
 import { terser } from 'rollup-plugin-terser'
 import resolve from 'rollup-plugin-node-resolve'
 import livereload from 'rollup-plugin-livereload'
 import serve from 'rollup-plugin-serve'
+import typescript from 'rollup-plugin-typescript2';
 
-
-// import alias from '@rollup/plugin-alias';
-// import es3 from 'rollup-plugin-es3';
-
+import alias from '@rollup/plugin-alias';
+import es3 from 'rollup-plugin-es3';
 import css from 'rollup-plugin-css-only';
 import postcss from 'rollup-plugin-postcss'
+import commonjs from "@rollup/plugin-commonjs";
+// import postcss from 'rollup-plugin-postcss'
 
 
 import { execSync } from "child_process";
@@ -42,28 +44,47 @@ export default {
 		sourcemap: true
 	},
 	plugins: [
+		alias({
+			entries: [
+			  { find: 'react', replacement: 'preact/compat' },
+			  { find: 'react-dom', replacement: 'preact/compat' }
+			]
+		}),
 		resolve({
 			browser: true,
-		}),
+			extensions: [ '.mjs', '.js', '.jsx', '.ts', '.tsx', '.json' ]
+		}),		
 		development && serve({
 			open: true,
 			port: 3000,
 			contentBase: dist,
 			historyApiFallback: true
 		}),
-		development && livereload({
-			watch: dist
-		}),
+		// development && livereload({
+		// 	watch: dist
+		// }),
 		babel({
 			exclude: 'node_modules/**'
 		}),
-		css({ output: 'style/bundle.css', minimize: production }),
+		commonjs(),
+		// typescript({
+		// 	typescript: require('typescript')
+	  	// }),		
+		es3(),
+		// css({ output: 'style/bundle.css', minimize: production }),
+		// css({ output: false }),
+		postcss({
+			extract: false,
+			minimize: production,	
+			modules: true
+		}),
 		production && terser()
 	]
 }
 
 
 if (options.prerender) {
+	
 	const file = path.resolve(__dirname, options.target.dirname, options.target.ssr + '.js');
 	if (fs.existsSync(file)) {
 

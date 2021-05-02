@@ -3,7 +3,8 @@
     [
       "@babel/env", {
         "modules": false
-      }
+      },
+		"@babel/react"
     ]
   ],
   "plugins": [
@@ -13,6 +14,17 @@
         "pragma":"h", 
 		  "pragmaFrag": "Fragment"
       }
-    ]
+    ],
+
+	[
+		"import", 
+		{
+			"libraryName": "antd",
+			"style": true
+		}
+	],
+	["@babel/plugin-proposal-class-properties", { "loose": true }]
+	 
   ]
+
 }
