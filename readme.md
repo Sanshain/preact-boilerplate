@@ -1,25 +1,20 @@
 # preact-rollup
 
-Preact 8 + Rollup 1.x + Babel 7 template for SPAs.
+Preact 10.* + Rollup 2.* + Babel 7 template for SPAs.
 
 ## Setup
 
 1. Clone the repo
 ```sh
-git clone https://github.com/alex996/project-templates.git && cd project-templates
+git clone https://github.com/Sanshain/preact-boilerplate.git && cd project-templates
 ```
 
-2. Choose a template
-```sh
-cd preact-rollup
-```
-
-3. Install the deps
+2. Install the deps
 ```sh
 npm i
 ```
 
-4. Run the dev server
+3. Run the dev server
 ```sh
 npm start
 ```
@@ -32,7 +27,7 @@ Launch a dev server at `localhost:3000` and reload on file changes.
 
 ### `npm run build`
 
-Build a production bundle in `dist` folder.
+Build a production bundle in `release` folder.
 
 ### `npm run serve`
 
