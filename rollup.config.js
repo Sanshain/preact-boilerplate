@@ -38,7 +38,7 @@ const options = {
 
 
 export default {
-	input: `source/${options.prerender ? options.source.file : 'index'}.js`,
+	input: `source/${options.prerender ? options.source.file : 'index'}.tsx`,
 	output: {
 		file: `${dist}/${options.prerender ? options.target.ssr : 'bundle'}.js`,
 		format: 'iife',
@@ -51,35 +51,38 @@ export default {
 			  { find: 'react-dom', replacement: 'preact/compat' }
 			]
 		}),
-		resolve({
-			browser: true,
-			extensions: ['.js', '.jsx', '.ts', '.tsx', '.json' ]
-		}),		
-		development && serve({
-			open: true,
-			port: 3000,
-			contentBase: dist,
-			historyApiFallback: true
-		}),
-		// development && livereload({
-		// 	watch: dist
-		// }),
-		babel({
-			exclude: 'node_modules/**'
-		}),
-		// typescript({
-		// 	typescript: require('typescript')
-	  	// }),				
-		commonjs(),
-		es3(),
-		// css({ output: 'style/bundle.css', minimize: production }),
-		// css({ output: false }),
 		postcss({
 			extract: 'style/bundle.css',
 			minimize: production,	
 			modules: true
+		}),		
+		resolve({
+			browser: true,
+			preferBuiltins: true,
+			extensions: ['.js', '.jsx', '.ts', '.tsx', '.json' ]
 		}),
-		production && terser()
+		typescript(),					
+	
+		// babel({
+		// 	exclude: 'node_modules/**'
+		// }),			
+		commonjs(),
+		es3(),
+		// css({ output: 'style/bundle.css', minimize: production }),
+		// css({ output: false }),
+
+		production && terser(),
+		development && (
+			serve({
+				open: true,
+				port: 3000,
+				contentBase: dist,
+				historyApiFallback: true
+			}),
+			development && livereload({
+				watch: dist
+			})
+		),		
 	]
 }
 
