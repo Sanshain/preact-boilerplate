@@ -9,7 +9,7 @@ import serve from 'rollup-plugin-serve'
 // import alias from '@rollup/plugin-alias';
 // import es3 from 'rollup-plugin-es3';
 
-// import css from 'rollup-plugin-css-only';
+import css from 'rollup-plugin-css-only';
 import postcss from 'rollup-plugin-postcss'
 
 
@@ -23,7 +23,7 @@ const production = !process.env.ROLLUP_WATCH
 const development = !production
 
 const options = {
-	prerender: true,
+	prerender: false,
 	source: {
 		file: 'index__prer'
 	},
@@ -45,31 +45,28 @@ export default {
 		resolve({
 			browser: true,
 		}),
-		//  development && serve({
-		//    open: true,
-		//    port: 3000,
-		//    contentBase: dist,
-		//    historyApiFallback: true
-		//  }),
-		//  development && livereload({
-		//    watch: dist
-		//  }),
+		development && serve({
+			open: true,
+			port: 3000,
+			contentBase: dist,
+			historyApiFallback: true
+		}),
+		development && livereload({
+			watch: dist
+		}),
 		babel({
-			exclude: 'node_modules/**'					
+			exclude: 'node_modules/**'
 		}),
-		postcss({
-			extract: `style/bundle.css`,
-			minimize: production
-		}),
+		css({ output: 'style/bundle.css', minimize: production }),
 		production && terser()
 	]
 }
 
 
-if (options.prerender){
+if (options.prerender) {
 	const file = path.resolve(__dirname, options.target.dirname, options.target.ssr + '.js');
-	if (fs.existsSync(file)){
-		
+	if (fs.existsSync(file)) {
+
 		execSync(`cd ${dist} && node ` + options.target.ssr);
 		console.log('prerender finished');
 	}
