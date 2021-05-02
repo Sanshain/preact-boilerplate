@@ -1,6 +1,16 @@
-# preact-rollup
+# preact-rollup bolilerplate
 
-Preact 10.* + Rollup 2.* + Babel 7 template for SPAs.
+
+
+## Features: 
+
+- Usage styled components via [`goober`](https://www.npmjs.com/package/goober) with minimal runtime (look [`App.jsx`](https://github.com/Sanshain/preact-boilerplate/blob/main/source/App.jsx)) 
+- Isolated styles via postcs modules (like `react-css-modules`)
+- Typescript out of the box (`ts-config` branch)
+- `preact-routers` out of the box
+- prerender out of the box
+
+- Created on Preact 10.* + Rollup 2.* + Babel 7 template for SPAs.
 
 ## Setup
 
@@ -14,10 +24,18 @@ git clone https://github.com/Sanshain/preact-boilerplate.git && cd project-templ
 npm i
 ```
 
-3. Run the dev server
+3. Compile
 ```sh
-npm start
+rollup -c
 ```
+
+
+## Prerender (SSR) usage:
+
+- Change `options.prerender` to `true` 
+- Apply `rollup -c` => will created init.js inside `realese` folder
+- apply `node init` => will created `prerender.html` in the same folder
+
 
 ## CLI
 
@@ -33,20 +51,3 @@ Build a production bundle in `release` folder.
 
 Serve production assets on localhost.
 
-## Tweaks
-
-Don't forget to fine-tune
-
-- bundle visualizer (e.g. [`rollup-plugin-visualizer`](https://www.npmjs.com/package/rollup-plugin-visualizer) or [`source-map-explorer`](https://www.npmjs.com/package/source-map-explorer))
-
-- hashname (e.g. [`rollup-plugin-hash`](https://www.npmjs.com/package/rollup-plugin-hash) or [built-in](https://twitter.com/rich_harris/status/1079991930623283200?lang=en))
-
-- [`browserlist`](https://github.com/browserslist/browserslist) support
-
-- [`@babel/polyfill`](https://babeljs.io/docs/en/babel-polyfill)
-
-- `meta` / `link` tags (e.g. [`preact-helmet`](https://github.com/Download/preact-helmet))
-
-- linter (e.g. [`standard`](https://standardjs.com/))
-
-- test suite (e.g. [`jest`](https://jestjs.io/) or [`ava`](https://github.com/avajs/ava))
