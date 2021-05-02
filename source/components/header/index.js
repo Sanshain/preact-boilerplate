@@ -10,7 +10,7 @@ const Header = props => {
 
 	const [r] = useState('cls')
 
-	console.log(style.header);
+	// console.log(style.header);
 
 	return <header class={style.header}>
 		<h1>Preact App</h1>

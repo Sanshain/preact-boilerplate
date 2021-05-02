@@ -21,7 +21,8 @@ import path from "path";
 
 
 const dist = 'release'
-const production = !process.env.ROLLUP_WATCH
+// const production = !process.env.ROLLUP_WATCH
+let production = false;
 const development = !production
 
 const options = {
@@ -60,9 +61,9 @@ export default {
 			contentBase: dist,
 			historyApiFallback: true
 		}),
-		// development && livereload({
-		// 	watch: dist
-		// }),
+		development && livereload({
+			watch: dist
+		}),
 		babel({
 			exclude: 'node_modules/**'
 		}),
