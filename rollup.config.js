@@ -53,7 +53,7 @@ export default {
 		}),
 		resolve({
 			browser: true,
-			extensions: [ '.mjs', '.js', '.jsx', '.ts', '.tsx', '.json' ]
+			extensions: ['.js', '.jsx', '.ts', '.tsx', '.json' ]
 		}),		
 		development && serve({
 			open: true,
@@ -61,9 +61,9 @@ export default {
 			contentBase: dist,
 			historyApiFallback: true
 		}),
-		development && livereload({
-			watch: dist
-		}),
+		// development && livereload({
+		// 	watch: dist
+		// }),
 		babel({
 			exclude: 'node_modules/**'
 		}),

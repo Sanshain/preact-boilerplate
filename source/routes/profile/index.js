@@ -1,7 +1,7 @@
 import { h } from 'preact';
 import {useEffect, useState} from "preact/hooks";
-// import style from './style.css';
-import './style.css';
+import style from './style.css';
+// import './style.css';
 
 // Note: `user` comes from the URL, courtesy of our router
 const Profile = ({ user }) => {

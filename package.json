@@ -11,7 +11,7 @@
     "start": "rollup -c -w",
     "prebuild": "rimraf dist",
     "build": "rollup -c",
-    "serve": "serve dist"
+    "serve": "serve release"
   },
   "devDependencies": {
     "@babel/core": "^7.10.5",
