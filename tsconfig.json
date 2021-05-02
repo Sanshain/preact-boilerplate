@@ -6,7 +6,9 @@
 	  "jsxFactory": "h",
 	  "sourceMap": true,
 	  "strict": false,
-	  "moduleResolution": "node"
+	  "moduleResolution": "node",
+	  "allowJs": true,
+	//   "outDir": "out",
 	},
 	"include": ["./source/**/*"]
  }
