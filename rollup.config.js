@@ -38,7 +38,7 @@ const options = {
 
 
 export default {
-	input: `source/${options.prerender ? options.source.file : 'index'}.tsx`,
+	input: `source/${options.prerender ? options.source.file : 'index'}.js`,
 	output: {
 		file: `${dist}/${options.prerender ? options.target.ssr : 'bundle'}.js`,
 		format: 'iife',
@@ -63,9 +63,9 @@ export default {
 		}),
 		typescript(),					
 	
-		// babel({
-		// 	exclude: 'node_modules/**'
-		// }),			
+		babel({
+			exclude: 'node_modules/**'
+		}),			
 		commonjs(),
 		es3(),
 		// css({ output: 'style/bundle.css', minimize: production }),
