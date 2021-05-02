@@ -5,7 +5,7 @@
 ## Features: 
 
 - Usage styled components via [`goober`](https://www.npmjs.com/package/goober) with minimal runtime (look [`App.jsx`](https://github.com/Sanshain/preact-boilerplate/blob/main/source/App.jsx)) 
-- Isolated styles via postcs modules (like `react-css-modules`)
+- Isolated styles via postcss modules (like `react-css-modules`)
 - Typescript out of the box (`ts-config` branch)
 - `preact-routers` out of the box
 - prerender out of the box
