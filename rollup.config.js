@@ -22,7 +22,7 @@ import path from "path";
 
 const dist = 'release'
 // const production = !process.env.ROLLUP_WATCH
-let production = false;
+let production = true;
 const development = !production
 
 const options = {
@@ -67,15 +67,15 @@ export default {
 		babel({
 			exclude: 'node_modules/**'
 		}),
-		commonjs(),
 		// typescript({
 		// 	typescript: require('typescript')
-	  	// }),		
+	  	// }),				
+		commonjs(),
 		es3(),
 		// css({ output: 'style/bundle.css', minimize: production }),
 		// css({ output: false }),
 		postcss({
-			extract: false,
+			extract: 'style/bundle.css',
 			minimize: production,	
 			modules: true
 		}),

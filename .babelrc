@@ -14,17 +14,7 @@
         "pragma":"h", 
 		  "pragmaFrag": "Fragment"
       }
-    ],
-
-	[
-		"import", 
-		{
-			"libraryName": "antd",
-			"style": true
-		}
-	],
-	["@babel/plugin-proposal-class-properties", { "loose": true }]
-	 
+    ]
   ]
 
 }
