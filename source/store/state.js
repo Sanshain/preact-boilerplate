@@ -12,10 +12,11 @@ let count = store => {
 	store.on('set', (state, useInfo) => {
 		console.log(state);
 		console.log(useInfo);
-		
-		state = {count: useInfo.data + state.count}		
-		useInfo.event.target.innerText = state.count;
-		return state
+
+		let [data, callback] = [...useInfo];
+		callback(data)
+						
+		return state = {count: data}
 	})
 
 }
