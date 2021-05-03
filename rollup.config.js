@@ -22,7 +22,7 @@ import path from "path";
 
 const dist = 'release'
 // const production = !process.env.ROLLUP_WATCH
-let production = true;
+let production = false;
 const development = !production
 
 const options = {
