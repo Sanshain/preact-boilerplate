@@ -819,15 +819,21 @@
 
     store.on('inc', ({
       count
-    }) => {
+    }, event) => {
       console.log(count);
       return {
         count: count + 1
       };
     });
-    store.on('set', (state, event) => ({
-      counter: event
-    }));
+    store.on('set', (state, useInfo) => {
+      console.log(state);
+      console.log(useInfo);
+      state = {
+        count: useInfo.data + state.count
+      };
+      useInfo.event.target.innerText = state.count;
+      return state;
+    });
   };
 
   const store = createStoreon([count]);
@@ -863,10 +869,10 @@
     }, v("h1", {
       class: "title"
     }, message), v("button", {
-      onClick: e => {
-        store.dispatch('inc');
-        e.target.innerText = store.get().count;
-      }
+      onClick: e => store.dispatch('set', {
+        event: e,
+        data: 50
+      })
     }, store.get().count)), v(Title, null, "789"));
   };
 

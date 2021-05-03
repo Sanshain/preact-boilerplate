@@ -29,7 +29,7 @@ const App = props => {
 		<header />
 		<main class={BtnClassName}>
 			<h1 class='title'>{message}</h1>
-			<button onClick={(e) => { store.dispatch('inc'); e.target.innerText=store.get().count;}}>
+			<button onClick={(e) => store.dispatch('set', {event: e, data: 50})}>
 				{store.get().count}
 			</button>
 		</main>
