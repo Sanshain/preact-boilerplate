@@ -378,6 +378,27 @@
     }]), i.__;
   }
 
+  function y(r, o) {
+    var i = v$1(t$1++, 3);
+    !n.__s && j$1(i.__H, o) && (i.__ = r, i.__H = o, u$1.__H.__h.push(i));
+  }
+
+  function l(r, o) {
+    var i = v$1(t$1++, 4);
+    !n.__s && j$1(i.__H, o) && (i.__ = r, i.__H = o, u$1.__h.push(i));
+  }
+
+  function _$1(n, u) {
+    var r = v$1(t$1++, 7);
+    return j$1(r.__H, u) ? (r.__H = u, r.__h = n, r.__ = n()) : r.__;
+  }
+
+  function F(n) {
+    var r = u$1.context[n.__c],
+        o = v$1(t$1++, 9);
+    return o.__c = n, r ? (null == o.__ && (o.__ = !0, r.sub(u$1)), r.props.value) : n.__;
+  }
+
   function q$1() {
     i$1.some(function (t) {
       if (t.__P) try {
@@ -435,6 +456,12 @@
     n.u = n.__();
   }
 
+  function j$1(n, t) {
+    return !n || t.some(function (t, u) {
+      return t !== n[u];
+    });
+  }
+
   function k$1(n, t) {
     return "function" == typeof t ? t(n) : t;
   }
@@ -450,7 +477,7 @@
 
     return t || e$2;
   },
-      l = /(?:([A-Z0-9-%@]+) *:? *([^{;]+?);|([^;}{]*?) *{)|(})/gi,
+      l$1 = /(?:([A-Z0-9-%@]+) *:? *([^{;]+?);|([^;}{]*?) *{)|(})/gi,
       a$2 = /\/\*[\s\S]*?\*\/|\s{2,}|\n/gm,
       n$1 = (e, t) => {
     let r,
@@ -490,7 +517,7 @@
         let t,
             r = [{}];
 
-        for (; t = l.exec(e.replace(a$2, ""));) t[4] && r.shift(), t[3] ? r.unshift(r[0][t[3]] = r[0][t[3]] || {}) : t[4] || (r[0][t[1]] = t[2]);
+        for (; t = l$1.exec(e.replace(a$2, ""));) t[4] && r.shift(), t[3] ? r.unshift(r[0][t[3]] = r[0][t[3]] || {}) : t[4] || (r[0][t[1]] = t[2]);
 
         return r[0];
       })(e);
@@ -581,10 +608,10 @@
     }, r;
   }(d);
 
-  var _$1 = n.__b;
+  var _$2 = n.__b;
 
   n.__b = function (n) {
-    n.type && n.type.t && n.ref && (n.props.ref = n.ref, n.ref = null), _$1 && _$1(n);
+    n.type && n.type.t && n.ref && (n.props.ref = n.ref, n.ref = null), _$2 && _$2(n);
   };
 
   var N$1 = n.__e;
@@ -597,7 +624,7 @@
     this.__u = 0, this.o = null, this.__b = null;
   }
 
-  function j$1(n) {
+  function j$2(n) {
     var t = n.__.__c;
     return t && t.u && t.u(n);
   }
@@ -613,7 +640,7 @@
     var e = this;
     null == e.o && (e.o = []), e.o.push(t);
 
-    var r = j$1(e.__v),
+    var r = j$2(e.__v),
         o = !1,
         u = function () {
       o || (o = !0, r ? r(i) : i());
@@ -648,7 +675,7 @@
 
   (O.prototype = new d()).u = function (n) {
     var t = this,
-        e = j$1(t.__v),
+        e = j$2(t.__v),
         r = t.l.get(n);
     return r[0]++, function (o) {
       var u = function () {
@@ -766,6 +793,73 @@
   };
 
   let StoreContext = q();
+  let useIsomorphicLayoutEffect = typeof window !== 'undefined' ? l : y;
+
+  let customContext = context => (...keys) => {
+    let store = F(context);
+
+    if (process.env.NODE_ENV !== 'production' && !store) {
+      throw new Error('Could not find storeon context value.' + 'Please ensure the component is wrapped in a <StoreContext.Provider>');
+    }
+
+    let rerender = m$1({});
+    useIsomorphicLayoutEffect(() => {
+      return store.on('@changed', (_, changed) => {
+        let changesInKeys = keys.some(key => key in changed);
+        if (changesInKeys) rerender[1]({});
+      });
+    }, []);
+    return _$1(() => {
+      let state = store.get();
+      let data = {};
+      keys.forEach(key => {
+        data[key] = state[key];
+      });
+      data.dispatch = store.dispatch;
+      return data;
+    }, [rerender[0]]);
+  };
+
+  let useStoreon = customContext(StoreContext);
+
+  function _templateObject2() {
+    const data = _taggedTemplateLiteral(["\n  background-color: lightgray;\n"]);
+
+    _templateObject2 = function _templateObject2() {
+      return data;
+    };
+
+    return data;
+  }
+
+  function _templateObject() {
+    const data = _taggedTemplateLiteral(["\n  text-align: center;\n  color: red;\n"]);
+
+    _templateObject = function _templateObject() {
+      return data;
+    };
+
+    return data;
+  }
+
+  h$1(v);
+  const Title = m$2("h1")(_templateObject());
+  const BtnClassName = p$2(_templateObject2());
+
+  const App = props => {
+    const [message] = m$1('Preact App');
+    const {
+      dispatch,
+      count
+    } = useStoreon('count');
+    return v(p, null, v("header", null), v("main", {
+      class: BtnClassName
+    }, v("h1", {
+      class: "title"
+    }, message), v("button", {
+      onClick: () => store.dispatch('inc')
+    }, count)), v(Title, null, "789"));
+  };
 
   let createStoreon = modules => {
     let events = {};
@@ -830,45 +924,13 @@
     }));
   };
 
-  const store = createStoreon([count]);
-
-  function _templateObject2() {
-    const data = _taggedTemplateLiteral(["\n  background-color: lightgray;\n"]);
-
-    _templateObject2 = function _templateObject2() {
-      return data;
-    };
-
-    return data;
-  }
-
-  function _templateObject() {
-    const data = _taggedTemplateLiteral(["\n  text-align: center;\n  color: red;\n"]);
-
-    _templateObject = function _templateObject() {
-      return data;
-    };
-
-    return data;
-  }
-  h$1(v);
-  const Title = m$2("h1")(_templateObject());
-  const BtnClassName = p$2(_templateObject2());
-
-  const App = props => {
-    const [message] = m$1('Preact App');
-    return v(p, null, v("header", null), v("main", {
-      class: BtnClassName
-    }, v("h1", {
-      class: "title"
-    }, message), v("button", {
-      onClick: () => store.dispatch('inc')
-    }, store.get().count)), v(Title, null, "789"));
-  };
+  const store$1 = createStoreon([count]);
 
   // import App from './TSApp'
 
-  M(v(App, null), document.getElementById('root'));
+  M(v(StoreContext.Provider, {
+    value: store$1
+  }, v(App, null)), document.getElementById('root')); // render(<App/>, document.getElementById('root'))
 
 }());
 //# sourceMappingURL=bundle.js.map
