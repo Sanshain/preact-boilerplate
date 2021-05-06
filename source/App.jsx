@@ -26,7 +26,7 @@ const App = props => {
 
 	const [message] = useState('Preact App')
 
-	const [count, setCount] = useStore('count', 0)
+	const [count, setCount] = useStore('count')
 
 	// const { dispatch, count } = useStoreon('count')
 
