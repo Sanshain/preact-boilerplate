@@ -5,7 +5,7 @@ import { styled, css, setup } from 'goober';
 
 import { useStoreon } from 'storeon/preact' // or storeon/preact
 
-import { store } from "./store/state";
+import { useStore } from "./store/state";
 
 setup(h);
 
@@ -20,8 +20,8 @@ const BtnClassName = css`
 
 const App = props => {
 
-	const [message] = useState('Preact App')
-	const [count, setCount] = useState(store.get().count)
+	const [message] = useState('Preact App')	
+	const [count, setCount] = useStore(0)
 
 	// const { dispatch, count } = useStoreon('count')
 
@@ -30,7 +30,7 @@ const App = props => {
 		<header />
 		<main class={BtnClassName}>
 			<h1 class='title'>{message}</h1>
-			<button onClick={(e) => store.dispatch('set', [store.get().count + 1, setCount])}>
+			<button onClick={(e) => setCount(count + 1)}>
 				{count}
 			</button>
 		</main>

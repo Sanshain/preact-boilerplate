@@ -1,27 +1,28 @@
-import { createStoreon } from 'storeon'
 
-// Initial state, reducers and business logic are packed in independent modules
-let count = store => {
+// //@ts-check
 
-	let hooks = [];
+import { useState } from 'react/hooks'
 
-	// Initial state
-	store.on('@init', () => ({ count: 0 }))
-	// Reducers returns only changed part of the state	
-	store.on('inc', ({ count }, event) => {
+
+let hooks = [];
+
+export function setState(value){
+
+	for (const hook of hooks) {
 		
-		// console.log(count);
-		return ({ count: count + 1 })
-	})
-	store.on('set', (state, useInfo) => {
-
-		let [data, callback] = [...useInfo];
-		if (!~hooks.indexOf(callback)) hooks.push(callback);		
-		for (const hook of hooks) hook(data)
-						
-		return state = {count: data}
-	})
-
+		console.log(hook);
+		hook(value)
+	}
 }
 
-export const store = createStoreon([count])
+export function useStore(initvalue){
+
+	const [value, setValue] = useState(initvalue)
+	if (!~hooks.indexOf(setValue)) {
+		
+		hooks.push(setValue);
+	}
+	return [value, setState]
+}
+
+

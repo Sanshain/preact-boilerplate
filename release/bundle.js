@@ -767,78 +767,23 @@
 
   let StoreContext = q();
 
-  let createStoreon = modules => {
-    let events = {};
-    let state = {};
-    let store = {
-      dispatch(event, data) {
-        if (event !== '@dispatch') {
-          store.dispatch('@dispatch', [event, data, events[event]]);
-        }
+  // //@ts-check
+  let hooks = [];
+  function setState(value) {
+    for (const hook of hooks) {
+      console.log(hook);
+      hook(value);
+    }
+  }
+  function useStore(initvalue) {
+    const [value, setValue] = m$1(initvalue);
 
-        if (events[event]) {
-          let changes;
-          events[event].forEach(i => {
-            let diff = events[event].includes(i) && i(state, data, store);
+    if (!~hooks.indexOf(setValue)) {
+      hooks.push(setValue);
+    }
 
-            if (diff && typeof diff.then !== 'function') {
-              state = { ...state,
-                ...diff
-              };
-              changes = { ...changes,
-                ...diff
-              };
-            }
-          });
-          if (changes) store.dispatch('@changed', changes);
-        }
-      },
-
-      get: () => state,
-
-      on(event, cb) {
-        (events[event] || (events[event] = [])).push(cb);
-        return () => {
-          events[event] = events[event].filter(i => i !== cb);
-        };
-      }
-
-    };
-    modules.forEach(i => {
-      if (i) i(store);
-    });
-    store.dispatch('@init');
-    return store;
-  };
-
-  let count = store => {
-    let hooks = []; // Initial state
-
-    store.on('@init', () => ({
-      count: 0
-    })); // Reducers returns only changed part of the state	
-
-    store.on('inc', ({
-      count
-    }, event) => {
-      // console.log(count);
-      return {
-        count: count + 1
-      };
-    });
-    store.on('set', (state, useInfo) => {
-      let [data, callback] = [...useInfo];
-      if (!~hooks.indexOf(callback)) hooks.push(callback);
-
-      for (const hook of hooks) hook(data);
-
-      return state = {
-        count: data
-      };
-    });
-  };
-
-  const store = createStoreon([count]);
+    return [value, setState];
+  }
 
   function _templateObject2() {
     const data = _taggedTemplateLiteral(["\n  background-color: lightgray;\n"]);
@@ -865,14 +810,14 @@
 
   const App = props => {
     const [message] = m$1('Preact App');
-    const [count, setCount] = m$1(store.get().count); // const { dispatch, count } = useStoreon('count')
+    const [count, setCount] = useStore(0); // const { dispatch, count } = useStoreon('count')
 
     return v(p, null, v("header", null), v("main", {
       class: BtnClassName
     }, v("h1", {
       class: "title"
     }, message), v("button", {
-      onClick: e => store.dispatch('set', [store.get().count + 1, setCount])
+      onClick: e => setCount(count + 1)
     }, count)), v(Title, null, "789"));
   };
 
