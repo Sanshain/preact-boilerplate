@@ -8,7 +8,7 @@
       r,
       o,
       f = {},
-      e$1 = [],
+      e = [],
       c = /acit|ex(?:s|g|n|p|$)|rph|grid|ows|mnc|ntw|ine[ch]|zoo|^ord|itera/i;
 
   function s(n, l) {
@@ -102,7 +102,7 @@
         m,
         g,
         b,
-        A = i && i.__k || e$1,
+        A = i && i.__k || e,
         P = A.length;
 
     for (s == f && (s = null != o ? o[0] : P ? _(i, 0) : null), u.__k = [], y = 0; y < l.length; y++) if (null != (w = u.__k[y] = null == (w = l[y]) || "boolean" == typeof w ? null : "string" == typeof w || "number" == typeof w ? h(null, w, null, null, w) : Array.isArray(w) ? h(p, {
@@ -127,7 +127,7 @@
   }
 
   function b(n) {
-    return null == n || "boolean" == typeof n ? [] : Array.isArray(n) ? e$1.concat.apply([], n.map(b)) : [n];
+    return null == n || "boolean" == typeof n ? [] : Array.isArray(n) ? e.concat.apply([], n.map(b)) : [n];
   }
 
   function x(n, l, u, i, t, r, o) {
@@ -245,7 +245,7 @@
     }
 
     if (null === l.type) p !== d && n.data != d && (n.data = d);else {
-      if (null != r && (r = e$1.slice.call(n.childNodes)), v = (p = u.props || f).dangerouslySetInnerHTML, h = d.dangerouslySetInnerHTML, !c) {
+      if (null != r && (r = e.slice.call(n.childNodes)), v = (p = u.props || f).dangerouslySetInnerHTML, h = d.dangerouslySetInnerHTML, !c) {
         if (null != r) for (p = {}, y = 0; y < n.attributes.length; y++) p[n.attributes[y].name] = n.attributes[y].value;
         (h || v) && (h && v && h.__html == v.__html || (n.innerHTML = h && h.__html || ""));
       }
@@ -285,7 +285,7 @@
 
   function M(l, u, i) {
     var t, o, c;
-    n.__ && n.__(l, u), o = (t = i === r) ? null : i && i.__k || u.__k, l = v(p, null, [l]), c = [], T(u, (t ? u : i || u).__k = l, o || f, f, void 0 !== u.ownerSVGElement, i && !t ? [i] : o ? null : u.childNodes.length ? e$1.slice.call(u.childNodes) : null, c, i || f, t), $(c, l);
+    n.__ && n.__(l, u), o = (t = i === r) ? null : i && i.__k || u.__k, l = v(p, null, [l]), c = [], T(u, (t ? u : i || u).__k = l, o || f, f, void 0 !== u.ownerSVGElement, i && !t ? [i] : o ? null : u.childNodes.length ? e.slice.call(u.childNodes) : null, c, i || f, t), $(c, l);
   }
 
   function q(n) {
@@ -354,7 +354,7 @@
       i$1 = [],
       c$1 = n.__r,
       f$1 = n.diffed,
-      e$2 = n.__c,
+      e$1 = n.__c,
       a$1 = n.unmount;
 
   function v$1(t, r) {
@@ -415,7 +415,7 @@
           n.__h && (n.__h = []);
         }), u = [], n.__e(r, t.__v);
       }
-    }), e$2 && e$2(t, u);
+    }), e$1 && e$1(t, u);
   }, n.unmount = function (t) {
     a$1 && a$1(t);
     var u = t.__c;
@@ -439,7 +439,7 @@
     return "function" == typeof t ? t(n) : t;
   }
 
-  let e$3 = {
+  let e$2 = {
     data: ""
   },
       t$2 = t => {
@@ -448,7 +448,7 @@
       return e || (e = (t || document.head).appendChild(document.createElement("style")), e.innerHTML = " ", e.id = "_goober"), e.firstChild;
     }
 
-    return t || e$3;
+    return t || e$2;
   },
       l = /(?:([A-Z0-9-%@]+) *:? *([^{;]+?);|([^;}{]*?) *{)|(})/gi,
       a$2 = /\/\*[\s\S]*?\*\/|\s{2,}|\n/gm,
@@ -812,7 +812,8 @@
   };
 
   let count = store => {
-    // Initial state
+    let hooks = []; // Initial state
+
     store.on('@init', () => ({
       count: 0
     })); // Reducers returns only changed part of the state	
@@ -820,16 +821,17 @@
     store.on('inc', ({
       count
     }, event) => {
-      console.log(count);
+      // console.log(count);
       return {
         count: count + 1
       };
     });
     store.on('set', (state, useInfo) => {
-      console.log(state);
-      console.log(useInfo);
       let [data, callback] = [...useInfo];
-      callback(data);
+      if (!~hooks.indexOf(callback)) hooks.push(callback);
+
+      for (const hook of hooks) hook(data);
+
       return state = {
         count: data
       };
@@ -862,18 +864,16 @@
   const BtnClassName = p$2(_templateObject2());
 
   const App = props => {
-    const [message] = m$1('Preact App'); // const [message] = useState('Preact App')
-
-    const setState = data => e.target.innerText = data; // const { dispatch, count } = useStoreon('count')
-
+    const [message] = m$1('Preact App');
+    const [count, setCount] = m$1(store.get().count); // const { dispatch, count } = useStoreon('count')
 
     return v(p, null, v("header", null), v("main", {
       class: BtnClassName
     }, v("h1", {
       class: "title"
     }, message), v("button", {
-      onClick: e => store.dispatch('set', [store.get().count + 1, setState])
-    }, store.get().count)), v(Title, null, "789"));
+      onClick: e => store.dispatch('set', [store.get().count + 1, setCount])
+    }, count)), v(Title, null, "789"));
   };
 
   let StoreContext$1 = q();

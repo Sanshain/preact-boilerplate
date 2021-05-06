@@ -21,9 +21,8 @@ const BtnClassName = css`
 const App = props => {
 
 	const [message] = useState('Preact App')
-	// const [message] = useState('Preact App')
+	const [count, setCount] = useState(store.get().count)
 
-	const setState = data => e.target.innerText = data;
 	// const { dispatch, count } = useStoreon('count')
 
 
@@ -31,8 +30,8 @@ const App = props => {
 		<header />
 		<main class={BtnClassName}>
 			<h1 class='title'>{message}</h1>
-			<button onClick={(e) => store.dispatch('set', [store.get().count+1, setState] )}>
-				{store.get().count}
+			<button onClick={(e) => store.dispatch('set', [store.get().count + 1, setCount])}>
+				{count}
 			</button>
 		</main>
 		<Title>789</Title>
