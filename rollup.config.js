@@ -77,7 +77,7 @@ export default {
 		postcss({
 			extract: 'style/bundle.css',
 			minimize: production,	
-			// modules: true,
+			modules: true,
 			
 			// autoModules: true,
 			// inject: true,			

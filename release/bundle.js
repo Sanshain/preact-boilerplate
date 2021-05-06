@@ -1,6 +1,8 @@
 (function () {
   'use strict';
 
+  var style = {"title":"style_title__2z4ao"};
+
   var n,
       u,
       i,
@@ -867,10 +869,12 @@
     const [message] = m$1('Preact App');
     const [count, setCount] = m$1(store.get().count); // const { dispatch, count } = useStoreon('count')
 
-    return v(p, null, v("header", null), v("main", {
+    return v(p, null, v("header", {
+      class: "header"
+    }), v("main", {
       class: BtnClassName
     }, v("h1", {
-      class: "title"
+      class: style.title
     }, message), v("button", {
       onClick: e => store.dispatch('set', [store.get().count + 1, setCount])
     }, count)), v(Title, null, "789"));
