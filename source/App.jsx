@@ -3,9 +3,11 @@ import { useState } from 'preact/hooks'
 
 import { styled, css, setup } from 'goober';
 
-import { useStoreon } from 'storeon/preact' // or storeon/preact
+import { useStore, initStore } from "./store/state";
+import Button from "./button";
 
-import { useStore } from "./store/state";
+
+
 
 setup(h);
 
@@ -18,10 +20,13 @@ const BtnClassName = css`
   background-color: lightgray;
 `;
 
+
+
 const App = props => {
 
-	const [message] = useState('Preact App')	
-	const [count, setCount] = useStore(0)
+	const [message] = useState('Preact App')
+
+	const [count, setCount] = useStore('count', 0)
 
 	// const { dispatch, count } = useStoreon('count')
 
@@ -34,6 +39,7 @@ const App = props => {
 				{count}
 			</button>
 		</main>
+		<Button />		
 		<Title>789</Title>
 	</>
 }

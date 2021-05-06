@@ -47,14 +47,15 @@ export default {
 	plugins: [
 		alias({
 			entries: [
-			  { find: 'react', replacement: 'preact/compat' },
-			  { find: 'react-dom', replacement: 'preact/compat' }
+				{ find: 'react/hooks', replacement: 'preact/hooks' },
+				{ find: 'react', replacement: 'preact/compat' },
+				{ find: 'react-dom', replacement: 'preact/compat' }
 			]
 		}),
 		resolve({
 			browser: true,
-			extensions: ['.js', '.jsx', '.ts', '.tsx', '.json' ]
-		}),		
+			extensions: ['.js', '.jsx', '.ts', '.tsx', '.json']
+		}),
 		development && serve({
 			open: true,
 			port: 3000,
@@ -69,14 +70,14 @@ export default {
 		}),
 		// typescript({
 		// 	typescript: require('typescript')
-	  	// }),				
+		// }),				
 		commonjs(),
 		es3(),
 		// css({ output: 'style/bundle.css', minimize: production }),
 		// css({ output: false }),
 		postcss({
 			extract: 'style/bundle.css',
-			minimize: production,	
+			minimize: production,
 			modules: true
 		}),
 		production && terser()
@@ -85,7 +86,7 @@ export default {
 
 
 if (options.prerender) {
-	
+
 	const file = path.resolve(__dirname, options.target.dirname, options.target.ssr + '.js');
 	if (fs.existsSync(file)) {
 

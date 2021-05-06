@@ -126,10 +126,6 @@
     if (b) for (y = 0; y < b.length; y++) H(b[y], b[++y], b[++y]);
   }
 
-  function b(n) {
-    return null == n || "boolean" == typeof n ? [] : Array.isArray(n) ? e.concat.apply([], n.map(b)) : [n];
-  }
-
   function x(n, l, u, i, t, r, o) {
     var f, e, c;
     if (void 0 !== l.__d) f = l.__d, l.__d = void 0;else if (t == u || r != o || null == r.parentNode) n: if (null == o || o.parentNode !== n) n.appendChild(r), f = null;else {
@@ -288,36 +284,6 @@
     n.__ && n.__(l, u), o = (t = i === r) ? null : i && i.__k || u.__k, l = v(p, null, [l]), c = [], T(u, (t ? u : i || u).__k = l, o || f, f, void 0 !== u.ownerSVGElement, i && !t ? [i] : o ? null : u.childNodes.length ? e.slice.call(u.childNodes) : null, c, i || f, t), $(c, l);
   }
 
-  function q(n) {
-    var l = {},
-        u = {
-      __c: "__cC" + o++,
-      __: n,
-      Consumer: function (n, l) {
-        return n.children(l);
-      },
-      Provider: function (n) {
-        var i,
-            t = this;
-        return this.getChildContext || (i = [], this.getChildContext = function () {
-          return l[u.__c] = t, l;
-        }, this.shouldComponentUpdate = function (n) {
-          t.props.value !== n.value && i.some(function (l) {
-            l.context = n.value, w(l);
-          });
-        }, this.sub = function (n) {
-          i.push(n);
-          var l = n.componentWillUnmount;
-
-          n.componentWillUnmount = function () {
-            i.splice(i.indexOf(n), 1), l && l.call(n);
-          };
-        }), n.children;
-      }
-    };
-    return u.Consumer.contextType = u, u.Provider.__ = u, u;
-  }
-
   n = {
     __e: function (n, l) {
       for (var u, i; l = l.__;) if ((u = l.__c) && !u.__) try {
@@ -378,10 +344,10 @@
     }]), i.__;
   }
 
-  function q$1() {
+  function q() {
     i$1.some(function (t) {
       if (t.__P) try {
-        t.__H.__h.forEach(b$1), t.__H.__h.forEach(g$1), t.__H.__h = [];
+        t.__H.__h.forEach(b), t.__H.__h.forEach(g$1), t.__H.__h = [];
       } catch (u) {
         return t.__H.__h = [], n.__e(u, t.__v), !0;
       }
@@ -391,7 +357,7 @@
   n.__r = function (n) {
     c$1 && c$1(n), t$1 = 0;
     var r = (u$1 = n.__c).__H;
-    r && (r.__h.forEach(b$1), r.__h.forEach(g$1), r.__h = []);
+    r && (r.__h.forEach(b), r.__h.forEach(g$1), r.__h = []);
   }, n.diffed = function (t) {
     f$1 && f$1(t);
     var u = t.__c;
@@ -403,11 +369,11 @@
           r = setTimeout(u, 100);
 
       x$1 && (t = requestAnimationFrame(u));
-    })(q$1));
+    })(q));
   }, n.__c = function (t, u) {
     u.some(function (t) {
       try {
-        t.__h.forEach(b$1), t.__h = t.__h.filter(function (n) {
+        t.__h.forEach(b), t.__h = t.__h.filter(function (n) {
           return !n.__ || g$1(n);
         });
       } catch (r) {
@@ -420,14 +386,14 @@
     a$1 && a$1(t);
     var u = t.__c;
     if (u && u.__H) try {
-      u.__H.__.forEach(b$1);
+      u.__H.__.forEach(b);
     } catch (t) {
       n.__e(t, u.__v);
     }
   };
   var x$1 = "function" == typeof requestAnimationFrame;
 
-  function b$1(n) {
+  function b(n) {
     "function" == typeof n.u && n.u();
   }
 
@@ -527,7 +493,7 @@
       g$2 = p$2.bind({
     g: 1
   }),
-      b$2 = p$2.bind({
+      b$1 = p$2.bind({
     k: 1
   });
 
@@ -554,236 +520,43 @@
     };
   }
 
-  function w$1(n, t) {
-    for (var e in t) n[e] = t[e];
-
-    return n;
-  }
-
-  function x$2(n, t) {
-    for (var e in n) if ("__source" !== e && !(e in t)) return !0;
-
-    for (var r in t) if ("__source" !== r && n[r] !== t[r]) return !0;
-
-    return !1;
-  }
-
-  var E = function (n) {
-    var t, e;
-
-    function r(t) {
-      var e;
-      return (e = n.call(this, t) || this).isPureReactComponent = !0, e;
-    }
-
-    return e = n, (t = r).prototype = Object.create(e.prototype), t.prototype.constructor = t, t.__proto__ = e, r.prototype.shouldComponentUpdate = function (n, t) {
-      return x$2(this.props, n) || x$2(this.state, t);
-    }, r;
-  }(d);
-
-  var _$1 = n.__b;
-
-  n.__b = function (n) {
-    n.type && n.type.t && n.ref && (n.props.ref = n.ref, n.ref = null), _$1 && _$1(n);
-  };
-
-  var N$1 = n.__e;
-
-  function U(n) {
-    return n && ((n = w$1({}, n)).__c = null, n.__k = n.__k && n.__k.map(U)), n;
-  }
-
-  function M$1() {
-    this.__u = 0, this.o = null, this.__b = null;
-  }
-
-  function j$1(n) {
-    var t = n.__.__c;
-    return t && t.u && t.u(n);
-  }
-
-  function O() {
-    this.i = null, this.l = null;
-  }
-
-  n.__e = function (n, t, e) {
-    if (n.then) for (var r, o = t; o = o.__;) if ((r = o.__c) && r.__c) return r.__c(n, t.__c);
-    N$1(n, t, e);
-  }, (M$1.prototype = new d()).__c = function (n, t) {
-    var e = this;
-    null == e.o && (e.o = []), e.o.push(t);
-
-    var r = j$1(e.__v),
-        o = !1,
-        u = function () {
-      o || (o = !0, r ? r(i) : i());
-    };
-
-    t.__c = t.componentWillUnmount, t.componentWillUnmount = function () {
-      u(), t.__c && t.__c();
-    };
-
-    var i = function () {
-      var n;
-      if (! --e.__u) for (e.__v.__k[0] = e.state.u, e.setState({
-        u: e.__b = null
-      }); n = e.o.pop();) n.forceUpdate();
-    };
-
-    e.__u++ || e.setState({
-      u: e.__b = e.__v.__k[0]
-    }), n.then(u, u);
-  }, M$1.prototype.render = function (n, t) {
-    return this.__b && (this.__v.__k && (this.__v.__k[0] = U(this.__b)), this.__b = null), [v(p, null, t.u ? null : n.children), t.u && n.fallback];
-  };
-
-  var P$1 = function (n, t, e) {
-    if (++e[1] === e[0] && n.l.delete(t), n.props.revealOrder && ("t" !== n.props.revealOrder[0] || !n.l.size)) for (e = n.i; e;) {
-      for (; e.length > 3;) e.pop()();
-
-      if (e[1] < e[0]) break;
-      n.i = e = e[2];
-    }
-  };
-
-  (O.prototype = new d()).u = function (n) {
-    var t = this,
-        e = j$1(t.__v),
-        r = t.l.get(n);
-    return r[0]++, function (o) {
-      var u = function () {
-        t.props.revealOrder ? (r.push(o), P$1(t, n, r)) : o();
-      };
-
-      e ? e(u) : u();
-    };
-  }, O.prototype.render = function (n) {
-    this.i = null, this.l = new Map();
-    var t = b(n.children);
-    n.revealOrder && "b" === n.revealOrder[0] && t.reverse();
-
-    for (var e = t.length; e--;) this.l.set(t[e], this.i = [1, 0, this.i]);
-
-    return n.children;
-  }, O.prototype.componentDidUpdate = O.prototype.componentDidMount = function () {
-    var n = this;
-    n.l.forEach(function (t, e) {
-      P$1(n, e, t);
-    });
-  };
-
-  var W = function () {
-    function n() {}
-
-    var t = n.prototype;
-    return t.getChildContext = function () {
-      return this.props.context;
-    }, t.render = function (n) {
-      return n.children;
-    }, n;
-  }();
-
-  var H$1 = /^(?:accent|alignment|arabic|baseline|cap|clip(?!PathU)|color|fill|flood|font|glyph(?!R)|horiz|marker(?!H|W|U)|overline|paint|stop|strikethrough|stroke|text(?!L)|underline|unicode|units|v|vector|vert|word|writing|x(?!C))[A-Z]/;
-  d.prototype.isReactComponent = {};
-  var T$1 = "undefined" != typeof Symbol && Symbol.for && Symbol.for("react.element") || 60103;
-
-  var I$1 = n.event;
-
-  function $$1(n, t) {
-    n["UNSAFE_" + t] && !n[t] && Object.defineProperty(n, t, {
-      configurable: !1,
-      get: function () {
-        return this["UNSAFE_" + t];
-      },
-      set: function (n) {
-        this["UNSAFE_" + t] = n;
-      }
-    });
-  }
-
-  n.event = function (n) {
-    I$1 && (n = I$1(n)), n.persist = function () {};
-    var t = !1,
-        e = !1,
-        r = n.stopPropagation;
-
-    n.stopPropagation = function () {
-      r.call(n), t = !0;
-    };
-
-    var o = n.preventDefault;
-    return n.preventDefault = function () {
-      o.call(n), e = !0;
-    }, n.isPropagationStopped = function () {
-      return t;
-    }, n.isDefaultPrevented = function () {
-      return e;
-    }, n.nativeEvent = n;
-  };
-
-  var q$2 = {
-    configurable: !0,
-    get: function () {
-      return this.class;
-    }
-  },
-      B = n.vnode;
-
-  n.vnode = function (n) {
-    n.$$typeof = T$1;
-    var t = n.type,
-        e = n.props;
-
-    if (t) {
-      if (e.class != e.className && (q$2.enumerable = "className" in e, null != e.className && (e.class = e.className), Object.defineProperty(e, "className", q$2)), "function" != typeof t) {
-        var r, o, u;
-
-        for (u in e.defaultValue && void 0 !== e.value && (e.value || 0 === e.value || (e.value = e.defaultValue), delete e.defaultValue), Array.isArray(e.value) && e.multiple && "select" === t && (b(e.children).forEach(function (n) {
-          -1 != e.value.indexOf(n.props.value) && (n.props.selected = !0);
-        }), delete e.value), e) if (r = H$1.test(u)) break;
-
-        if (r) for (u in o = n.props = {}, e) o[H$1.test(u) ? u.replace(/[A-Z0-9]/, "-$&").toLowerCase() : u] = e[u];
-      }
-
-      !function (t) {
-        var e = n.type,
-            r = n.props;
-
-        if (r && "string" == typeof e) {
-          var o = {};
-
-          for (var u in r) /^on(Ani|Tra|Tou)/.test(u) && (r[u.toLowerCase()] = r[u], delete r[u]), o[u.toLowerCase()] = u;
-
-          if (o.ondoubleclick && (r.ondblclick = r[o.ondoubleclick], delete r[o.ondoubleclick]), o.onbeforeinput && (r.onbeforeinput = r[o.onbeforeinput], delete r[o.onbeforeinput]), o.onchange && ("textarea" === e || "input" === e.toLowerCase() && !/^fil|che|ra/i.test(r.type))) {
-            var i = o.oninput || "oninput";
-            r[i] || (r[i] = r[o.onchange], delete r[o.onchange]);
-          }
-        }
-      }(), "function" == typeof t && !t.m && t.prototype && ($$1(t.prototype, "componentWillMount"), $$1(t.prototype, "componentWillReceiveProps"), $$1(t.prototype, "componentWillUpdate"), t.m = !0);
-    }
-
-    B && B(n);
-  };
-
-  let StoreContext = q();
-
   // //@ts-check
-  let hooks = [];
-  function setState(value) {
-    for (const hook of hooks) {
-      console.log(hook);
+  let states = {};
+  function setState(key, value) {
+    for (const hook of states[key].hooks) {
+      // console.log(hook);
       hook(value);
     }
   }
-  function useStore(initvalue) {
-    const [value, setValue] = m$1(initvalue);
+  function useStore(key, init_value) {
+    const [value, setValue] = m$1(init_value !== undefined ? init_value : (states[key] || {}).initState);
 
-    if (!~hooks.indexOf(setValue)) {
-      hooks.push(setValue);
-    }
+    if (key in states) {
+      !~states[key].hooks.indexOf(setValue) && states[key].hooks.push(setValue);
+    } else states[key] = {
+      hooks: [setValue],
+      initState: init_value
+    };
 
-    return [value, setState];
+    return [value, setState.bind(null, key)];
   }
+  function initStore(init_dict) {
+    for (const key in init_dict) {
+      states[key] = {
+        hooks: [],
+        initState: init_dict[key]
+      };
+    }
+  }
+
+  const Button = props => {
+    const [text] = m$1('minus');
+    const [count, setCount] = useStore('count', 0); // const { dispatch, count } = useStoreon('count')
+
+    return v(p, null, v("hr", null), v("div", null, v("button", {
+      onClick: e => setCount(count - 1)
+    }, text, " (", count, ")")));
+  };
 
   function _templateObject2() {
     const data = _taggedTemplateLiteral(["\n  background-color: lightgray;\n"]);
@@ -810,7 +583,7 @@
 
   const App = props => {
     const [message] = m$1('Preact App');
-    const [count, setCount] = useStore(0); // const { dispatch, count } = useStoreon('count')
+    const [count, setCount] = useStore('count', 0); // const { dispatch, count } = useStoreon('count')
 
     return v(p, null, v("header", null), v("main", {
       class: BtnClassName
@@ -818,13 +591,12 @@
       class: "title"
     }, message), v("button", {
       onClick: e => setCount(count + 1)
-    }, count)), v(Title, null, "789"));
+    }, count)), v(Button, null), v(Title, null, "789"));
   };
 
-  let StoreContext$1 = q();
-
-  // import App from './TSApp'
-
+  initStore({
+    count: 9
+  });
   M(v(App, null), document.getElementById('root'));
 
 }());
