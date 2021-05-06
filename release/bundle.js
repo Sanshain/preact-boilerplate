@@ -583,7 +583,7 @@
 
   const App = props => {
     const [message] = m$1('Preact App');
-    const [count, setCount] = useStore('count', 0); // const { dispatch, count } = useStoreon('count')
+    const [count, setCount] = useStore('count'); // const { dispatch, count } = useStoreon('count')
 
     return v(p, null, v("header", null), v("main", {
       class: BtnClassName
