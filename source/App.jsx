@@ -1,11 +1,15 @@
+//@ts-check
 import { h, Fragment } from 'preact'
 import { useState } from 'preact/hooks'
 
 import { styled, css, setup } from 'goober';
 
-import { useStoreon } from 'storeon/preact' // or storeon/preact
+import { counter } from './store/state'
+import { update } from 'nanostores'
 
-import { store } from "./store/state";
+import { useStore } from 'nanostores/react'
+
+//@ts-ignore
 import style from "./style.css";
 
 setup(h);
@@ -22,16 +26,18 @@ const BtnClassName = css`
 const App = props => {
 
 	const [message] = useState('Preact App')
-	const [count, setCount] = useState(store.get().count)
+
+	const count = useStore(counter)
+	// const [count, setCount] = useState(store.get().count)
 
 	// const { dispatch, count } = useStoreon('count')
 
 
 	return <>
-		<header class='header' />
-		<main class={BtnClassName}>
-			<h1 class={style.title}>{message}</h1>
-			<button onClick={(e) => store.dispatch('set', [store.get().count + 1, setCount])}>
+		<header className='header' />
+		<main className={BtnClassName}>
+			<h1 className={style.title}>{message}</h1>
+			<button onClick={(e) => update(counter, value => value + 1)}>
 				{count}
 			</button>
 		</main>
