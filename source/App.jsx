@@ -10,7 +10,7 @@ import { useStore } from 'nanostores/preact'
 
 //@ts-ignore
 import style from "./style.css";
-// import View from "./View";
+import View from "./View";
 
 setup(h);
 
@@ -40,7 +40,7 @@ const App = props => {
 			<button onClick={(e) => update(counter, value => value + 1)}>
 				{count}
 			</button>
-			{/* <View>cnt</View>-- */}
+			<View>cnt</View>
 		</main>		
 		<Title>789</Title>
 	</>

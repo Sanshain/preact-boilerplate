@@ -4,10 +4,10 @@ export const counter = createStore(() => {
 	counter.set(0)
 })
 
-export const users = createStore(() => {
-	users.set([])
-});
+// export const users = createStore(() => {
+// 	users.set([])
+// });
 
-export function addUser(user) {
-	update(users, current => [...current, user])
-}
+// export function addUser(user) {
+// 	update(users, current => [...current, user])
+// }
