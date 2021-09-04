@@ -39,7 +39,7 @@ const options = {
 
 
 export default {
-	input: `source/${options.prerender ? options.source.file : 'index'}.js`,
+	input: `source/${options.prerender ? options.source.file : 'index'}.tsx`,
 	output: {
 		file: `${dist}/${options.prerender ? options.target.ssr : 'bundle'}.js`,
 		format: 'iife',
@@ -52,8 +52,7 @@ export default {
 				{ find: 'react', replacement: 'preact/compat' },
 				{ find: 'react-dom', replacement: 'preact/compat' }
 			]
-		}),
-		typescript(),
+		}),		
 		resolve({
 			browser: true,
 			extensions: ['.js', '.jsx', '.ts', '.tsx', '.json', '.mjs']
@@ -67,6 +66,7 @@ export default {
 		// development && livereload({
 		// 	watch: dist
 		// }),
+		typescript(),
 		babel({
 			exclude: 'node_modules/**'
 		}),

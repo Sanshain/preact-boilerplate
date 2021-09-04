@@ -1,8 +1,9 @@
+//@ts-check
+
 import { h, Fragment } from 'preact'
 import { useState } from 'preact/hooks'
 
-import { useStore } from "./store/state";
-
+import { useStore } from "./store/source/state";
 
 const Button = props => {
 
