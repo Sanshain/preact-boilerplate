@@ -53,12 +53,12 @@ export default {
 		}),
 		resolve({
 			browser: true,
-			extensions: ['.js', '.jsx', '.ts', '.tsx', '.json' ]
+			extensions: ['.js', '.jsx', '.ts', '.tsx', '.json', '.mjs' ]
 		}),		
 		development && serve({
 			open: true,
 			port: 3000,
-			contentBase: dist,
+			contentBase: '',
 			historyApiFallback: true
 		}),
 		// development && livereload({

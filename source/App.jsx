@@ -6,11 +6,11 @@ import { styled, css, setup } from 'goober';
 
 import { counter } from './store/state'
 import { update } from 'nanostores'
-
-import { useStore } from 'nanostores/react'
+import { useStore } from 'nanostores/preact'
 
 //@ts-ignore
 import style from "./style.css";
+// import View from "./View";
 
 setup(h);
 
@@ -40,7 +40,8 @@ const App = props => {
 			<button onClick={(e) => update(counter, value => value + 1)}>
 				{count}
 			</button>
-		</main>
+			{/* <View>cnt</View>-- */}
+		</main>		
 		<Title>789</Title>
 	</>
 }
