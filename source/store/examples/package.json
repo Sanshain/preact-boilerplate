@@ -1,8 +1,8 @@
 {
   "private": true,
-  "name": "preact-rollup",
+  "name": "pre-store",
   "version": "1.0.0",
-  "description": "Preact + Rollup template.",
+  "description": "Preact + Rollup template with pre-store state manager",
   "main": "src/index.js",
   "author": "Alex",
   "license": "MIT",
@@ -13,9 +13,9 @@
     "build": "rollup -c",
     "serve": "serve release"
   },
-  "workspaces":[
-	  "./source/store/*",
-	  "!source/store/examples/**"
+  "workspaces": [
+    "./source/store/*",
+    "!source/store/examples/**"
   ],
   "devDependencies": {
     "@babel/core": "^7.10.5",
@@ -40,8 +40,10 @@
   "dependencies": {
     "@babel/plugin-proposal-class-properties": "^7.13.0",
     "@rollup/plugin-alias": "^3.1.2",
+    "@rollup/plugin-babel": "^5.3.0",
+    "@rollup/plugin-node-resolve": "^13.0.4",
     "goober": "^2.0.37",
-    "preact": "^10.4.6",
+    "preact": "^10.5.14",
     "preact-jsx-runtime": "^1.2.0",
     "preact-router": "^3.2.1",
     "react-css-modules": "^4.7.11",

@@ -1,17 +1,20 @@
+//@ts-check
+
 import { h, Fragment } from 'preact'
 import { useState } from 'preact/hooks'
 
-import { useStore } from "./state";
+import { useStateStore, useStore } from "../../source/state";
 
 
 const Button = props => {
 
 	const [text] = useState('minus')
+
+	// const useStore = useStateStore(useState);
 	
-	const [count, setCount] = useStore('count')
+	const [count, setCount] = useStore<number>('count')
 
 	// const { dispatch, count } = useStoreon('count')
-
 
 	return <>
 		<hr/>
