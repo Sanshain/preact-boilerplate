@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "description": "Preact + Rollup template.",
   "main": "src/index.js",
-  "author": "Alex",
+  "author": "Sanshain",
   "license": "MIT",
   "scripts": {
     "prestart": "rimraf dist",
