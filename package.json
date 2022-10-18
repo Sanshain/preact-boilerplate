@@ -11,6 +11,7 @@
     "start": "rollup -c -w",
     "prebuild": "rimraf dist",
     "build": "rollup -c",
+    "esb": "esbuild ./source/index.js --bundle --loader:.js=jsx --minify --outfile=out.js --sourcemap",
     "serve": "serve release"
   },
   "workspaces":[
