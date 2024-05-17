@@ -68,16 +68,16 @@ export default {
 		development && livereload({
 			watch: dist
 		}),
-		// postcss({
-		// 	// include: [
-		// 	// 	'./source/**/*.css'
-		// 	// ],
-		// 	extract: 'style/bundle.css',
-		// 	minimize: production,
-		// 	modules: true,
-		// 	// extract: true
-		// }),		
-		css({ output: 'style/bundle.css' }),
+		postcss({
+			// include: [
+			// 	'./source/**/*.css'
+			// ],
+			extract: 'style/bundle.css',
+			minimize: production,
+			modules: true,
+			// extract: true
+		}),		
+		// css({ output: 'style/bundle.css' }),
 		/// for jsx
 		babel({
 			exclude: 'node_modules/**'
