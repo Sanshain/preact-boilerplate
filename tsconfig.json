@@ -20,6 +20,11 @@
 		]
 	},
 	"include": [
+		// "./source/**/*.ts",
+		// "./source/**/*.js",
+		// "./source/**/*.jsx",
+		// "./source/**/*.tsx",
+		// "./source/**/*.css"
 		"./source/**/*"
 	]
 }

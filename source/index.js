@@ -4,9 +4,8 @@
 import { h, render } from 'preact'
 
 // import App from './App'
-
-import App from "./components/app";
-// import App from './TSApp'
+// import App from "./components/app";
+import App from './App.typed'
 
 import { initStore } from "./store/source/store";
 // import "./global.css"

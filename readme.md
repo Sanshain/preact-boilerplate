@@ -22,11 +22,22 @@
 
 - Created on Preact 10.* + Rollup 4.* + Babel 7 template for SPAs.
 
-### Required plugins for VSCode: 
 
-- CSS Modules
+## Requires for CSS modules feature:
 
+#### Plugins for VSCode:
 
+- `CSS Modules`
+- `Path Autocomplete`
+- tuned 
+
+#### Plugins for rollup: 
+
+- `rollup-plugin-postcss`
+
+### plugins for tsconfig: 
+
+- `typescript-plugin-css-modules`
 
 ## Setup
 
