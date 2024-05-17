@@ -2,9 +2,10 @@
 
 
 import { h, render } from 'preact'
-import App from './App'
 
-// import App from "./components/app";
+// import App from './App'
+
+import App from "./components/app";
 // import App from './TSApp'
 
 import { initStore } from "./store/source/store";
