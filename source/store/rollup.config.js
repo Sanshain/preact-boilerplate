@@ -4,16 +4,17 @@ import babel from '@rollup/plugin-babel'
 import { terser } from 'rollup-plugin-terser'
 import resolve from 'rollup-plugin-node-resolve'
 
-import typescript from 'rollup-plugin-typescript2';
+// import typescript from 'rollup-plugin-typescript2';
 
 import alias from '@rollup/plugin-alias';
 import es3 from 'rollup-plugin-es3';
 import commonjs from "@rollup/plugin-commonjs";
+import typescript from "@rollup/plugin-typescript";
 
 const release = true
 
 export default {
-	input: `./source/state.js`,
+	input: `./source/store.ts`,
 	output: {
 		file: `./release/state.js`,
 		format: 'iife',
@@ -35,9 +36,9 @@ export default {
 		// babel({
 		// 	exclude: 'node_modules/**'
 		// }),		
-		// typescript({
-		// 	typescript: require('typescript')
-		// }),				
+		typescript({
+			// typescript: require('typescript')			
+		}),				
 		commonjs(),
 		// es3(),
 		release && terser()

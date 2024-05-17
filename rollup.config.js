@@ -1,18 +1,20 @@
 //@ts-check
-import babel from 'rollup-plugin-babel'
+import babel from '@rollup/plugin-babel'
 
-import { terser } from 'rollup-plugin-terser'
-import resolve from 'rollup-plugin-node-resolve'
+import terser from '@rollup/plugin-terser'
+import resolve from '@rollup/plugin-node-resolve'
 import livereload from 'rollup-plugin-livereload'
 import serve from 'rollup-plugin-serve'
-import typescript from 'rollup-plugin-typescript2';
+// import typescript from 'rollup-plugin-typescript2';
+import typescript from "@rollup/plugin-typescript";
+
 
 import alias from '@rollup/plugin-alias';
-import es3 from 'rollup-plugin-es3';
+// import es3 from 'rollup-plugin-es3';
 import css from 'rollup-plugin-css-only';
+// import postcss from 'rollup-plugin-postcss-modules'
 import postcss from 'rollup-plugin-postcss'
 import commonjs from "@rollup/plugin-commonjs";
-// import postcss from 'rollup-plugin-postcss'
 
 
 import { execSync } from "child_process";
@@ -44,6 +46,7 @@ export default {
 		format: 'iife',
 		sourcemap: true
 	},
+	preserveModules: true,
 	plugins: [
 		alias({
 			entries: [
@@ -53,8 +56,8 @@ export default {
 			]
 		}),
 		resolve({
-			browser: true,
-			extensions: ['.js', '.jsx', '.ts', '.tsx', '.json']
+			browser: true,			
+			extensions: ['.js', '.jsx', '.ts', '.tsx', '.json', '.css']
 		}),
 		development && serve({
 			open: true,
@@ -62,24 +65,33 @@ export default {
 			contentBase: dist,
 			historyApiFallback: true
 		}),
-		// development && livereload({
-		// 	watch: dist
-		// }),
+		development && livereload({
+			watch: dist
+		}),
+		postcss({
+			// include: [
+			// 	'./source/**/*.css'
+			// ],
+			extract: 'style/bundle.css',
+			minimize: production,
+			modules: true,
+			// extract: true
+		}),		
+		// css({ output: 'style/bundle.css' }),
+		/// for jsx
 		babel({
 			exclude: 'node_modules/**'
 		}),
-		// typescript({
-		// 	typescript: require('typescript')
-		// }),				
-		commonjs(),
-		es3(),
-		// css({ output: 'style/bundle.css', minimize: production }),
-		// css({ output: false }),
-		postcss({
-			extract: 'style/bundle.css',
-			minimize: production,
-			modules: true
+		typescript({
+			compilerOptions: {
+				lib: ["es5", "es6", "dom"],
+				target: "es5"
+				// typescript: require('typescript')
+			}
 		}),
+		commonjs(),
+		// es3(),
+
 		production && terser()
 	]
 }

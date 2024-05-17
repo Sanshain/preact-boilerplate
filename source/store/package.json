@@ -1,27 +1,34 @@
 {
-  "name": "store",
+  "name": "xi-store",
   "version": "1.0.0",
   "description": "Tyny state manager for preact/react based on hooks",
-  "main": "state.js",
+  "main": "./release/state.js",
+  "types": "./source/store.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rollup -c",
+    "dev": "rollup -c -w",
+    "types": "tsc -d ./source/store.ts --outFile ./release/store.d.ts"
   },
   "keywords": [],
-  "author": "",
+  "author": "Sanshain",
   "license": "ISC",
   "dependencies": {
-    "rollup": "^2.47.0",
-	 "@rollup/plugin-alias": "^3.1.2",    
+    "@rollup/plugin-alias": "^3.1.2",
+    "rollup": "2.66.1",
     "rollup-plugin-es3": "^1.1.0"
   },
   "devDependencies": {
+    "@rollup/plugin-babel": "^5.3.0",
     "@rollup/plugin-commonjs": "^18.1.0",
+    "@rollup/plugin-typescript": "^11.1.6",
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-terser": "^7.0.2",
     "rollup-plugin-typescript2": "^0.30.0",
-	 "@rollup/plugin-babel": "^5.3.0"
+    "tslib": "^2.6.2",
+    "typescript": "^4.2.4"
   },
-  "workspaces":[
-	  "./examples/*"
+  "workspaces": [
+    "./examples/*"
   ]
 }

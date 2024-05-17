@@ -4,13 +4,26 @@
 
 ## Features: 
 
+- preact
+- live reloading
+- xi-store as embed workspace
+- goober
+
 - Usage styled components via [`goober`](https://www.npmjs.com/package/goober) with minimal runtime (look [`App.jsx`](https://github.com/Sanshain/preact-boilerplate/blob/main/source/App.jsx)) 
 - Isolated styles via postcss modules (like `react-css-modules`)
 - Typescript out of the box (`ts-config` branch)
 - `preact-routers` out of the box
 - prerender out of the box
 
+### Ver Info:
+
 - Created on Preact 10.* + Rollup 2.* + Babel 7 template for SPAs.
+
+### Required plugins for VSCode: 
+
+- 
+
+
 
 ## Setup
 
