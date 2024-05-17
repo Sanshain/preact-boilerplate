@@ -29,7 +29,7 @@
 
 - `CSS Modules`
 - `Path Autocomplete`
-- tuned 
+- `typescript-plugin-css-modules` (installed via npm and settled with `tsconfig.json`)
 
 #### Plugins for rollup: 
 
