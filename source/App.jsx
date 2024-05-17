@@ -19,6 +19,8 @@ import { useStore, initStore } from "./store/source/store";
 import Button from "./button";
 
 
+import style from "./style.module.css";
+
 
 setup(h);
 
@@ -61,6 +63,7 @@ const App = props => {
 			<button onClick={(e) => setCount(count + 1)}>
 				add {count}
 			</button>
+			{/* <span class={style.title}> - a</span> */}
 		</main>
 		<Button />		
 		<Title color={count >= 0 ? 'green' : 'red'}>color status</Title>
