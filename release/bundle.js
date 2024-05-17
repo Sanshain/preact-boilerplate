@@ -504,6 +504,8 @@
 
 	var style$2 = {"header":"style_header__TYMpD","active":"style_active__vF9On"};
 
+	//@ts-check
+
 	// import './style.css';
 
 	// let r = '5'
