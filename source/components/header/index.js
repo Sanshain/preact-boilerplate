@@ -1,3 +1,5 @@
+//@ts-check
+
 import { h } from 'preact';
 import { Link } from 'preact-router/match';
 import { useState } from 'preact/hooks'

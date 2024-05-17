@@ -10,7 +10,8 @@
 				"name": "typescript-plugin-css-modules",
 				"options": {
 					"classnameTransform": "dashes",
-					"customMatcher": "\\.module\\.css$",
+					"customMatcher": "\\.css$",
+					// "customMatcher": "\\.module\\.css$", // <- attension. This value is prescribed by default!
 					// "customRenderer": "./myRenderer.js",
 					"dotenvOptions": {},
 					"postcssOptions": {},
