@@ -36,6 +36,7 @@
     "rollup": "^4.17.2",
     "rollup-plugin-css-modules": "^0.1.2",
     "rollup-plugin-css-only": "^4.5.2",
+    "rollup-plugin-jsx": "^1.0.3",
     "rollup-plugin-livereload": "^2.0.5",
     "rollup-plugin-postcss": "^4.0.2",
     "rollup-plugin-postcss-modules": "^2.1.1",

@@ -1,5 +1,6 @@
 //@ts-check
 import babel from '@rollup/plugin-babel'
+import jsx from 'rollup-plugin-jsx'; // as babel alternative
 
 import terser from '@rollup/plugin-terser'
 import resolve from '@rollup/plugin-node-resolve'
@@ -22,10 +23,14 @@ import fs from "fs";
 import path from "path";
 
 
-const dist = 'release'
-// const production = !process.env.ROLLUP_WATCH
-let production = false;
-const development = !production
+
+
+const distPath = 'release'
+
+// const development = !!process.env.ROLLUP_WATCH;	/// also works [on window] - checked
+const development = ~process.argv.indexOf('-w') 
+const production = !development;
+
 
 const options = {
 	prerender: false,
@@ -33,7 +38,7 @@ const options = {
 		file: 'index__prer'
 	},
 	target: {
-		dirname: dist,
+		dirname: distPath,
 		ssr: 'init'
 	}
 }
@@ -42,7 +47,7 @@ const options = {
 export default {
 	input: `source/${options.prerender ? options.source.file : 'index'}.js`,
 	output: {
-		file: `${dist}/${options.prerender ? options.target.ssr : 'bundle'}.js`,
+		file: `${distPath}/${options.prerender ? options.target.ssr : 'bundle'}.js`,
 		format: 'iife',
 		sourcemap: true
 	},
@@ -61,11 +66,11 @@ export default {
 		development && serve({
 			open: true,
 			port: 3000,
-			contentBase: dist,
+			contentBase: distPath,
 			historyApiFallback: true
 		}),
 		development && livereload({
-			watch: dist
+			watch: distPath
 		}),
 		postcss({
 			// include: [
@@ -78,10 +83,11 @@ export default {
 		}),				
 		// css({ output: 'style/bundle.css' }),
 		/// for jsx
-		babel({
-			exclude: 'node_modules/**',
-			babelHelpers: 'bundled'
-		}),
+		// babel({
+		// 	exclude: 'node_modules/**',
+		// 	babelHelpers: 'bundled'
+		// }),
+		jsx({ factory: 'React.createElement' }),
 		typescript({
 			tsconfig: "./tsconfig.json",			
 			// compilerOptions: {
@@ -93,7 +99,7 @@ export default {
 		commonjs(),
 		// es3(),
 
-		production && terser()
+		// production && terser()
 	],
 	/**
 	 * @typedef {{
@@ -124,7 +130,7 @@ if (options.prerender) {
 	const file = path.resolve(__dirname, options.target.dirname, options.target.ssr + '.js');
 	if (fs.existsSync(file)) {
 
-		execSync(`cd ${dist} && node ` + options.target.ssr);
+		execSync(`cd ${distPath} && node ` + options.target.ssr);
 		console.log('prerender finished');
 	}
 }

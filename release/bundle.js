@@ -10,7 +10,7 @@
   var style = {"title":"style-module_title__B9VMB"};
 
   var App = function () {
-      return (u(k, { children: u("main", { children: [u("h1", { className: style.title, children: "Welcome to Microsite!!" }), u("p", { children: ["Ready to build something amazing? ", u("a", { href: "https://github.com/natemoo-re/microsite/tree/main/docs", children: "Read the docs" }), " to get started."] })] }) }));
+      return (u(k, { children: u("main", { children: [u("h1", { className: style.title, children: "Welcome to Microsite!" }), u("p", { children: ["Ready to build something amazing?", u("a", { href: "https://github.com/natemoo-re/microsite/tree/main/docs", children: "Read the docs" }), " to get started."] })] }) }));
   };
 
   //@ts-check
@@ -19,13 +19,18 @@
   // import { initStore } from "./store/source/store";	// ~8kb min
   // // import "./global.css"
 
+
   // const xStore = initStore({
   // 	count: 10
   // })
 
   // xStore.useStore('count', 8)
 
-  B(_(App, null), document.getElementById('root'));
+
+  B(
+  	App(),
+  	document.getElementById('root')
+  );
 
 })();
 //# sourceMappingURL=bundle.js.map

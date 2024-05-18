@@ -4,7 +4,7 @@
 
 ## Features: 
 
-- [x] rollup builder as the best production builder
+- [x] rollup builder as the best production builder (2.8ms cold build)
 - [x] preact as more optimal analogous to react library
 - [x] live reloading (450ms reloading)
 - [ ] xi-store as embed workspace
