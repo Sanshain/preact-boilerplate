@@ -9,8 +9,10 @@
 
   var style = {"title":"style-module_title__B9VMB"};
 
-  var App = function () {
-      return (u(k, { children: u("main", { children: [u("h1", { className: style.title, children: "Welcome to Microsite!" }), u("p", { children: ["Ready to build something amazing?", u("a", { href: "https://github.com/natemoo-re/microsite/tree/main/docs", children: "Read the docs" }), " to get started."] })] }) }));
+  var App = function (_a, context) {
+      var nameTitle = _a.nameTitle;
+      console.log(context);
+      return (u(k, { children: u("main", { children: [u("h1", { className: style.title, children: nameTitle }), u("p", { children: ["Ready to build something amazing?", u("a", { href: "https://github.com/natemoo-re/microsite/tree/main/docs", children: "Read the docs" }), " to get started."] })] }) }));
   };
 
   //@ts-check
@@ -28,7 +30,8 @@
 
 
   B(
-  	App(),
+  	App({nameTitle: "Welcome to Microsite!"}),
+  	// <App />,
   	document.getElementById('root')
   );
 

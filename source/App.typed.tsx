@@ -8,13 +8,16 @@ import type { FunctionalComponent } from 'preact';
 import style from "./style.module.css";
 
 
-interface IndexProps {}
+interface IndexProps {
+  nameTitle: string
+}
 
-const App: FunctionalComponent<IndexProps> = () => {
+const App: FunctionalComponent<IndexProps> = ({ nameTitle }, context?: unknown) => {    
+  console.log(context);
   return (
     <>
       <main>
-        <h1 className={style.title}>Welcome to Microsite!</h1>
+        <h1 className={style.title}>{nameTitle}</h1>
         <p>
           Ready to build something amazing?
           <a href="https://github.com/natemoo-re/microsite/tree/main/docs">Read the docs</a> to get started.

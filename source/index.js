@@ -19,6 +19,7 @@ import App from './App.typed'
 
 
 render(
-	<App/>,	
+	<App nameTitle='Welcome to Microsite!' />,	
+	// <App />,
 	document.getElementById('root')
 )
