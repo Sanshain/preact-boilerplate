@@ -1,7 +1,7 @@
 //@ts-check
 
 import { h } from 'preact';
-import { FunctionalComponent } from 'preact';
+import type { FunctionalComponent } from 'preact';
 
 // import "./style.module.css";
 
@@ -14,7 +14,7 @@ const App: FunctionalComponent<IndexProps> = () => {
   return (
     <>
       <main>
-        <h1 className={style.title}>Welcome to Microsite!</h1>
+        <h1 className={style.title}>Welcome to Microsite!!</h1>
         <p>
           Ready to build something amazing? <a href="https://github.com/natemoo-re/microsite/tree/main/docs">Read the docs</a> to get started.
         </p>

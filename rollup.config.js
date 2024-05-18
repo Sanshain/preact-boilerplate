@@ -46,7 +46,6 @@ export default {
 		format: 'iife',
 		sourcemap: true
 	},
-	preserveModules: true,
 	plugins: [
 		alias({
 			entries: [
@@ -76,24 +75,47 @@ export default {
 			minimize: production,
 			modules: true,
 			// extract: true
-		}),		
+		}),				
 		// css({ output: 'style/bundle.css' }),
 		/// for jsx
 		babel({
-			exclude: 'node_modules/**'
+			exclude: 'node_modules/**',
+			babelHelpers: 'bundled'
 		}),
 		typescript({
-			compilerOptions: {
-				lib: ["es5", "es6", "dom"],
-				target: "es5"
-				// typescript: require('typescript')
-			}
+			tsconfig: "./tsconfig.json",			
+			// compilerOptions: {
+			// 	lib: ["es5", "es6", "dom"],
+			// 	target: "es5"
+			// 	// typescript: require('typescript')
+			// }
 		}),
 		commonjs(),
 		// es3(),
 
 		production && terser()
-	]
+	],
+	/**
+	 * @typedef {{
+	 * 		code: string,
+	 * 		plugin: 'typescript',
+	 * 		message: string
+	 * }} WarnInfo
+	 */
+	onwarn: function (/** @type {WarnInfo} */ warning, /** @type {(arg: any) => void} */ handler) {
+
+		// console.warn(warning)
+
+		if (warning.code == 'PLUGIN_WARNING' && warning.plugin == 'typescript') {
+			if (~warning.message.indexOf('.module.css\' or its corresponding type declarations')) {
+				console.log(`>> Skiped vague css modules warning with typescript plugin, despite it works fine`)
+
+				return;
+			}
+		}
+
+		handler(warning);
+	}	
 }
 
 

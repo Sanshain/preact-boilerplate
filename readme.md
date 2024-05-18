@@ -6,12 +6,12 @@
 
 - [x] rollup builder as the best production builder
 - [x] preact as more optimal analogous to react library
-- [x] live reloading 
+- [x] live reloading (450ms reloading)
 - [ ] xi-store as embed workspace
 - [x] jsx via babel (yes, still via this one)
-- [x] css modules via `rollup-plugin-postcss` plugin for builder and `typescript-plugin-css-modules` for typescript (isolates styles instead of `react-css-modules`)
+- [x] css modules via `rollup-plugin-postcss` plugin for builder and `typescript-plugin-css-modules` for typescript (isolates styles instead of `react-css-modules`) (sometimes gets some error of import in terminal, but applies fine. Just ignore it)
 - [ ] goober instead of styled components: Usage styled components via [`goober`](https://www.npmjs.com/package/goober) redices runtime (look [`App.jsx`](https://github.com/Sanshain/preact-boilerplate/blob/main/source/App.jsx)) to few kbs, but with state supports as opposed to css modules
-- [x] `preact-routers` out of the box
+- [ ] `preact-routers` out of the box
 - [x] tuned tsconfig out of the box
 
 ### TODO:
