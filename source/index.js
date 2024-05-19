@@ -1,7 +1,7 @@
 //@ts-check
 
 
-import { h, render } from 'preact'
+import { render } from 'react'
 
 // import App from './App'
 // import App from "./components/app";
@@ -19,7 +19,7 @@ import App from './App.typed'
 
 
 render(
-	<App nameTitle='Welcome to Microsite!' />,	
+	<App nameTitle='Welcome to Microsite!!' />,	
 	// <App />,
 	document.getElementById('root')
 )
