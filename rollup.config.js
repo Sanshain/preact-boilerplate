@@ -1,108 +1,53 @@
 //@ts-check
-import babel from '@rollup/plugin-babel'
+import node_resolve from '@rollup/plugin-node-resolve';
+import babel from '@rollup/plugin-babel';
+import hotcss from 'rollup-plugin-hot-css';
+import css from 'rollup-plugin-css-only'
 
-import terser from '@rollup/plugin-terser'
-import resolve from '@rollup/plugin-node-resolve'
-import livereload from 'rollup-plugin-livereload'
-import serve from 'rollup-plugin-serve'
-// import typescript from 'rollup-plugin-typescript2';
-import typescript from "@rollup/plugin-typescript";
-
-
-import alias from '@rollup/plugin-alias';
-// import es3 from 'rollup-plugin-es3';
-import css from 'rollup-plugin-css-only';
-// import postcss from 'rollup-plugin-postcss-modules'
-import postcss from 'rollup-plugin-postcss'
-import commonjs from "@rollup/plugin-commonjs";
+import static_files from 'rollup-plugin-static-files';
+import { terser } from 'rollup-plugin-terser';
+import prefresh from '@prefresh/nollup';
 
 
-import { execSync } from "child_process";
-import fs from "fs";
-import path from "path";
 
+// https://stackoverflow.com/questions/61565251/output-single-html-file-from-svelte-project
 
-const dist = 'release'
-// const production = !process.env.ROLLUP_WATCH
-let production = false;
-const development = !production
-
-const options = {
-	prerender: false,
-	source: {
-		file: 'index__prer'
-	},
-	target: {
-		dirname: dist,
-		ssr: 'init'
-	}
+let config = {
+    input: './src/main.js',
+    output: {
+        dir: 'dist',
+        format: 'iife',
+        // entryFileNames: '[name].[hash].js',
+        // assetFileNames: '[name].[hash][extname]',
+        assetFileNames: '[name][extname]'
+    },
+    plugins: [
+        // It seems this one works just in memory:
+        hotcss({
+            hot: process.env.NODE_ENV === 'development',
+            file: './dist/styles.css'  // 'styles.css' works too
+        }),
+        
+        babel({
+            exclude: 'node_modules/**',
+            babelHelpers: 'bundled',
+        }),
+        // css(),
+        node_resolve({
+            extensions: ['.js', '.jsx', '.ts', '.tsx', '.json', '.css']
+        }),
+        process.env.NODE_ENV === 'development' && prefresh()
+    ]
 }
 
-
-export default {
-	input: `source/${options.prerender ? options.source.file : 'index'}.js`,
-	output: {
-		file: `${dist}/${options.prerender ? options.target.ssr : 'bundle'}.js`,
-		format: 'iife',
-		sourcemap: true
-	},
-	preserveModules: true,
-	plugins: [
-		alias({
-			entries: [
-				{ find: 'react/hooks', replacement: 'preact/hooks' },
-				{ find: 'react', replacement: 'preact/compat' },
-				{ find: 'react-dom', replacement: 'preact/compat' }
-			]
-		}),
-		resolve({
-			browser: true,			
-			extensions: ['.js', '.jsx', '.ts', '.tsx', '.json', '.css']
-		}),
-		development && serve({
-			open: true,
-			port: 3000,
-			contentBase: dist,
-			historyApiFallback: true
-		}),
-		development && livereload({
-			watch: dist
-		}),
-		postcss({
-			// include: [
-			// 	'./source/**/*.css'
-			// ],
-			extract: 'style/bundle.css',
-			minimize: production,
-			modules: true,
-			// extract: true
-		}),		
-		// css({ output: 'style/bundle.css' }),
-		/// for jsx
-		babel({
-			exclude: 'node_modules/**'
-		}),
-		typescript({
-			compilerOptions: {
-				lib: ["es5", "es6", "dom"],
-				target: "es5"
-				// typescript: require('typescript')
-			}
-		}),
-		commonjs(),
-		// es3(),
-
-		production && terser()
-	]
+if (process.env.NODE_ENV === 'production') {
+    config.plugins = config.plugins.concat([
+        //@ts-expect-error
+        static_files({
+            include: ['./dist']
+        }),
+        terser()
+    ]);
 }
 
-
-if (options.prerender) {
-
-	const file = path.resolve(__dirname, options.target.dirname, options.target.ssr + '.js');
-	if (fs.existsSync(file)) {
-
-		execSync(`cd ${dist} && node ` + options.target.ssr);
-		console.log('prerender finished');
-	}
-}
+export default config;
