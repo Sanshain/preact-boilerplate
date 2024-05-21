@@ -7,7 +7,7 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "Launch Program",
+            "name": "nollup development",
             "skipFiles": [
                 "<node_internals>/**"
             ],
@@ -17,6 +17,18 @@
                 "--environment",
                 "NODE_ENV:development"
             ]
-        }
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "rollup",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${workspaceFolder}\\node_modules\\rollup\\dist\\bin\\rollup",
+            "args": [
+                "-c"
+            ]
+        }        
     ]
 }
