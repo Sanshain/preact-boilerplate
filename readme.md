@@ -7,11 +7,25 @@ npm init nollup-app -- --name preact-app --template preact
 ### Cheat sheets, how to install from a scratch:
 
 
-- Installing the fixed package @prefresh/nollup:
+- Installing the fixed package @prefresh/nollup (created due [this service](https://gitpkg.vercel.app/about)):
 
     ```sh
     npm install 'https://gitpkg.now.sh/Sanshain/prefresh/packages/nollup?main' -D
     ```
+
+## How to use: 
+
+#### via degit:
+
+```sh
+degit Sanshain/preact-boilerplate#js_hmr_html
+```
+
+#### via git: 
+
+```sh
+git clone Sanshain/preact-boilerplate#js_hmr_html && rm -r .get && git init
+```
 
 
 ### Packages destinations collected by its features in the template: 

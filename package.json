@@ -24,7 +24,10 @@
         "rollup-plugin-css-only": "^4.5.2",
         "rollup-plugin-generate-html-template": "^1.7.0",
         "rollup-plugin-hot-css": "^0.5.1",
+        "rollup-plugin-html-inline": "^1.0.12",
         "rollup-plugin-static-files": "^0.2.0",
         "shx": "^0.3.3"
-    }
+    },
+    "name": "app",
+    "version": ""
 }
