@@ -1,26 +1,32 @@
 //@ts-check
-import node_resolve from '@rollup/plugin-node-resolve';
-import babel from '@rollup/plugin-babel';
-import hotcss from 'rollup-plugin-hot-css';
-import css from 'rollup-plugin-css-only'
 
-import static_files from 'rollup-plugin-static-files';
-import terser from '@rollup/plugin-terser';
-import prefresh from '@prefresh/nollup';
+/// https://jsfiddle.net/onigetoc/0eov3fjm/ (import to require online convert)
 
-// import htmlTemplate from 'rollup-plugin-generate-html-template';
-// import html from '@open-wc/rollup-plugin-html';
 
-import { htmlInliner as inline } from 'rollup-plugin-html-inline';
+const node_resolve = require('@rollup/plugin-node-resolve');
+const babel = require('@rollup/plugin-babel');
+const hotcss = require('rollup-plugin-hot-css');
+const css = require('rollup-plugin-css-only');
+
+const static_files = require('rollup-plugin-static-files');
+const terser = require('@rollup/plugin-terser');
+const prefresh = require('@prefresh/nollup');
+
+// const htmlTemplate = require('rollup-plugin-generate-html-template');
+// const html = require('@open-wc/rollup-plugin-html');
+
+const inline = require('rollup-plugin-html-inline').htmlInliner;
+const { contentBase } = require("./.nolluprc");
 
 
 const inDevelopment = process.env.NODE_ENV === 'development';
 const production = process.env.NODE_ENV === 'production';
 
-const targetPath = 'dist';
+const targetDir = 'dist';
+const hmrDir = contentBase;   // used also inside nolluprc.js
 
 
-console.log('inDevelopment', inDevelopment)
+// console.log('inDevelopment', inDevelopment)
 
 const hmrNaming = inDevelopment && {
     entryFileNames: `[name].[hash].js`,
@@ -30,7 +36,7 @@ const hmrNaming = inDevelopment && {
 let config = {
     input: './src/main.js',
     output: {
-        dir: targetPath,
+        dir: targetDir,
         format: 'iife',        
         ...(hmrNaming || {                                              // hmr
             // assetFileNames: `[name][extname]`  <-- /// look for inline plugin            
@@ -57,7 +63,7 @@ let config = {
         /// production mode:
 
         !inDevelopment && inline({                                      // html.hash
-            template: './public/index.html',            
+            template: `./${hmrDir}/index.html`,
             hash: true,
         }),
         production && terser()                                          // minify
@@ -70,4 +76,4 @@ let config = {
 //     ]);
 // }
 
-export default config;
+exports.default = config;
