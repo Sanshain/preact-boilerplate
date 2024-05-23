@@ -18,10 +18,12 @@ const { contentBase } = require("./.nolluprc");
 
 
 
+
 const inDevelopment = process.env.NODE_ENV === 'development';
 const production = process.env.NODE_ENV === 'production';
 
 const targetDir = 'dist';
+// const hmrDir = 'public';   // used also inside nolluprc.js
 const hmrDir = contentBase;   // used also inside nolluprc.js
 
 
@@ -75,4 +77,4 @@ let config = {
 //     ]);
 // }
 
-exports.default = config;
+module.exports.default = config;
