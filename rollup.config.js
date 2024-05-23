@@ -22,24 +22,27 @@ const targetPath = 'dist';
 
 console.log('inDevelopment', inDevelopment)
 
+const hmrNaming = inDevelopment && {
+    entryFileNames: `[name].[hash].js`,
+    assetFileNames: '[name].[hash][extname]',
+} 
 
 let config = {
     input: './src/main.js',
     output: {
         dir: targetPath,
-        format: 'iife',
-        assetFileNames: `[name][extname]`
-        // entryFileNames: !inDevelopment && `[name].${hash}.js`,                
-        // assetFileNames: '[name].[hash][extname]',
+        format: 'iife',        
+        ...(hmrNaming || {                                              // hmr
+            // assetFileNames: `[name][extname]`  <-- /// look for inline plugin            
+        })
     },
     plugins: [
         // It seems this one works just in memory:
         inDevelopment
-            ? hotcss({
+            ? hotcss({                                                  // hmr
                 hot: true,
                 file: `styles.css`  // 'styles.css' works too
             })
-            // : css({ output: `styles.${hash}.css` }),
             : css({ output: `styles.css` }),        
         babel({
             exclude: 'node_modules/**',
@@ -50,21 +53,19 @@ let config = {
             extensions: ['.js', '.jsx', '.ts', '.tsx', '.json', '.css']
         }),
         inDevelopment && prefresh(),                                    // hmr
-        // html({minify: false})
-        inline({
+
+        /// production mode:
+
+        !inDevelopment && inline({                                      // html.hash
             template: './public/index.html',            
-            hash: production,
-            clean: !inDevelopment
+            hash: true,
         }),
+        production && terser()                                          // minify
     ]
 }
 
-// if (process.env.NODE_ENV === 'production') {
+// if (production) {
 //     config.plugins = config.plugins.concat([
-//         //@ts-expect-error
-//         static_files({
-//             include: ['./dist']
-//         }),
 //         terser()
 //     ]);
 // }

@@ -54,3 +54,6 @@ git clone Sanshain/preact-boilerplate#js_hmr_html && rm -r .get && git init
 - `rollup`
 - `rollup-plugin-static-files` (just copies static files to production dist - unneccessary)
 - `rollup-plugin-terser` (minifier)
+
+## HTML generation:
+
