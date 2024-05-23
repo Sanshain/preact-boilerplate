@@ -29,8 +29,6 @@ let config = {
         dir: targetPath,
         format: 'iife',
         assetFileNames: `[name][extname]`
-        // entryFileNames: !inDevelopment && `[name].${hash}.js`,                
-        // assetFileNames: '[name].[hash][extname]',
     },
     plugins: [
         // It seems this one works just in memory:
@@ -50,12 +48,6 @@ let config = {
             extensions: ['.js', '.jsx', '.ts', '.tsx', '.json', '.css']
         }),
         inDevelopment && prefresh(),                                    // hmr
-        // html({minify: false})
-        inline({
-            template: './public/index.html',            
-            hash: production,
-            clean: !inDevelopment
-        }),
     ]
 }
 

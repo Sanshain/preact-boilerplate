@@ -1,5 +1,5 @@
 module.exports = {
-    contentBase: 'dist',
+    contentBase: 'public',
     port: 3000,
     hot: true
 };
