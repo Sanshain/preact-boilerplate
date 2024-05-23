@@ -12,7 +12,6 @@
     "devDependencies": {
         "@babel/core": "^7.15.5",
         "@babel/plugin-transform-react-jsx": "^7.14.9",
-        "@open-wc/rollup-plugin-html": "^1.2.5",
         "@prefresh/babel-plugin": "^0.5.1",
         "@prefresh/nollup": "https://gitpkg.now.sh/Sanshain/prefresh/packages/nollup?main",
         "@rollup/plugin-babel": "^6.0.4",
@@ -22,10 +21,8 @@
         "react-refresh": "^0.10.0",
         "rollup": "^4.17.2",
         "rollup-plugin-css-only": "^4.5.2",
-        "rollup-plugin-generate-html-template": "^1.7.0",
         "rollup-plugin-hot-css": "^0.5.1",
         "rollup-plugin-html-inline": "^1.0.12",
-        "rollup-plugin-static-files": "^0.2.0",
         "shx": "^0.3.3"
     },
     "name": "app",

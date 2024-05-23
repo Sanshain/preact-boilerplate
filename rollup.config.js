@@ -3,20 +3,19 @@
 /// https://jsfiddle.net/onigetoc/0eov3fjm/ (import to require online convert)
 
 
-const node_resolve = require('@rollup/plugin-node-resolve');
-const babel = require('@rollup/plugin-babel');
-const hotcss = require('rollup-plugin-hot-css');
+const { default: node_resolve } = require('@rollup/plugin-node-resolve');
 const css = require('rollup-plugin-css-only');
+const { default: terser } = require('@rollup/plugin-terser');
 
-const static_files = require('rollup-plugin-static-files');
-const terser = require('@rollup/plugin-terser');
+const { default: babel } = require('@rollup/plugin-babel');
+const hotcss = require('rollup-plugin-hot-css');
 const prefresh = require('@prefresh/nollup');
 
 // const htmlTemplate = require('rollup-plugin-generate-html-template');
-// const html = require('@open-wc/rollup-plugin-html');
-
 const inline = require('rollup-plugin-html-inline').htmlInliner;
+
 const { contentBase } = require("./.nolluprc");
+
 
 
 const inDevelopment = process.env.NODE_ENV === 'development';
