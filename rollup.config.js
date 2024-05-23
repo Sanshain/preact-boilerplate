@@ -28,9 +28,9 @@ let config = {
     output: {
         dir: targetPath,
         format: 'iife',
-        // entryFileNames: !inDevelopment && `[name].${hash}.js`,
+        assetFileNames: `[name][extname]`
+        // entryFileNames: !inDevelopment && `[name].${hash}.js`,                
         // assetFileNames: '[name].[hash][extname]',
-        // assetFileNames: `[name].${hash}[extname]`
     },
     plugins: [
         // It seems this one works just in memory:
@@ -40,8 +40,7 @@ let config = {
                 file: `styles.css`  // 'styles.css' works too
             })
             // : css({ output: `styles.${hash}.css` }),
-            : css({ output: `styles.css` }),
-        css({ output: `styles.css` }),
+            : css({ output: `styles.css` }),        
         babel({
             exclude: 'node_modules/**',
             babelHelpers: 'bundled',
@@ -52,12 +51,11 @@ let config = {
         }),
         inDevelopment && prefresh(),                                    // hmr
         // html({minify: false})
-        // inline({
-        //     template: './public/index.html',            
-        //     hash: production,
-        //     clean: !inDevelopment
-        //     // hashBy: 'file'
-        // }),
+        inline({
+            template: './public/index.html',            
+            hash: production,
+            clean: !inDevelopment
+        }),
     ]
 }
 
