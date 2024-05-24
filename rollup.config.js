@@ -6,16 +6,17 @@ import css from 'rollup-plugin-css-only'
 
 import static_files from 'rollup-plugin-static-files';
 import terser from '@rollup/plugin-terser';
+
 import prefresh from '@prefresh/nollup';
+// import postcss from 'rollup-plugin-postcss'
+import postcss from 'rollup-plugin-postcss-hot'
 
-// import htmlTemplate from 'rollup-plugin-generate-html-template';
-// import html from '@open-wc/rollup-plugin-html';
 
-import { htmlInliner as inline } from 'rollup-plugin-html-inline';
+
+// import htmlTemplate from 'rollup-plugin-generate-html-template'; // or rollup-plugin-html-inline
 
 
 const inDevelopment = process.env.NODE_ENV === 'development';
-const production = process.env.NODE_ENV === 'production';
 
 const targetPath = 'dist';
 
@@ -27,27 +28,37 @@ let config = {
     input: './src/main.js',
     output: {
         dir: targetPath,
+        // format: inDevelopment ? 'es' : 'iife',
         format: 'iife',
         assetFileNames: `[name][extname]`
     },
+    // inlineDynamicImports: inDevelopment && true,
     plugins: [
         // It seems this one works just in memory:
-        inDevelopment
-            ? hotcss({
-                hot: true,
-                file: `styles.css`  // 'styles.css' works too
-            })
-            // : css({ output: `styles.${hash}.css` }),
-            : css({ output: `styles.css` }),        
+        postcss({
+            hot: inDevelopment,
+            inject: true,
+            extract: 'styles.css',    // style/styles.css                    // css modules
+            minimize: !inDevelopment,
+            modules: true,
+            namedExports: true
+            // extract: true
+        }),
+        // inDevelopment
+        //     && hotcss({                                            // hmr
+        //         hot: true,
+        //         file: `styles.css`  // 'styles.css' works too
+        //     }),
+            // : css({ output: `styles.css` }),
         babel({
             exclude: 'node_modules/**',
             babelHelpers: 'bundled',
-            configFile: inDevelopment ? './.dev.babelrc' : './.babelrc' // hmr           
+            configFile: inDevelopment ? './.dev.babelrc' : './.babelrc'      // hmr           
         }),
         node_resolve({
             extensions: ['.js', '.jsx', '.ts', '.tsx', '.json', '.css']
         }),
-        inDevelopment && prefresh(),                                    // hmr
+        inDevelopment && prefresh(),                                          // hmr
     ]
 }
 

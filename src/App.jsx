@@ -1,12 +1,11 @@
-import './App.css';
-import './style.css'
+import style from './style.module.css'
 
 
 function App () {
     return (
-        <div class="App">
+        <div class={style.title}>
             <h1>Hello World!!!</h1>
-            <div className="header">111-111-12</div>
+            <div className={style.header}>111-111-12</div>
         </div>
     );
 }
