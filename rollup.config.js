@@ -27,29 +27,21 @@ console.log('inDevelopment', inDevelopment)
 let config = {
     input: './src/main.js',
     output: {
-        dir: targetPath,
-        // format: inDevelopment ? 'es' : 'iife',
+        dir: targetPath,        
         format: 'iife',
         assetFileNames: `[name][extname]`
-    },
-    // inlineDynamicImports: inDevelopment && true,
+    },    
     plugins: [
         // It seems this one works just in memory:
         postcss({
-            hot: inDevelopment,
+            hot: inDevelopment,                                              // hmr
             inject: true,
-            extract: 'styles.css',    // style/styles.css                    // css modules
+            extract: 'styles.css',    // style/styles.css                    
             minimize: !inDevelopment,
-            modules: true,
+            modules: true,                                                   // css modules
             namedExports: true
             // extract: true
         }),
-        // inDevelopment
-        //     && hotcss({                                            // hmr
-        //         hot: true,
-        //         file: `styles.css`  // 'styles.css' works too
-        //     }),
-            // : css({ output: `styles.css` }),
         babel({
             exclude: 'node_modules/**',
             babelHelpers: 'bundled',
