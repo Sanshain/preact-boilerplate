@@ -33,9 +33,19 @@ npm init nollup-app -- --name preact-app --template preact
     npm i github:Sanshain/nollup#dev -D -f
     ```
 
+- set global variable in public directory html head script: 
+
+    ```js
+    window.process = {
+        env: {
+            NODE_ENV: undefined
+        }
+    }    
+    ```
+
 ## How to use: 
 
-### Initialize:
+### Get started:
 
 #### via degit:
 
@@ -49,7 +59,7 @@ degit Sanshain/preact-boilerplate#js_hmr_html
 git clone Sanshain/preact-boilerplate#js_hmr_html && rm -r .get && git init
 ```
 
-### Development: 
+### Develop with
 
 #### Windows
 
@@ -63,13 +73,17 @@ npm run dev:w
 npm run dev:u
 ```
 
-Pay attention, the command above starts nollup directly through nodejs ([why](https://github.com/nodejs/node/issues/45580)) with `--no-experimental-fetch` (`--environment` for rollup cli doesn't work (may be because of nollup, but not sure)). Else sourcemaps will think it's a browser env and will require link to `mappings.wasm`.
+#### little details::
 
-### Building: 
+The command above starts nollup directly through nodejs ([why](https://github.com/nodejs/node/issues/45580)) with `--no-experimental-fetch` (`--environment` for rollup cli doesn't work (may be because of nollup, but not sure)). Else sourcemaps will think it's a browser env and will require link to `mappings.wasm`.
+
+### Build with
 
 as usual due rollup (using `rollup -c` or `npm run rollup` or `npm run build` (no difference))
 
-### Packages destinations collected by its features in the template: 
+### Packages destinations: 
+
+...collected by its features in the template:
 
 ## JSX compilation: 
 
