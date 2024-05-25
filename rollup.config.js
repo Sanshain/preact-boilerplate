@@ -1,11 +1,23 @@
 //@ts-check
 import node_resolve from '@rollup/plugin-node-resolve';
+
+/// jsx (and hmr optionally)
+
 import babel from '@rollup/plugin-babel';
-import hotcss from 'rollup-plugin-hot-css';
-import css from 'rollup-plugin-css-only'
+
+/** 
+* `rollup-plugin-hot-css` i couldn't force to work with postcss as well as with css-only
+*   But they works togather quite harmoniously (moved to optional dependencies)
+*/
+// import hotcss from 'rollup-plugin-hot-css';
+// import css from 'rollup-plugin-css-only'
+
+/// prod
 
 import static_files from 'rollup-plugin-static-files';
 import terser from '@rollup/plugin-terser';
+
+/// hmr:
 
 import prefresh from '@prefresh/nollup';
 // import postcss from 'rollup-plugin-postcss'
@@ -30,13 +42,12 @@ let config = {
         dir: targetPath,        
         format: 'iife',
         assetFileNames: `[name][extname]`
-    },    
+    },
     plugins: [
         // It seems this one works just in memory:
         postcss({
             hot: inDevelopment,                                              // hmr
-            inject: true,
-            extract: 'styles.css',    // style/styles.css                    
+            extract: 'styles.css',    /// it could be `style/styles.css`
             minimize: !inDevelopment,
             modules: true,                                                   // css modules
             namedExports: true
