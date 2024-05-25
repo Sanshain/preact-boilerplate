@@ -4,7 +4,7 @@
         "clean": "shx rm -rf dist",
         "rollup": "rollup -c",
         "-legacy-start": "nollup -c --environment NODE_ENV:development",
-        "dev:w": "set NODE_ENV=development && node --no-experimental-fetch ./node_modules/nollup/lib/cli.js",
+        "dev:w": "node --no-experimental-fetch ./node_modules/nollup/lib/cli.js --environment NODE_ENV:development",
         "dev:u": "NODE_ENV=development node --no-experimental-fetch ./node_modules/nollup/lib/cli.js",
         "build": "rollup -c --environment NODE_ENV:production"
     },
