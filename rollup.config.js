@@ -8,6 +8,8 @@ import static_files from 'rollup-plugin-static-files';
 import terser from '@rollup/plugin-terser';
 import prefresh from '@prefresh/nollup';
 
+/// html:
+
 import { htmlInliner as inline } from 'rollup-plugin-html-inline';
 // import htmlTemplate from 'rollup-plugin-generate-html-template';
 // import html from '@open-wc/rollup-plugin-html';
