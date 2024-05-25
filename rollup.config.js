@@ -8,6 +8,10 @@ import static_files from 'rollup-plugin-static-files';
 import terser from '@rollup/plugin-terser';
 import prefresh from '@prefresh/nollup';
 
+import linaria from "@linaria/rollup";
+import wyw from '@wyw-in-js/rollup';
+
+
 /// html:
 
 import { htmlInliner as inline } from 'rollup-plugin-html-inline';
@@ -42,9 +46,12 @@ let config = {
     output: {
         dir: targetPath,
         format: 'iife',
-        assetFileNames: `[name][extname]`
+        assetFileNames: `[name][extname]`,        
     },
     plugins: [
+        linaria({
+            sourceMap: true
+        }),
         // It seems this one works just in memory:
         inDevelopment
             ? hotcss({

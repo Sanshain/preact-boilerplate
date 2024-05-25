@@ -12,13 +12,15 @@
     "devDependencies": {
         "@babel/core": "^7.15.5",
         "@babel/plugin-transform-react-jsx": "^7.14.9",
+        "@linaria/rollup": "^5.0.4",
         "@open-wc/rollup-plugin-html": "^1.2.5",
         "@prefresh/babel-plugin": "^0.5.1",
         "@prefresh/nollup": "https://gitpkg.now.sh/Sanshain/prefresh/packages/nollup?main",
         "@rollup/plugin-babel": "^6.0.4",
         "@rollup/plugin-node-resolve": "^15.2.3",
         "@rollup/plugin-terser": "^0.4.4",
-        "nollup": "^0.18.4",
+        "@wyw-in-js/rollup": "^0.5.3",
+        "nollup": "github:Sanshain/nollup",
         "react-refresh": "^0.10.0",
         "rollup": "^4.17.2",
         "rollup-plugin-css-only": "^4.5.2",
@@ -26,7 +28,8 @@
         "rollup-plugin-hot-css": "^0.5.1",
         "rollup-plugin-html-inline": "^1.0.12",
         "rollup-plugin-static-files": "^0.2.0",
-        "shx": "^0.3.3"
+        "shx": "^0.3.3",
+        "source-map": "^0.7.4"
     },
     "name": "app",
     "version": ""

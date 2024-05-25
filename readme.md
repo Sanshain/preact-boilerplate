@@ -13,6 +13,12 @@ npm init nollup-app -- --name preact-app --template preact
     npm install 'https://gitpkg.now.sh/Sanshain/prefresh/packages/nollup?main' -D
     ```
 
+- Install `@linaria/rollup` with force flag (inapproproiate peer debendencies, but I bouldn't find out where is it inside linaria repository):
+
+    ```sh
+    npm i @linaria/rollup -D -f
+    ```
+
 ## How to use: 
 
 #### via degit:
