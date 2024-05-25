@@ -8,10 +8,10 @@ import static_files from 'rollup-plugin-static-files';
 import terser from '@rollup/plugin-terser';
 import prefresh from '@prefresh/nollup';
 
+import { htmlInliner as inline } from 'rollup-plugin-html-inline';
 // import htmlTemplate from 'rollup-plugin-generate-html-template';
 // import html from '@open-wc/rollup-plugin-html';
 
-import { htmlInliner as inline } from 'rollup-plugin-html-inline';
 
 
 const inDevelopment = process.env.NODE_ENV === 'development';
@@ -21,6 +21,18 @@ const targetPath = 'dist';
 
 
 console.log('inDevelopment', inDevelopment)
+
+
+// let autoprefixer = require('autoprefixer')
+// let postcss = require('postcss')
+// function postCSSLoader(input, id) {
+//     return postcss([autoprefixer]).process(input.code).then(res => {
+//         return {
+//             code: res.css
+//         };
+//     });
+// }
+
 
 
 let config = {
@@ -36,6 +48,7 @@ let config = {
             ? hotcss({
                 hot: true,
                 file: `styles.css`  // 'styles.css' works too
+                // loaders: [postCSSLoader] || ['scss', 'less', 'stylus']
             })
             // : css({ output: `styles.${hash}.css` }),
             : css({ output: `styles.css` }),        
