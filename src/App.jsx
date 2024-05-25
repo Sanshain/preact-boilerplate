@@ -12,7 +12,7 @@ import { css } from '@linaria/core';
 const app = css`
   text-transform: uppercase;
   color: red;
-  /* color: blue; */
+  color: blue;
 `;
 
 /// comments inside css tag doesn't work:

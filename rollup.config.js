@@ -29,8 +29,7 @@ const production = process.env.NODE_ENV === 'production';
 
 const targetPath = 'dist';
 
-debugger
-console.log('inDevelopment', inDevelopment)
+// console.log('inDevelopment', inDevelopment)
 
 // console.log(process.env.NODE_OPTIONS)
 
