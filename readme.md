@@ -27,11 +27,15 @@ npm init nollup-app -- --name preact-app --template preact
     npm i @linaria/rollup -D -f
     ```
 
-- Install fixed `nollup` (inter alia in dev branch source-map-fast version is fixed) to drown out linaria sourcemap merging error in hmr mode (`linaria` will be without maps. Unfortunately, it's an unavoidable sacrifice)
+- Install fixed `nollup` (inter alia in dev branch source-map-fast version is fixed) to drown out linaria sourcemap merging error in hmr mode (`linaria` will be without maps. Unfortunately, it's an unavoidable sacrifice). 
 
     ```sh
-    npm i github:Sanshain/nollup#dev -D -f
+    npm i github:Sanshain/nollup#fix -D -f    
     ```
+    or might to choice dev branch  as well: 
+    ```sh
+    npm i github:Sanshain/nollup#dev -D -f    
+    ```    
 
 - set global variable in public directory html head script: 
 

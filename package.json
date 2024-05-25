@@ -22,7 +22,7 @@
         "@rollup/plugin-node-resolve": "^15.2.3",
         "@rollup/plugin-terser": "^0.4.4",
         "@wyw-in-js/rollup": "^0.5.3",
-        "nollup": "github:Sanshain/nollup#dev",
+        "nollup": "github:Sanshain/nollup#fix",
         "react-refresh": "^0.10.0",
         "rollup": "^4.17.2",
         "rollup-plugin-css-only": "^4.5.2",
@@ -31,8 +31,7 @@
         "rollup-plugin-html-inline": "^1.0.12",
         "rollup-plugin-static-files": "^0.2.0",
         "shx": "^0.3.3",
-        "source-map": "github:mozilla/source-map#60adcb0",
-        "source-map-fast": "github:Sanshain/source-map#v0.8.x__research"
+        "source-map": "github:mozilla/source-map#60adcb0"
     },
     "name": "app",
     "version": ""
