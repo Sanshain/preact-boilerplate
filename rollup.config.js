@@ -54,7 +54,10 @@ let config = {
         assetFileNames: `[name][extname]`,        
     },
     plugins: [
-        linaria({}),
+        linaria({
+            // sourceMap: !inDevelopment       /// <- works just with `!inDevelopment` mode (due rollup)
+            sourceMap: true
+        }),
         // It seems this one works just in memory:
         inDevelopment
             ? hotcss({
