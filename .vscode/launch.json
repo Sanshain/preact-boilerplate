@@ -15,7 +15,7 @@
             "args": [
                 "-c",
                 "--environment",
-                "NODE_ENV:development"
+                "NODE_ENV:development,NODE_OPTIONS:--no-experimental-fetch"
             ]
         },
         {
@@ -29,6 +29,20 @@
             "args": [
                 "-c"
             ]
-        }        
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "nollup via npm",
+
+            "cwd": "${workspaceRoot}",
+            "runtimeExecutable": "npm",  
+            "runtimeArgs": [
+                "run-script",
+                "dev:w",
+                "--",
+                "--inspect-brk=9229"
+            ]
+        },
     ]
 }

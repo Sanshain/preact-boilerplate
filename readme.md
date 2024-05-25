@@ -4,22 +4,38 @@
 npm init nollup-app -- --name preact-app --template preact
 ```
 
+
+### Features
+
+
+- **Hot** module reloading
+- **Linaria** out of the box (w/o maps in hmr mode)
+
+
 ### Cheat sheets, how to install from a scratch:
 
 
-- Installing the fixed package @prefresh/nollup (created due [this service](https://gitpkg.vercel.app/about)):
+- Install fixed @prefresh/nollup package with the corrected exports (created due [this service](https://gitpkg.vercel.app/about)):
 
     ```sh
     npm install 'https://gitpkg.now.sh/Sanshain/prefresh/packages/nollup?main' -D
     ```
 
-- Install `@linaria/rollup` with force flag (inapproproiate peer debendencies, but I bouldn't find out where is it inside linaria repository):
+- Install `@linaria/rollup` with force flag (inapproproiate peer debendencies with `@linaria/rollup` package (it seems so), but I couldn't find out where is it inside linaria repository):
 
     ```sh
     npm i @linaria/rollup -D -f
     ```
 
+- Install fixed `nollup` (inter alia in dev branch source-map-fast version is fixed) to drown out linaria sourcemap merging error in hmr mode (`linaria` will be without maps. Unfortunately, it's an unavoidable sacrifice)
+
+    ```sh
+    npm i github:Sanshain/nollup#dev -D -f
+    ```
+
 ## How to use: 
+
+### Initialize:
 
 #### via degit:
 
@@ -33,6 +49,25 @@ degit Sanshain/preact-boilerplate#js_hmr_html
 git clone Sanshain/preact-boilerplate#js_hmr_html && rm -r .get && git init
 ```
 
+### Development: 
+
+#### Windows
+
+```
+npm run dev:w
+```
+
+#### Unix
+
+```
+npm run dev:u
+```
+
+Pay attention, the command above starts nollup directly through nodejs ([why](https://github.com/nodejs/node/issues/45580)) with `--no-experimental-fetch` (`--environment` for rollup cli doesn't work (may be because of nollup, but not sure)). Else sourcemaps will think it's a browser env and will require link to `mappings.wasm`.
+
+### Building: 
+
+as usual due rollup (using `rollup -c` or `npm run rollup` or `npm run build` (no difference))
 
 ### Packages destinations collected by its features in the template: 
 

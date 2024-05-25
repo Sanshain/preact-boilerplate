@@ -1,4 +1,8 @@
 //@ts-check
+
+//@ts-expect-error
+globalThis.fetch = null;
+
 import node_resolve from '@rollup/plugin-node-resolve';
 import babel from '@rollup/plugin-babel';
 import hotcss from 'rollup-plugin-hot-css';
@@ -19,14 +23,16 @@ import { htmlInliner as inline } from 'rollup-plugin-html-inline';
 // import html from '@open-wc/rollup-plugin-html';
 
 
-
+// console.log(process.env)
 const inDevelopment = process.env.NODE_ENV === 'development';
 const production = process.env.NODE_ENV === 'production';
 
 const targetPath = 'dist';
 
-
+debugger
 console.log('inDevelopment', inDevelopment)
+
+// console.log(process.env.NODE_OPTIONS)
 
 
 // let autoprefixer = require('autoprefixer')
@@ -49,9 +55,7 @@ let config = {
         assetFileNames: `[name][extname]`,        
     },
     plugins: [
-        linaria({
-            sourceMap: true
-        }),
+        linaria({}),
         // It seems this one works just in memory:
         inDevelopment
             ? hotcss({

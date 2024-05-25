@@ -3,7 +3,9 @@
     "scripts": {
         "clean": "shx rm -rf dist",
         "rollup": "rollup -c",
-        "start": "nollup -c --environment NODE_ENV:development",
+        "-legacy-start": "nollup -c --environment NODE_ENV:development",
+        "dev:w": "set NODE_ENV=development && node --no-experimental-fetch ./node_modules/nollup/lib/cli.js",
+        "dev:u": "NODE_ENV=development node --no-experimental-fetch ./node_modules/nollup/lib/cli.js",
         "build": "npm run clean && rollup -c --environment NODE_ENV:production"
     },
     "dependencies": {
@@ -20,7 +22,7 @@
         "@rollup/plugin-node-resolve": "^15.2.3",
         "@rollup/plugin-terser": "^0.4.4",
         "@wyw-in-js/rollup": "^0.5.3",
-        "nollup": "github:Sanshain/nollup",
+        "nollup": "github:Sanshain/nollup#dev",
         "react-refresh": "^0.10.0",
         "rollup": "^4.17.2",
         "rollup-plugin-css-only": "^4.5.2",
@@ -29,7 +31,7 @@
         "rollup-plugin-html-inline": "^1.0.12",
         "rollup-plugin-static-files": "^0.2.0",
         "shx": "^0.3.3",
-        "source-map": "^0.7.4"
+        "source-map": "github:mozilla/source-map#60adcb0"
     },
     "name": "app",
     "version": ""
