@@ -30,7 +30,7 @@
         "@wyw-in-js/rollup": "^0.5.3",
         "nollup": "github:Sanshain/nollup#fix",
         "react-refresh": "^0.10.0",
-        "rollup": "^4.17.2",
+        "rollup": "^3.29.1",
         "rollup-plugin-css-only": "^4.5.2",
         "rollup-plugin-generate-html-template": "^1.7.0",
         "rollup-plugin-hot-css": "^0.5.1",

@@ -5,7 +5,7 @@ import './style.css'
 
 // till just with css:
 import { css } from '@linaria/core';
-// import { default as Title } from "./components/Title";
+import { default as Title } from "./components/Title";
 
 // import { modularScale, hiDPI } from 'polished';
 // import fonts from './fonts';
