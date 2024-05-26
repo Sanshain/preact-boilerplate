@@ -1,3 +1,5 @@
+//@ts-check
+
 // import './App.css';
 import './style.css'
 
@@ -12,7 +14,7 @@ import { css } from '@linaria/core';
 const app = css`
   text-transform: uppercase;
   color: red;
-  /* color: blue; */
+  color: green;
 `;
 
 /// comments inside css tag doesn't work:
@@ -22,7 +24,6 @@ font-size: ${modularScale(2)};
 ${hiDPI(1.5)} {
   font-size: ${modularScale(2.5)};
 } */
-
 
 function App () {
     return (
