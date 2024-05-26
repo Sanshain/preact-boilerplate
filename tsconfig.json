@@ -1,6 +1,25 @@
 {
-	"compilerOptions": {
-	  "jsx": "react-jsx",
-	  "jsxImportSource": "preact"
-	}
- }
+    "compilerOptions": {
+        "outDir": "built",
+        "jsx": "react-jsx",
+        "jsxImportSource": "preact",
+        "allowJs": true,
+        "esModuleInterop": true,
+        "plugins": [
+            {
+                "name": "typescript-plugin-css-modules",
+                "options": {
+                    "classnameTransform": "dashes",
+                    "customMatcher": "\\.module\\.css$",
+                    // "customRenderer": "./myRenderer.js",
+                    "dotenvOptions": {},
+                    "postcssOptions": {},
+                    "rendererOptions": {}
+                }
+            }
+        ],
+    },
+    "include": [
+        "./src/**/*"
+    ]
+}
