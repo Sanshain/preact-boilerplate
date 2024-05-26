@@ -1,7 +1,7 @@
 {
     "presets": [
-        // "@wyw-in-js/babel-preset",
-        "@linaria/babel-preset"
+        "@wyw-in-js/babel-preset",
+        // "@linaria/babel-preset"
     ],
     "plugins": [
         [
