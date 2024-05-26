@@ -1,3 +1,5 @@
+//@ts-check
+
 // import './App.css';
 import './style.css'
 

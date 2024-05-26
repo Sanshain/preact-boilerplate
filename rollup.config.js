@@ -13,7 +13,6 @@ import terser from '@rollup/plugin-terser';
 import prefresh from '@prefresh/nollup';
 
 import linaria from "@linaria/rollup";
-import wyw from '@wyw-in-js/rollup';
 
 
 /// html:

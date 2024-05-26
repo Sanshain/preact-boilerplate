@@ -1,0 +1,17 @@
+{
+    "compilerOptions": {
+        "outDir": "built",
+        "jsx": "react-jsx",
+        "jsxImportSource": "preact",
+        "allowJs": true,
+        "esModuleInterop": true,
+    },
+    "include": [
+        // "./source/**/*.ts",
+        // "./source/**/*.js",
+        // "./source/**/*.jsx",
+        // "./source/**/*.tsx",
+        // "./source/**/*.css"
+        "./src/**/*"
+    ]
+}
