@@ -1,8 +1,4 @@
 {
-    "presets": [
-        "@wyw-in-js/babel-preset",
-        // "@linaria/babel-preset"
-    ],
     "plugins": [
         [
             "@babel/plugin-transform-react-jsx",

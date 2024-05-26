@@ -5,7 +5,11 @@ import './style.css'
 
 // till just with css:
 import { css } from '@linaria/core';
-import { default as Title } from "./components/Title";
+
+/// till doesn't work: (so there isn't reason to work under branch with emotion): 
+
+// import { default as Title } from "./components/Title";
+
 
 // import { modularScale, hiDPI } from 'polished';
 // import fonts from './fonts';

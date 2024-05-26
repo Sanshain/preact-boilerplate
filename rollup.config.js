@@ -68,12 +68,9 @@ let config = {
                 { find: 'react-dom', replacement: 'preact/compat' }
             ]
         }),
-        // linaria({
-        //     // sourceMap: !inDevelopment       /// <- works just with `!inDevelopment` mode (due rollup)
-        //     sourceMap: true
-        // }),
-        wyw({
-            sourceMap: process.env.NODE_ENV !== 'production',
+        linaria({
+            // sourceMap: !inDevelopment       /// <- works just with `!inDevelopment` mode (due rollup)
+            sourceMap: true
         }),
         // It seems this one works just in memory:
         inDevelopment
