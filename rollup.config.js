@@ -16,6 +16,7 @@ import alias from '@rollup/plugin-alias';
 import hotcss from 'rollup-plugin-hot-css';
 import css from 'rollup-plugin-css-only'
 import linaria from "@linaria/rollup";
+import wyw from '@wyw-in-js/rollup';
 
 
 import static_files from 'rollup-plugin-static-files';
@@ -67,9 +68,12 @@ let config = {
                 { find: 'react-dom', replacement: 'preact/compat' }
             ]
         }),
-        linaria({
-            // sourceMap: !inDevelopment       /// <- works just with `!inDevelopment` mode (due rollup)
-            sourceMap: true
+        // linaria({
+        //     // sourceMap: !inDevelopment       /// <- works just with `!inDevelopment` mode (due rollup)
+        //     sourceMap: true
+        // }),
+        wyw({
+            sourceMap: process.env.NODE_ENV !== 'production',
         }),
         // It seems this one works just in memory:
         inDevelopment

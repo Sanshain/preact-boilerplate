@@ -1,25 +1,36 @@
-// import { styled } from '@linaria/react';
-// // import { families, sizes } from './fonts';
+//@ts-check
+
+import { styled } from '@linaria/react';
+// import { families, sizes } from './fonts';
 
 
-// const Title = styled.h1`
-//   font-family: ${families.serif};
-// `;
+const Title = styled.h1`
+  font-family: 'monospace';
+`;
 
-// const Container = styled.div`
-//   /* font-size: ${sizes.medium}px; */
-//   color: ${props => props.color};
-//   border: 1px solid gray;
+// ${families.serif};
 
-//   &:hover {
-//     border-color: blue;
-//   }
+const Container = styled.div`  
+  color: ${props => props.color};
+  border: 1px solid gray;
 
-//   ${Title} {
-//     margin-bottom: 24px;
-//   }
-// `;
+  &:hover {
+    border-color: blue;
+  }
+
+  ${Title} {
+    margin-bottom: 24px;
+  }
+`;
+
+/* font-size: ${sizes.medium}px; */
  
-// export default <Container color="#333">
-//     <Title>Hello world</Title>
-// </Container>;
+export default function () {
+    return <>
+        <Container color="#333">
+
+            <Title>Hello world</Title>
+        </Container>;
+    </>
+}
+
