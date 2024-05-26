@@ -15,3 +15,6 @@
 
 # logs
 *.log
+
+release/bundle.js
+release/bundle.map.js
