@@ -36,7 +36,7 @@ npm init nollup-app -- --name preact-app --template preact
         }
     }
     ```
-    and set typescript version over 5.0.0 or like that for your editor (look in `settings.json`)
+    and set typescript version over 5.4.5 or like that for your editor (look in `settings.json`)
 
 
 ## How to use: 
