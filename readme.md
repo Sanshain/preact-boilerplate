@@ -27,17 +27,6 @@ npm init nollup-app -- --name preact-app --template preact
     npm i Sanshain/nollup -D
     ```
 
-- Install `typescript-plugin-css-modules` and tune `tsconfig.json` according [example](./tsconfig.json) 
-    ```json
-    {
-        // ...
-        "compilerOptions": {
-            "plugins": [{ "name": "typescript-plugin-css-modules" }]
-        }
-    }
-    ```
-    and set typescript version over 5.0.0 or like that for your editor (look in `settings.json`)
-
 
 ## How to use: 
 

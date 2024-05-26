@@ -1,5 +1,3 @@
-//@ts-check
-
 import style from './style.module.css'
 
 
