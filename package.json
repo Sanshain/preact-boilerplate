@@ -18,10 +18,10 @@
         "@open-wc/rollup-plugin-html": "^1.2.5",
         "@prefresh/babel-plugin": "^0.5.1",
         "@prefresh/nollup": "https://gitpkg.now.sh/Sanshain/prefresh/packages/nollup?main",
+        "@rollup/plugin-alias": "^5.1.0",
         "@rollup/plugin-babel": "^6.0.4",
         "@rollup/plugin-node-resolve": "^15.2.3",
         "@rollup/plugin-terser": "^0.4.4",
-        "@wyw-in-js/rollup": "^0.5.3",
         "nollup": "github:Sanshain/nollup#fix",
         "react-refresh": "^0.10.0",
         "rollup": "^4.17.2",
@@ -30,8 +30,7 @@
         "rollup-plugin-hot-css": "^0.5.1",
         "rollup-plugin-html-inline": "^1.0.12",
         "rollup-plugin-static-files": "^0.2.0",
-        "shx": "^0.3.3",
-        "source-map": "github:mozilla/source-map#60adcb0"
+        "shx": "^0.3.3"
     },
     "name": "app",
     "version": ""

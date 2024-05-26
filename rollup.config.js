@@ -4,19 +4,25 @@
 globalThis.fetch = null;
 
 import node_resolve from '@rollup/plugin-node-resolve';
+
+// JSX
+
 import babel from '@rollup/plugin-babel';
+import prefresh from '@prefresh/nollup';
+import alias from '@rollup/plugin-alias';
+
+// CSS
+
 import hotcss from 'rollup-plugin-hot-css';
 import css from 'rollup-plugin-css-only'
+import linaria from "@linaria/rollup";
+
 
 import static_files from 'rollup-plugin-static-files';
 import terser from '@rollup/plugin-terser';
-import prefresh from '@prefresh/nollup';
-
-import linaria from "@linaria/rollup";
-import wyw from '@wyw-in-js/rollup';
 
 
-/// html:
+/// HTML
 
 import { htmlInliner as inline } from 'rollup-plugin-html-inline';
 // import htmlTemplate from 'rollup-plugin-generate-html-template';
@@ -54,6 +60,13 @@ let config = {
         assetFileNames: `[name][extname]`,        
     },
     plugins: [
+        alias({
+            entries: [
+                { find: 'react/hooks', replacement: 'preact/hooks' },
+                { find: 'react', replacement: 'preact/compat' },
+                { find: 'react-dom', replacement: 'preact/compat' }
+            ]
+        }),
         linaria({
             // sourceMap: !inDevelopment       /// <- works just with `!inDevelopment` mode (due rollup)
             sourceMap: true

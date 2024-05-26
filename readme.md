@@ -46,6 +46,26 @@ npm init nollup-app -- --name preact-app --template preact
         }
     }    
     ```
+- install `npm i @rollup/plugin-alias -D -f` and add it to `rollup.config.js`:
+    ```js
+    import alias from '@rollup/plugin-alias';
+
+    ///...
+
+    const config = {
+        ///...
+        plugins: [
+            alias({
+                entries: [
+                    { find: 'react/hooks', replacement: 'preact/hooks' },
+                    { find: 'react', replacement: 'preact/compat' },
+                    { find: 'react-dom', replacement: 'preact/compat' }
+                ]
+            }),
+            // ...
+        ]
+    }
+    ```
 
 ## How to use: 
 
@@ -61,6 +81,12 @@ degit Sanshain/preact-boilerplate#js_hmr_html
 
 ```sh
 git clone Sanshain/preact-boilerplate#js_hmr_html && rm -r .get && git init
+```
+
+### Install deps: 
+
+```sh
+cd preact-boilerplate && npm i -f   # or the same due pnpm
 ```
 
 ### Develop with
