@@ -47,7 +47,7 @@ let config = {
         // It seems this one works just in memory:
         postcss({
             hot: inDevelopment,                                              // hmr
-            extract: 'styles.css',    /// it could be `style/styles.css`
+            extract: 'styles.css',        /// it could be `style/styles.css` as well
             minimize: !inDevelopment,
             modules: true,                                                   // css modules
             namedExports: true
