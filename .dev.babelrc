@@ -6,11 +6,14 @@
                 "runtime": "automatic",
                 "importSource": "preact"
             }
+        ],
+        [
+            "@prefresh/babel-plugin"
         ]
     ],
     "env": {
         "development": {
-            
+            "plugins": ["react-refresh/babel"]
         }
     }
 }
