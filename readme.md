@@ -9,11 +9,16 @@ npm init nollup-app -- --name preact-app --template preact
 
 
 - **Hot** module reloading
-- **Linaria** out of the box (w/o maps in hmr mode)
+- **Linaria** (`css` tag) out of the box (w/o maps in hmr mode and `styled` feature (!))
 
+
+<details>
+<summary>
 
 ### Cheat sheets, how to install from a scratch:
+. . .
 
+</summary>
 
 - Install fixed @prefresh/nollup package with the corrected exports (created due [this service](https://gitpkg.vercel.app/about)):
 
@@ -47,6 +52,8 @@ npm init nollup-app -- --name preact-app --template preact
     }    
     ```
 
+</details>
+
 ## How to use: 
 
 ### Get started:
@@ -54,13 +61,13 @@ npm init nollup-app -- --name preact-app --template preact
 #### via degit:
 
 ```sh
-degit Sanshain/preact-boilerplate#js_hmr_html
+degit Sanshain/preact-boilerplate#js_hmr_linaria
 ```
 
 #### via git: 
 
 ```sh
-git clone Sanshain/preact-boilerplate#js_hmr_html && rm -r .get && git init
+git clone Sanshain/preact-boilerplate#js_hmr_linaria && rm -r .get && git init
 ```
 
 ### Develop with
@@ -85,9 +92,9 @@ The command above starts nollup directly through nodejs ([why](https://github.co
 
 as usual due rollup (using `rollup -c` or `npm run rollup` or `npm run build` (no difference))
 
-### Packages destinations: 
+### Packages destinations:
 
-...collected by its features in the template:
+(collected by its features in the template)
 
 ## JSX compilation: 
 

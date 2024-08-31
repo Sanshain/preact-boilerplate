@@ -3,10 +3,10 @@
     "scripts": {
         "clean": "shx rm -rf dist",
         "rollup": "rollup -c",
-        "-legacy-start": "nollup -c --environment NODE_ENV:development",
+        "--legacy-start": "nollup -c --environment NODE_ENV:development",
+        "build": "rollup -c --environment NODE_ENV:production",        
         "dev:w": "node --no-experimental-fetch ./node_modules/nollup/lib/cli.js --environment NODE_ENV:development",
-        "dev:u": "NODE_ENV=development node --no-experimental-fetch ./node_modules/nollup/lib/cli.js",
-        "build": "rollup -c --environment NODE_ENV:production"
+        "dev:u": "NODE_ENV=development node --no-experimental-fetch ./node_modules/nollup/lib/cli.js"        
     },
     "optionalDependencies": {
         "@wyw-in-js/rollup": "^0.5.3"

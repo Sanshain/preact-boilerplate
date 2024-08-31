@@ -55,7 +55,7 @@ let config = {
     },
     plugins: [
         linaria({
-            // sourceMap: !inDevelopment       /// <- works just with `!inDevelopment` mode (due rollup)
+            // sourceMap: !inDevelopment       /// <- works just with `!inDevelopment` mode (via rollup)
             sourceMap: true
         }),
         // It seems this one works just in memory:
