@@ -55,7 +55,7 @@ rollup -c
 
 ## CLI
 
-### `npm start`
+### `npm run dev` ~~`npm start`~~ 
 
 Launch a dev server at `localhost:3000` and reload on file changes.
 
@@ -63,7 +63,7 @@ Launch a dev server at `localhost:3000` and reload on file changes.
 
 Build a production bundle in `release` folder.
 
-### `npm run serve`
+### ~~`npm run serve`~~
 
-Serve production assets on localhost.
+~~Serve production assets on localhost.~~
 
