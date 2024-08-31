@@ -28,9 +28,10 @@ let production = false;
 const development = !production
 
 const options = {
+	devMode: development,
 	prerender: false,
 	source: {
-		file: 'index__prer'
+		file: 'index.ssr'
 	},
 	target: {
 		dirname: dist,
@@ -65,7 +66,7 @@ export default {
 			contentBase: dist,
 			historyApiFallback: true
 		}),
-		development && livereload({
+		options.devMode && livereload({
 			watch: dist
 		}),
 		postcss({

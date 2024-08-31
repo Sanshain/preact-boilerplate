@@ -3,9 +3,10 @@
 import { h, Fragment } from 'preact'
 import { useState } from 'preact/hooks'
 
-import { useStore } from "./store/source/store";
+import { useStore } from "../store/source/store";
 
-import style from "./style.module.css"
+
+import style from "../style.module.css"
 
 
 

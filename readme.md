@@ -27,6 +27,19 @@
 - CSS Modules
 
 
+### Known problems
+
+- **type errors on css modules imports** (*cann't find module or types declaration or somethin like this*): 
+    - Be sure you use at least 5.4.5 typescript version or - if you cann't - try to play with another versions
+    - Check `typescript-plugin-css-modules` settings in your tsconfig according plugin's documentation
+    - try to add following option in your `.vscode/settings.json`:
+        ```json
+        "typescript.tsserver.pluginPaths": [
+            "typescript-plugin-css-modules"
+        ]       
+        ```
+    - after all of that don't forget to restart your typescript server (if it's vscode - via combination `ctrl+shift+p`)
+
 
 ## Setup
 

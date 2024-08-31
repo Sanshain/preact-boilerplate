@@ -2,7 +2,7 @@ import './style.css'
 
 import { h } from 'preact';
 import render from 'preact-render-to-string';
-import App from './App.jsx';
+import App from './legacy-components/App.jsx';
 
 let html = render(<App/>);
 
