@@ -15,7 +15,7 @@ import { useState } from 'preact/hooks'
 
 import { styled, css, setup } from 'goober';
 
-import { useStore, initStore } from "../store/source/store";
+import { useStore, initStore } from "../xi-store";
 import Button from "./button";
 
 

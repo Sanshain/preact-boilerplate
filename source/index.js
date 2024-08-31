@@ -8,7 +8,7 @@ import { h, render } from 'preact'
 import App from "./components/app";
 // import App from './TSApp'
 
-import { initStore } from "./store/source/store";
+import { initStore } from "./xi-store";
 // import "./global.css"
 
 
