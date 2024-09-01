@@ -67,7 +67,10 @@ let config = {
         format: 'iife',
         assetFileNames: `[name][extname]`,        
     },
-    plugins: [
+	plugins: [
+		
+		/// REACT
+
         alias({
             entries: [
                 { find: 'react/hooks', replacement: 'preact/hooks' },
@@ -76,13 +79,12 @@ let config = {
             ]
 		}),
 		
-
+		/// LINARIA 
 
 		linaria({
 			// sourceMap: !inDevelopment       /// <- works just with `!inDevelopment` mode (via rollup)
 			sourceMap: true
 		}),
-
 		inDevelopment
 			? hotcss({
 				// extensions: [],
@@ -91,9 +93,10 @@ let config = {
 				file: `styles.css`,  // 'styles.css' works too
 				// loaders: [postCSSLoader] || ['scss', 'less', 'stylus']
 			})
-			// : css({ output: `styles.${hash}.css` }),
 			: css({ output: `styles.css` }),			     
 		
+		
+		/// CSS MODULES
 		
 
 		// It seems this one works just in memory:
@@ -108,15 +111,20 @@ let config = {
 			// plugins: []
 		}),  
 		
-		
+		/// JSX and HMR
+
         babel({
             exclude: 'node_modules/**',
             babelHelpers: 'bundled',
             configFile: inDevelopment ? './.dev.babelrc' : './.babelrc' // hmr           
-        }),
+		}),
+		
         node_resolve({
             extensions: ['.js', '.jsx', '.ts', '.tsx', '.json', '.css']
-        }),
+		}),
+		
+		/// HMR
+
         inDevelopment && prefresh(),                                    // hmr
     ]
 }
