@@ -67,6 +67,12 @@ npm init nollup-app -- --name preact-app --template preact
     }
     ```
 
+- install hotcss plugin from Sanshain [fork](https://github.com/Sanshain/rollup-plugin-hot-css) (added `include` option, which one is required for the current rollup configuration): 
+    ```sh
+    npm i github:Sanshain/rollup-plugin-hot-css -D
+    ```
+
+
 ## How to use: 
 
 ### Get started:
