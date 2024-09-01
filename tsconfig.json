@@ -22,7 +22,20 @@
             "react-dom/*": [
                 "./node_modules/preact/compat/*"
             ]
-        }
+        },
+        "plugins": [
+            // {
+            //     "name": "typescript-plugin-css-modules",
+            //     "options": {
+            //         "classnameTransform": "dashes",
+            //         "customMatcher": "\\.(c|le)ss$",
+            //         // "customRenderer": "./myRenderer.js",
+            //         "dotenvOptions": {},
+            //         "postcssOptions": {},
+            //         "rendererOptions": {}
+            //     }
+            // }
+        ],        
     },
     "include": [
         // "./source/**/*.ts",
