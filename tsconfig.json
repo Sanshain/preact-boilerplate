@@ -24,17 +24,17 @@
             ]
         },
         "plugins": [
-            // {
-            //     "name": "typescript-plugin-css-modules",
-            //     "options": {
-            //         "classnameTransform": "dashes",
-            //         "customMatcher": "\\.(c|le)ss$",
-            //         // "customRenderer": "./myRenderer.js",
-            //         "dotenvOptions": {},
-            //         "postcssOptions": {},
-            //         "rendererOptions": {}
-            //     }
-            // }
+            {
+                "name": "typescript-plugin-css-modules",
+                "options": {
+                    "classnameTransform": "dashes",
+                    "customMatcher": "\\.(c|le)ss$",
+                    // "customRenderer": "./myRenderer.js",
+                    "dotenvOptions": {},
+                    "postcssOptions": {},
+                    "rendererOptions": {}
+                }
+            }
         ],        
     },
     "include": [

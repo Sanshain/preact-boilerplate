@@ -13,9 +13,9 @@ import alias from '@rollup/plugin-alias';
 
 // CSS
 
-/// just for whole css import
-// import hotcss from 'rollup-plugin-hot-css';
-// import css from 'rollup-plugin-css-only'
+/// just for linaria (and also whole css imports, but it's useless)
+import hotcss from 'rollup-plugin-hot-css';
+import css from 'rollup-plugin-css-only'
 
 
 import linaria from "@linaria/rollup";
@@ -74,28 +74,41 @@ let config = {
                 { find: 'react', replacement: 'preact/compat' },
                 { find: 'react-dom', replacement: 'preact/compat' }
             ]
-        }),
-        linaria({
-            // sourceMap: !inDevelopment       /// <- works just with `!inDevelopment` mode (due rollup)
-            sourceMap: true
-        }),
+		}),
+		
+
+
+		linaria({
+			// sourceMap: !inDevelopment       /// <- works just with `!inDevelopment` mode (via rollup)
+			sourceMap: true
+		}),
+
+		inDevelopment
+			? hotcss({
+				// extensions: [],
+				include: /_[\d\w]{6,7}.css/,
+				hot: true,
+				file: `styles.css`,  // 'styles.css' works too
+				// loaders: [postCSSLoader] || ['scss', 'less', 'stylus']
+			})
+			// : css({ output: `styles.${hash}.css` }),
+			: css({ output: `styles.css` }),			     
+		
+		
+
 		// It seems this one works just in memory:
-		// postcss({
-		// 	hot: inDevelopment,                                              // hmr
-		// 	extract: 'styles.css',    /// it could be `style/styles.css`
-		// 	minimize: !inDevelopment,
-		// 	modules: true,                                                   // css modules
-		// 	namedExports: true
-		// 	// extract: true
-		// }),		
-        // inDevelopment
-        //     ? hotcss({
-        //         hot: true,
-        //         file: `styles.css`  // 'styles.css' works too
-        //         // loaders: [postCSSLoader] || ['scss', 'less', 'stylus']
-        //     })
-        //     // : css({ output: `styles.${hash}.css` }),
-        //     : css({ output: `styles.css` }),        
+		postcss({
+			exclude: /_[\d\w]{6,7}.css/,
+			hot: inDevelopment,                                              // hmr
+			// extract: 'styles.css',  										 // because it works just in memory - role of the option is just a stub to avoid file not found error
+			minimize: !inDevelopment,
+			modules: true,                                                   // css modules
+			namedExports: true
+			// extract: true,
+			// plugins: []
+		}),  
+		
+		
         babel({
             exclude: 'node_modules/**',
             babelHelpers: 'bundled',

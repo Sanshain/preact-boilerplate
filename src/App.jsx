@@ -3,7 +3,7 @@
 // import './App.css';
 // import './style.css';
 
-// import style from './style.css';
+import style from './style.css';
 
 
 
@@ -23,7 +23,7 @@ import { css } from '@linaria/core';
 const app = css`
   text-transform: uppercase;
   color: red;
-  /* color: green; */
+  color: green;
 `;
 
 /// comments inside css tag doesn't work:
@@ -38,7 +38,7 @@ function App () {
     return (
         <div class={app}>
           <h1>Hello World!!!</h1>
-          <div className={'style.header'}>111-111-12</div>
+          <div className={style.header}>111-111-12</div>
 
           {/* <Title /> */}
         </div>        
