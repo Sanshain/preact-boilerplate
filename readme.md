@@ -13,7 +13,7 @@ npm init nollup-app -- --name preact-app --template preact
     npm install 'https://gitpkg.now.sh/Sanshain/prefresh/packages/nollup?main' -D
     ```
 
-- Disable strict ssl npm check and install `Sanshain/rollup-plugin-postcss-hot#dev` package to support hmr for postcss (fixed *"[Cannot use 'import.meta' outside a module](https://github.com/rixo/rollup-plugin-postcss-hot/issues/23)"*): 
+- Install `Sanshain/rollup-plugin-postcss-hot#dev` package to support hmr for postcss (in the fork fixed the *"[Cannot use 'import.meta' outside a module](https://github.com/rixo/rollup-plugin-postcss-hot/issues/23)"*). May be you will need to disable strict ssl npm checking on this step (if gotten some ssl error during the installation): 
 
     ```sh
     npm config set strict-ssl false
@@ -22,7 +22,7 @@ npm init nollup-app -- --name preact-app --template preact
 
     then if you want, you could set it back to `true`: `npm config set strict-ssl true` and check it due `npm config list`
 
-- Install patched nollup version (it sould be because of rollup imitation version is less then required, but worls fine):
+- Install patched nollup version (it sould be because of rollup imitation version is less then required, but works fine):
     ```
     npm i Sanshain/nollup -D
     ```
@@ -37,6 +37,8 @@ npm init nollup-app -- --name preact-app --template preact
     }
     ```
     and set typescript version over 5.4.5 or like that for your editor (look in `settings.json`)
+
+- 
 
 
 ## How to use: 
