@@ -4,7 +4,7 @@
 npm init nollup-app -- --name preact-app --template preact
 ```
 
-### Cheat sheets, how to install from a scratch:
+### Cheat sheets, how to install from scratch:
 
 
 - Installing the fixed package @prefresh/nollup (created due [this service](https://gitpkg.vercel.app/about) - there is exports [fixed](https://github.com/preactjs/prefresh/pull/547)) to use hmr with preact/react state:
@@ -38,7 +38,20 @@ npm init nollup-app -- --name preact-app --template preact
     ```
     and set typescript version over 5.4.5 or like that for your editor (look in `settings.json`)
 
-- 
+- install `typescript-plugin-css-modules` and tune `tsconfig` as follow:
+    ```
+        "plugins": [
+            {
+                "name": "typescript-plugin-css-modules",
+                "options": {                    
+                    "customMatcher": "\\.module\\.css$",
+                    "dotenvOptions": {},
+                    "postcssOptions": {},
+                    "rendererOptions": {}
+                }
+            }
+        ],
+    ```
 
 
 ## How to use: 
