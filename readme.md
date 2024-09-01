@@ -31,27 +31,21 @@ npm init nollup-app -- --name preact-app --template preact
     ```json
     {
         // ...
-        "compilerOptions": {
-            "plugins": [{ "name": "typescript-plugin-css-modules" }]
+        "compilerOptions": {            
+            "plugins": [
+                {
+                    "name": "typescript-plugin-css-modules",
+                    "options": {
+                        "customMatcher": "\\.(c|le)ss$"
+                    }
+                }
+            ],    
         }
     }
     ```
     and set typescript version over 5.4.5 or like that for your editor (look in `settings.json`)
 
-- install `typescript-plugin-css-modules` and tune `tsconfig` as follow:
-    ```
-        "plugins": [
-            {
-                "name": "typescript-plugin-css-modules",
-                "options": {                    
-                    "customMatcher": "\\.module\\.css$",
-                    "dotenvOptions": {},
-                    "postcssOptions": {},
-                    "rendererOptions": {}
-                }
-            }
-        ],
-    ```
+
 
 
 ## How to use: 
