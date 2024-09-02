@@ -6,6 +6,7 @@
 
 import style from './style.css';
 // import { createElement as h } from "react";
+// import { h } from "preact";
 // import { createElement as h } from '../node_modules/preact/src/index';
 import { createElement as h } from '../modules/preact/index';
 
@@ -16,6 +17,7 @@ import { css } from '@linaria/core';
 
 // import { styled, setup } from '../node_modules/goober/src/index';
 import { styled, setup } from '../modules/goober/index';
+// import { styled, setup } from 'goober';
 setup(h);
 
 
