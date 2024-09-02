@@ -18,7 +18,7 @@
         "@rollup/plugin-babel": "^6.0.4",
         "@rollup/plugin-node-resolve": "^15.2.3",
         "@rollup/plugin-terser": "^0.4.4",
-        "nollup": "^0.18.4",
+        "nollup": "github:Sanshain/nollup",
         "react-refresh": "^0.10.0",
         "rollup": "^4.17.2",
         "rollup-plugin-css-only": "^4.5.2",
