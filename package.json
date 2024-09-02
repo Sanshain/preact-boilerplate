@@ -9,27 +9,28 @@
         "build": "rollup -c --environment NODE_ENV:production"
     },
     "dependencies": {
+        "goober": "^2.1.14",
         "preact": "^10.5.14"
     },
     "optionalDependencies": {
-      "@open-wc/rollup-plugin-html": "^1.2.5",
-      "@wyw-in-js/rollup": "^0.5.3",
-      "@wyw-in-js/babel-preset": "^0.5.3",
-      "@emotion/css": "^11.11.2",
-      "@emotion/react": "^11.11.4"
+        "@emotion/css": "^11.11.2",
+        "@emotion/react": "^11.11.4",
+        "@open-wc/rollup-plugin-html": "^1.2.5",
+        "@wyw-in-js/babel-preset": "^0.5.3",
+        "@wyw-in-js/rollup": "^0.5.3"
     },
     "devDependencies": {
         "@babel/core": "^7.15.5",
         "@babel/plugin-transform-react-jsx": "^7.14.9",
         "@linaria/babel-preset": "^5.0.4",
         "@linaria/react": "^6.2.1",
-        "@linaria/rollup": "^5.0.4",        
+        "@linaria/rollup": "^5.0.4",
         "@prefresh/babel-plugin": "^0.5.1",
         "@prefresh/nollup": "https://gitpkg.now.sh/Sanshain/prefresh/packages/nollup?main",
         "@rollup/plugin-alias": "^5.1.0",
         "@rollup/plugin-babel": "^6.0.4",
         "@rollup/plugin-node-resolve": "^15.2.3",
-        "@rollup/plugin-terser": "^0.4.4",             
+        "@rollup/plugin-terser": "^0.4.4",
         "nollup": "github:Sanshain/nollup#fix",
         "react-refresh": "^0.10.0",
         "rollup": "^3.29.1",
