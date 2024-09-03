@@ -10,6 +10,7 @@
         "rollup-plugin-postcss": "^4.0.2"
     },
     "dependencies": {
+        "goober": "^2.1.14",
         "preact": "^10.5.14"
     },
     "devDependencies": {

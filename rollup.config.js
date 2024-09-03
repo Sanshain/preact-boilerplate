@@ -27,7 +27,7 @@ import postcss from 'rollup-plugin-postcss-hot'
 
 // import htmlTemplate from 'rollup-plugin-generate-html-template'; // or rollup-plugin-html-inline
 
-
+///@ts-expect-error or apply `npm i --save-dev @types/node`
 const inDevelopment = process.env.NODE_ENV === 'development';
 
 const targetPath = 'dist';
