@@ -49,30 +49,30 @@ ${hiDPI(1.5)} {
 } */
 
 
-const Icon = styled('span')`
-    display: flex;
-    flex: 1;
-    color: red;
-`;
+// const Icon = styled('span')`
+//     display: flex;
+//     flex: 1;
+//     color: red;
+// `;
 
-const Button = styled('button')`
-    background: dodgerblue;
-    color: white;
-    border: ${Math.random()}px solid white;
+// const Button = styled('button')`
+//     background: dodgerblue;
+//     color: white;
+//     border: ${Math.random()}px solid white;
 
-    &:focus,
-    &:hover {
-        padding: 1em;
-    }
+//     &:focus,
+//     &:hover {
+//         padding: 1em;
+//     }
 
-    .otherClass {
-        margin: 0;
-    }
+//     .otherClass {
+//         margin: 0;
+//     }
 
-    ${Icon} {
-        color: black;
-    }
-`;
+//     ${Icon} {
+//         color: black;
+//     }
+// `;
 
 
 function App () {
