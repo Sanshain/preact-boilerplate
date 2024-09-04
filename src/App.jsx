@@ -4,25 +4,38 @@
 // import './style.css';
 
 
+
+
+
+/// CSS MODULES:
+
+
 import style from './style.css';
 
 
-// till just with css:
-import { css } from '@linaria/core';
+
+/// GOOBER:
+
+import { default as Title } from "./components/Title";     
 
 
 
 
+/// LINARIA:
 
-/// EXAMPLE WITH `STYLED` TAG - TILL DOESN'T WORK
-
-import { default as Title } from "./components/Title";     // till doesn't work: (so there isn't reason to work under branch with emotion):
+import { css } from '@linaria/core';    // till just with css:
 
 
-/// OPTIONAL DEPENDENCIES:
+
+/// OPTIONAL FEATURES FOR LINARIA SAMPLE:
+
 
 import { modularScale, hiDPI } from 'polished';
 // import fonts from './fonts';
+
+
+
+
 
 
 const fonts = {
