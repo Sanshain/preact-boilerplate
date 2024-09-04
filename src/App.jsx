@@ -19,6 +19,7 @@ import Footer from './components/Footer';
 /// GOOBER: 
 
 import { styled } from 'goober';
+import { Button } from './components/Button';
 
 
 /// ADDITIONAL LINARIA OPPORTUNITIES:
@@ -32,45 +33,16 @@ import { styled } from 'goober';
 
 
 
-const fonts = Object.freeze({
-  heading: 'monospace'
-});
-
-
-const Icon = styled('span')`
-    display: flex;
-    flex: 1;
-    color: red;
-`;
-
-const Button = styled('button')`
-    background: dodgerblue;
-    color: white;
-    border: ${Math.random()}px solid white;
-
-    &:focus,
-    &:hover {
-        padding: 1em;
-    }
-
-    .otherClass {
-        margin: 0;
-    }
-
-    ${Icon} {
-        color: black;
-    }
-`;
-
-
 
 function App () {
     return (
         <div class={'app'}>
             <h1>Hello World!!!</h1>
-            <div className="header">111-111-12</div>
+            <div className="header">some content</div>
 
-            {/* <Title /> */}
+        {/* <Title /> */}
+        
+            <Button>click me</Button>
         
             <Footer>123</Footer>
         </div>        
