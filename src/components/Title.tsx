@@ -25,11 +25,11 @@ const Container = styled.div`
 
 /* font-size: ${sizes.medium}px; */
  
-export default function () {
+export default function ({user = 'diar friend'}: {user: string}) {
     return <>
         <Container color="#333">
 
-            <Title>Hello world</Title>
+            <Title>Hello world, {user}</Title>
         </Container>;
     </>
 }

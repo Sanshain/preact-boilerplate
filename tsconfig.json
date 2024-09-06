@@ -43,6 +43,6 @@
         // "./source/**/*.jsx",
         // "./source/**/*.tsx",
         // "./source/**/*.css"
-        "./src/**/*"
+        "./src/**/*",
     ]
 }

@@ -9,22 +9,26 @@ import style from './style.css';
 
 // till just with css:
 import { css } from '@linaria/core';
+import type { LinariaClassName } from "@linaria/core/types"
 
-/// till doesn't work: (so there isn't reason to work under branch with emotion):
 
-// import { default as Title } from "./components/Title";
+
+// 
+
+
+import { default as Title } from "./components/Title";
 
 
 // import { modularScale, hiDPI } from 'polished';
 // import fonts from './fonts';
 
 
-
-const app = css`
+const app: LinariaClassName = css`
   text-transform: uppercase;
   color: red;
   color: green;
 `;
+
 
 /// comments inside css tag doesn't work:
 
@@ -40,7 +44,7 @@ function App () {
           <h1>Hello World!!!</h1>
           <div className={style.header}>111-111-12</div>
 
-          {/* <Title /> */}
+          <Title user={"Sasha"} />
         </div>        
     );
 }

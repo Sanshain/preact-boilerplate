@@ -5,6 +5,12 @@ globalThis.fetch = null;
 
 import node_resolve from '@rollup/plugin-node-resolve';
 
+
+// TS
+
+import typescript from '@rollup/plugin-typescript';
+
+
 // JSX
 
 import babel from '@rollup/plugin-babel';
@@ -67,8 +73,8 @@ let config = {
         format: 'iife',
         assetFileNames: `[name][extname]`,        
     },
-	plugins: [
-		
+	plugins: [        
+
 		/// REACT
 
         alias({
@@ -111,6 +117,10 @@ let config = {
 			// plugins: []
 		}),  
 		
+
+        typescript(),
+
+
 		/// JSX and HMR
 
         babel({
