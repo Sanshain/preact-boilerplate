@@ -1,10 +1,15 @@
 {
+    "$schema": "./.vscode/tsconfig.schema.json",
     "compilerOptions": {
         "outDir": "built",
-        "jsx": "react-jsx",
+        // "jsx": "react-jsx",
+        "jsx": "preserve",
         "jsxImportSource": "preact",
         "allowJs": true,
         "esModuleInterop": true,
+
+        "module": "ESNext",
+        "moduleResolution": "Node",
 
         // to preact/compat (https://preactjs.com/guide/v10/typescript/#typescript-preactcompat-configuration):
         "skipLibCheck": true,
