@@ -5,6 +5,12 @@ import node_resolve from '@rollup/plugin-node-resolve';
 
 import babel from '@rollup/plugin-babel';
 
+/// typescript
+
+// import jsx from 'acorn-jsx';
+import typescript from '@rollup/plugin-typescript';
+
+
 /** 
 * `rollup-plugin-hot-css` i couldn't force to work with postcss as well as with css-only
 *   But they works togather quite harmoniously (moved to optional dependencies)
@@ -53,6 +59,7 @@ let config = {
             namedExports: true
             // extract: true
         }),
+        typescript({ compilerOptions: { jsx: 'preserve' } }),
         babel({
             exclude: 'node_modules/**',
             babelHelpers: 'bundled',
