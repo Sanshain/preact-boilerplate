@@ -1,5 +1,6 @@
 // import './App.css';
 import './style.css'
+import { h } from "preact";
 
 // till just with css:
 import { css } from '@linaria/core';
