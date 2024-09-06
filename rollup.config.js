@@ -60,9 +60,8 @@ let config = {
         assetFileNames: `[name][extname]`,        
     },
     plugins: [
-        typescript({
-            tsconfig: "./tsconfig.json",
-        }),
+
+        // typescript(), /// <- works as well too
 
         linaria({
             // sourceMap: !inDevelopment       /// <- works just with `!inDevelopment` mode (via rollup)
@@ -76,7 +75,12 @@ let config = {
                 // loaders: [postCSSLoader] || ['scss', 'less', 'stylus']
             })
             // : css({ output: `styles.${hash}.css` }),
-            : css({ output: `styles.css` }),        
+            : css({ output: `styles.css` }),    
+        
+        typescript({
+            tsconfig: "./tsconfig.json",
+        }),        
+        
         babel({
             exclude: 'node_modules/**',
             babelHelpers: 'bundled',
