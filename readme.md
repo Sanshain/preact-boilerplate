@@ -52,6 +52,13 @@ npm init nollup-app -- --name preact-app --template preact
     }    
     ```
 
+- ts: create tsconfig via `tsc --init` and add next settings: 
+
+    ```json
+        "jsx": "react-jsx",                         /* Specify what JSX code is generated. */
+        "jsxImportSource": "preact",                /* Specify module specifier used to import the JSX factory functions when using `jsx: 
+    ```
+
 </details>
 
 ## How to use: 
