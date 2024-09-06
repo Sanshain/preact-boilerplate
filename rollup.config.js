@@ -16,6 +16,12 @@ import linaria from "@linaria/rollup";
 import wyw from '@wyw-in-js/rollup';
 
 
+/// ts: 
+
+
+import typescript from '@rollup/plugin-typescript';
+
+
 /// html:
 
 import { htmlInliner as inline } from 'rollup-plugin-html-inline';
@@ -54,6 +60,10 @@ let config = {
         assetFileNames: `[name][extname]`,        
     },
     plugins: [
+        typescript({
+            tsconfig: "./tsconfig.json",
+        }),
+
         linaria({
             // sourceMap: !inDevelopment       /// <- works just with `!inDevelopment` mode (via rollup)
             sourceMap: true

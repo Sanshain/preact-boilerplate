@@ -1,6 +1,9 @@
-// import './App.css';
+
 import './style.css'
-import { h } from "preact";
+import { ComponentChildren, h } from "preact";
+
+
+/// @ LINAIRIA:
 
 // till just with css:
 import { css } from '@linaria/core';
@@ -25,15 +28,24 @@ ${hiDPI(1.5)} {
 } */
 
 
-function App () {
+interface ChildrenProps {
+  title: string;
+  children: ComponentChildren;
+}
+
+
+function App({ title = 'guy', children }: ChildrenProps): h.JSX.Element {
     return (
         <div class={app}>
-            <h1>Hello World!!!</h1>
+            <h1>Hello World, {title}!!!</h1>
             <div className="header">111-111-1112</div>
-
+        
             {/* <Title /> */}
         </div>        
     );
 }
 
 export default App;
+
+
+// for more information about preact typing, see https://preactjs.com/guide/v10/typescript/#typescript-configuration

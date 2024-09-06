@@ -4,9 +4,9 @@
         "clean": "shx rm -rf dist",
         "rollup": "rollup -c",
         "--legacy-start": "nollup -c --environment NODE_ENV:development",
-        "build": "rollup -c --environment NODE_ENV:production",        
+        "build": "rollup -c --environment NODE_ENV:production",
         "dev:w": "node --no-experimental-fetch ./node_modules/nollup/lib/cli.js --environment NODE_ENV:development",
-        "dev:u": "NODE_ENV=development node --no-experimental-fetch ./node_modules/nollup/lib/cli.js"        
+        "dev:u": "NODE_ENV=development node --no-experimental-fetch ./node_modules/nollup/lib/cli.js"
     },
     "optionalDependencies": {
         "@wyw-in-js/rollup": "^0.5.3"
@@ -23,7 +23,8 @@
         "@prefresh/nollup": "https://gitpkg.now.sh/Sanshain/prefresh/packages/nollup?main",
         "@rollup/plugin-babel": "^6.0.4",
         "@rollup/plugin-node-resolve": "^15.2.3",
-        "@rollup/plugin-terser": "^0.4.4",        
+        "@rollup/plugin-terser": "^0.4.4",
+        "@rollup/plugin-typescript": "^11.1.6",
         "nollup": "github:Sanshain/nollup#fix",
         "react-refresh": "^0.10.0",
         "rollup": "^4.17.2",
