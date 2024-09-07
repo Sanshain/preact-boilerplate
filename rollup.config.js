@@ -42,12 +42,28 @@ const targetPath = 'dist';
 console.log('inDevelopment', inDevelopment)
 
 
-let config = {
+/**
+ * @type {import('rollup').RollupOptions}
+ */
+const config = {
     input: './src/main.js',
     output: {
         dir: targetPath,        
         format: 'iife',
-        assetFileNames: `[name][extname]`
+        assetFileNames: `[name][extname]`,
+
+        //@ts-expect-error
+        onwarn1: function (/** @type {WarnInfo} */ warning, /** @type {(arg: any) => void} */ handler) {
+
+            // output
+            if (~warning.message.indexOf('.module.css\' or its corresponding type declarations')) {
+                console.log(`>> Skiped vague css modules warning with typescript plugin, despite it works fine`)
+
+                return;
+            }
+
+            handler(warning);
+        }         
     },
     plugins: [
 
@@ -67,14 +83,42 @@ let config = {
         }),
 
         typescript({
-            tsconfig: './tsconfig.json'
+            tsconfig: './tsconfig.json',            
+            exclude: [
+                './**/*.css'
+            ]
         }),        
 
         node_resolve({
             extensions: ['.js', '.jsx', '.ts', '.tsx', '.json', '.css']
         }),
+        
+        //@ts-expect-errorz
         inDevelopment && prefresh(),                                          // hmr
-    ]
+    ],
+
+    /**
+     * @description works only with rollup builder 
+     * @_typedef {{
+     * 		code: string,
+     * 		plugin: 'typescript',
+     * 		message: string
+     * }} WarnInfo
+     * @type {import('rollup').WarningHandlerWithDefault}
+     */
+    onwarn: function (warning, /** @type {(arg: any) => void} */ handler) {
+        
+        if (warning.code == 'PLUGIN_WARNING' && warning.plugin == 'typescript') {            
+
+            if (~warning.message.indexOf('.module.css\' or its corresponding type declarations')) {
+                console.log(`>> Skiped vague css modules warning with typescript plugin, despite it works fine`)
+
+                return;
+            }
+        }
+
+        handler(warning);
+    }    
 }
 
 // if (process.env.NODE_ENV === 'production') {
