@@ -5,14 +5,24 @@ globalThis.fetch = null;
 
 import node_resolve from '@rollup/plugin-node-resolve';
 import babel from '@rollup/plugin-babel';
-import hotcss from 'rollup-plugin-hot-css';
-import css from 'rollup-plugin-css-only'
 
-import static_files from 'rollup-plugin-static-files';
-import terser from '@rollup/plugin-terser';
+
+/// react:
+
+import alias from '@rollup/plugin-alias';
+
+
+/// hmr: 
+
+import hotcss from 'rollup-plugin-hot-css';
 import prefresh from '@prefresh/nollup';
 
+
+
+/// linaria: 
+
 import linaria from "@linaria/rollup";
+import css from 'rollup-plugin-css-only'
 import wyw from '@wyw-in-js/rollup';
 
 
@@ -27,6 +37,14 @@ import typescript from '@rollup/plugin-typescript';
 import { htmlInliner as inline } from 'rollup-plugin-html-inline';
 // import htmlTemplate from 'rollup-plugin-generate-html-template';
 // import html from '@open-wc/rollup-plugin-html';
+
+
+/// release:
+
+import static_files from 'rollup-plugin-static-files';
+import terser from '@rollup/plugin-terser';
+
+
 
 
 // console.log(process.env)
@@ -61,6 +79,15 @@ let config = {
     },
     plugins: [
 
+
+        alias({
+            entries: [
+                { find: 'react/hooks', replacement: 'preact/hooks' },
+                { find: 'react', replacement: 'preact/compat' },
+                { find: 'react-dom', replacement: 'preact/compat' }
+            ]
+		}),
+		
         // typescript(), /// <- works as well too
 
         linaria({

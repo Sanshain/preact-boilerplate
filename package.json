@@ -21,6 +21,7 @@
         "@open-wc/rollup-plugin-html": "^1.2.5",
         "@prefresh/babel-plugin": "^0.5.1",
         "@prefresh/nollup": "https://gitpkg.now.sh/Sanshain/prefresh/packages/nollup?main",
+        "@rollup/plugin-alias": "^5.1.0",
         "@rollup/plugin-babel": "^6.0.4",
         "@rollup/plugin-node-resolve": "^15.2.3",
         "@rollup/plugin-terser": "^0.4.4",
