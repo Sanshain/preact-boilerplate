@@ -29,7 +29,8 @@
         "rollup-plugin-html-inline": "^1.0.12",
         "rollup-plugin-postcss-hot": "github:Sanshain/rollup-plugin-postcss-hot#dev",
         "rollup-plugin-static-files": "^0.2.0",
-        "shx": "^0.3.3"
+        "shx": "^0.3.3",
+        "typescript-plugin-css-modules": "^5.1.0"
     },
     "name": "app",
     "version": ""

@@ -27,6 +27,33 @@ npm init nollup-app -- --name preact-app --template preact
     npm i Sanshain/nollup -D
     ```
 
+- for **ts support** configure your tsconfig as follow:
+
+    ```json
+    "jsx": "react-jsx",                         /* Specify what JSX code is generated. */
+    // "jsxFactory": "h",                       /* 'React.createElement' or 'h' */
+    // "jsxFragmentFactory": "Fragment",        /* 'React.Fragment' or 'Fragment'. */    
+    "jsxImportSource": "preact",                /* Specify module specifier used to import the JSX factory functions when using `jsx:     
+
+    /* Modules */
+    "module": "esnext",                          /* Specify what module code is generated. */
+    "moduleResolution": "node",                  /* Specify how TypeScript looks up a file from a given module specifier. */   
+
+    "plugins": [
+      {
+        "name": "typescript-plugin-css-modules",
+        "options": {
+          "classnameTransform": "dashes",
+          "customMatcher": "\\.module\\.css$",
+          // "customRenderer": "./myRenderer.js",
+          "dotenvOptions": {},
+          "postcssOptions": {},
+          "rendererOptions": {}
+        }
+      }      
+    ]     
+    ```
+
 
 ## How to use: 
 

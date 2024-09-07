@@ -50,6 +50,7 @@ let config = {
         assetFileNames: `[name][extname]`
     },
     plugins: [
+
         // It seems this one works just in memory:
         postcss({
             hot: inDevelopment,                                              // hmr
@@ -59,12 +60,16 @@ let config = {
             namedExports: true
             // extract: true
         }),
-        typescript({ compilerOptions: { jsx: 'preserve' } }),
         babel({
             exclude: 'node_modules/**',
             babelHelpers: 'bundled',
             configFile: inDevelopment ? './.dev.babelrc' : './.babelrc'      // hmr           
         }),
+
+        typescript({
+            tsconfig: './tsconfig.json'
+        }),        
+
         node_resolve({
             extensions: ['.js', '.jsx', '.ts', '.tsx', '.json', '.css']
         }),
