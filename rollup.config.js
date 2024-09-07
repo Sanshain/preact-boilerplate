@@ -39,7 +39,7 @@ const inDevelopment = process.env.NODE_ENV === 'development';
 const targetPath = 'dist';
 
 
-console.log('inDevelopment', inDevelopment)
+inDevelopment && console.log('in development mode')
 
 
 /**
@@ -50,20 +50,7 @@ const config = {
     output: {
         dir: targetPath,        
         format: 'iife',
-        assetFileNames: `[name][extname]`,
-
-        //@ts-expect-error
-        onwarn1: function (/** @type {WarnInfo} */ warning, /** @type {(arg: any) => void} */ handler) {
-
-            // output
-            if (~warning.message.indexOf('.module.css\' or its corresponding type declarations')) {
-                console.log(`>> Skiped vague css modules warning with typescript plugin, despite it works fine`)
-
-                return;
-            }
-
-            handler(warning);
-        }         
+        assetFileNames: `[name][extname]`,   
     },
     plugins: [
 
@@ -97,28 +84,28 @@ const config = {
         inDevelopment && prefresh(),                                          // hmr
     ],
 
-    /**
-     * @description works only with rollup builder 
-     * @_typedef {{
-     * 		code: string,
-     * 		plugin: 'typescript',
-     * 		message: string
-     * }} WarnInfo
-     * @type {import('rollup').WarningHandlerWithDefault}
-     */
-    onwarn: function (warning, /** @type {(arg: any) => void} */ handler) {
+    // /**
+    //  * @description works only with rollup builder 
+    //  * @_typedef {{
+    //  * 		code: string,
+    //  * 		plugin: 'typescript',
+    //  * 		message: string
+    //  * }} WarnInfo
+    //  * @type {import('rollup').WarningHandlerWithDefault}
+    //  */
+    // onwarn: function (warning, /** @type {(arg: any) => void} */ handler) {
         
-        if (warning.code == 'PLUGIN_WARNING' && warning.plugin == 'typescript') {            
+    //     if (warning.code == 'PLUGIN_WARNING' && warning.plugin == 'typescript') {            
 
-            if (~warning.message.indexOf('.module.css\' or its corresponding type declarations')) {
-                console.log(`>> Skiped vague css modules warning with typescript plugin, despite it works fine`)
+    //         if (~warning.message.indexOf('.module.css\' or its corresponding type declarations')) {
+    //             console.log(`>> Skiped vague css modules warning with typescript plugin, despite it works fine`)
 
-                return;
-            }
-        }
+    //             return;
+    //         }
+    //     }
 
-        handler(warning);
-    }    
+    //     handler(warning);
+    // }    
 }
 
 // if (process.env.NODE_ENV === 'production') {
