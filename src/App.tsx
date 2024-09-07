@@ -3,7 +3,7 @@
 // import './App.css';
 // import './style.css';
 
-import style from './style.css';
+// import style from './style.css';
 
 
 
@@ -42,7 +42,7 @@ function App () {
     return (
         <div class={app}>
           <h1>Hello World!!!</h1>
-          <div className={style.header}>111-111-12</div>
+          <div className={'style.header'}>111-111-12</div>
 
           <Title user={"Sasha"} />
         </div>        
