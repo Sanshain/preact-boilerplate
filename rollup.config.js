@@ -108,16 +108,16 @@ let config = {
 		
 
 		// It seems this one works just in memory:
-		// postcss({
-		// 	exclude: /_[\d\w]{6,7}.css/,
-		// 	hot: inDevelopment,                                              // hmr
-		// 	// extract: 'styles.css',  										 // because it works just in memory - role of the option is just a stub to avoid file not found error
-		// 	minimize: !inDevelopment,
-		// 	modules: true,                                                   // css modules
-		// 	namedExports: true
-		// 	// extract: true,
-		// 	// plugins: []
-		// }),  		        
+		postcss({
+			exclude: /_[\d\w]{6,7}.css/,
+			hot: inDevelopment,                                              // hmr
+			// extract: 'styles.css',  										 // because it works just in memory - role of the option is just a stub to avoid file not found error
+			minimize: !inDevelopment,
+			modules: true,                                                   // css modules
+			namedExports: true
+			// extract: true,
+			// plugins: []
+		}),  		        
 
 
 		/// JSX and HMR
