@@ -9,21 +9,21 @@
 
 // till just with css:
 import { css } from '@linaria/core';
-import type { LinariaClassName } from "@linaria/core/types"
+// import type { LinariaClassName } from "@linaria/core/types"
 
 
 
 // 
 
 
-import { default as Title } from "./components/Title";
+// import { default as Title } from "./components/Title";
 
 
 // import { modularScale, hiDPI } from 'polished';
 // import fonts from './fonts';
 
 
-const app: LinariaClassName = css`
+const app = css`
   text-transform: uppercase;
   color: red;
   color: green;
@@ -44,7 +44,7 @@ function App () {
           <h1>Hello World!!!</h1>
           <div className={'style.header'}>111-111-12</div>
 
-          <Title user={"Sasha"} />
+          {/* <Title user={"Sasha"} /> */}
         </div>        
     );
 }
