@@ -1,42 +1,48 @@
 //@ts-check
 
-// import './App.css';
-// import './style.css';
 
+/// CSS MODULES:
+
+// import './style.css';
 import style from './style.css';
 
+
+/// LINARIA:
 
 
 // till just with css:
 import { css } from '@linaria/core';
 import type { LinariaClassName } from "@linaria/core/types"
 
-
-
-// 
-
-
+// styled tag is still doesn't work:
 // import { default as Title } from "./components/Title";
 
 
-// import { modularScale, hiDPI } from 'polished';
-// import fonts from './fonts';
+/// LINARIA ADDITIONAL BUILD TIME FEATURES
+
+import { modularScale, hiDPI } from 'polished';
+
+
+
+
+
+const fonts = {
+  header: 'Arial'
+} as const
 
 
 const title: LinariaClassName = css`
   text-transform: uppercase;
   color: red;
   color: green;
+  font-family: ${fonts.header},
+  font-size: ${modularScale(2)};
+  /* $hiDPI(1.5)} {
+    font-size: $modularScale(2.5)};
+  } */
 `;
 
 
-/// comments inside css tag doesn't work:
-
-/* font-family: ${fonts.heading};
-font-size: ${modularScale(2)};
-${hiDPI(1.5)} {
-  font-size: ${modularScale(2.5)};
-} */
 
 function App() {
 
