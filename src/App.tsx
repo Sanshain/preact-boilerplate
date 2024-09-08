@@ -1,6 +1,6 @@
 
 import './style.css'
-import { ComponentChildren, h } from "preact";
+import { FC, ReactElement } from "react";
 
 
 /// @ LINAIRIA:
@@ -30,11 +30,11 @@ ${hiDPI(1.5)} {
 
 interface ChildrenProps {
   title: string;
-  children: ComponentChildren;
+  children: any;
 }
 
 
-function App({ title = 'guy', children }: ChildrenProps): h.JSX.Element {
+const App: FC<ChildrenProps> = ({ title = 'guy', children }: ChildrenProps): ReactElement => {
     return (
         <div class={app}>
             <h1>Hello World, {title}!!!</h1>
