@@ -1,6 +1,6 @@
 
 import './style.css'
-import { FC, ReactElement } from "react";
+import { FC, ReactElement, PropsWithChildren, ReactNode } from "react";
 
 
 /// @ LINAIRIA:
@@ -28,9 +28,11 @@ ${hiDPI(1.5)} {
 } */
 
 
+// interface ChildrenProps extends PropsWithChildren {
+
 interface ChildrenProps {
-  title: string;
-  children: any;
+  title?: string;
+  children?: ReactNode;  
 }
 
 
@@ -39,7 +41,7 @@ const App: FC<ChildrenProps> = ({ title = 'guy', children }: ChildrenProps): Rea
         <div class={app}>
             <h1>Hello World, {title}!!!</h1>
             <div className="header">111-111-1112</div>
-        
+            {children}
             {/* <Title /> */}
         </div>        
     );
