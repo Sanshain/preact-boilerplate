@@ -9,6 +9,7 @@
         "build": "rollup -c --environment NODE_ENV:production"
     },
     "dependencies": {
+        "goober": "^2.1.14",
         "polished": "^4.3.1",
         "preact": "^10.5.14"
     },

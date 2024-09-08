@@ -1,18 +1,22 @@
 //@ts-check
 
-import { styled } from '@linaria/react';
+// import { styled } from '@linaria/react';     //  still doesn't work
+
+import { styled } from 'goober';
 // import { families, sizes } from './fonts';
 
 
-const Title = styled.h1`
+const Title = styled('h6')`
   font-family: 'monospace';
+  color: green;
+  font-family: 'Calibry';  
 `;
 
 // ${families.serif};
 
-const Container = styled.div`  
+const Container = styled('div')`
   color: ${props => props.color};
-  border: 1px solid gray;
+  padding-bottom: 1px;
 
   &:hover {
     border-color: blue;
@@ -27,10 +31,10 @@ const Container = styled.div`
  
 export default function ({user = 'diar friend'}: {user: string}) {
     return <>
-        <Container color="#333">
+        <Container color="red">
 
-            <Title>Hello world, {user}</Title>
-        </Container>;
+            <Title>And have a nice day, {user}!</Title>
+        </Container>
     </>
 }
 

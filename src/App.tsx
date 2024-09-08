@@ -15,7 +15,7 @@ import { css } from '@linaria/core';
 import type { LinariaClassName } from "@linaria/core/types"
 
 // styled tag is still doesn't work:
-// import { default as Title } from "./components/Title";
+import Footer from "./components/Footer";
 
 
 /// LINARIA ADDITIONAL BUILD TIME FEATURES
@@ -56,7 +56,7 @@ function App() {
         <a style={{ color: 'green' }} target={"_blank"} href={link}>Sanshain's preact boilerplates</a>
       </p>
 
-      {/* <Title user={"Sasha"} /> */}
+      <Footer user={"friend"} />
     </div>
   );
 }
