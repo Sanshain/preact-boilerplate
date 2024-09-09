@@ -1,10 +1,19 @@
 {
     "compilerOptions": {
+        "target": "ES2016",
         "outDir": "built",
         "jsx": "react-jsx",
         "jsxImportSource": "preact",
         "allowJs": true,
         "esModuleInterop": true,
+        "plugins": [
+            {
+                "name": "typescript-plugin-css-modules",
+                "options": {
+                    "customMatcher": "\\.(c|le)ss$"
+                }
+            }
+        ],
     },
     "include": [
         // "./source/**/*.ts",

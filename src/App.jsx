@@ -4,7 +4,7 @@
 /// HOT CSS:
 
 // import './App.css';
-import './style.css'
+import style from './style.css'
 
 
 /// LINARIA: (works with goober just via importing final component from separated file)
@@ -38,7 +38,7 @@ function App () {
     return (
         <div class={'app'}>
             <h1>Hello World!!!</h1>
-            <div className="header">some content</div>
+            <div className={style.content}>some content</div>
 
         {/* <Title /> */}
         

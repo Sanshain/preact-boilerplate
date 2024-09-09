@@ -13,6 +13,8 @@ import terser from '@rollup/plugin-terser';
 import prefresh from '@prefresh/nollup';
 
 import linaria from "@linaria/rollup";
+import postcss from 'rollup-plugin-postcss-hot'
+
 
 
 /// html:
@@ -59,13 +61,23 @@ let config = {
         }),
         // It seems this one works just in memory:
         inDevelopment
-            ? hotcss({
+			? hotcss({
+				include: /_[\d\w]{6,7}.css/,
                 hot: true,
                 file: `styles.css`  // 'styles.css' works too
                 // loaders: [postCSSLoader] || ['scss', 'less', 'stylus']
             })
             // : css({ output: `styles.${hash}.css` }),
-            : css({ output: `styles.css` }),        
+			: css({ output: `styles.css` }),  
+		postcss({
+			exclude: /_[\d\w]{6,7}.css/,
+			hot: inDevelopment,                                              // hmr
+			extract: 'styles.css',    /// it could be `style/styles.css`
+			minimize: !inDevelopment,
+			modules: true,                                                   // css modules
+			namedExports: true
+			// extract: true
+		}),		
         babel({
             exclude: 'node_modules/**',
             babelHelpers: 'bundled',
