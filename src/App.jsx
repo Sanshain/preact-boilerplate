@@ -11,7 +11,7 @@ import style from './style.css'
 
 // till just with css:
 import { css } from '@linaria/core';
-import Footer from './components/Footer'; 
+import Footer from './components/Footer.jsx'; 
 
 // import { default as Title } from "./components/Title";   // styled attempts
 
@@ -19,7 +19,7 @@ import Footer from './components/Footer';
 /// GOOBER: 
 
 import { styled } from 'goober';
-import { Button } from './components/Button';
+import { Button } from './components/Button.jsx';
 
 
 /// ADDITIONAL LINARIA OPPORTUNITIES:
@@ -36,7 +36,7 @@ import { Button } from './components/Button';
 
 function App () {
     return (
-        <div class={'app'}>
+        <div class={'app'} style={{backgroundColor: 'aliceblue'}}>
             <h1>Hello World!!!</h1>
             <div className={style.content}>some content</div>
 

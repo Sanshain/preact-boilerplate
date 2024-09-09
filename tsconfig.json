@@ -6,6 +6,8 @@
         "jsxImportSource": "preact",
         "allowJs": true,
         "esModuleInterop": true,
+        "module": "NodeNext",
+        "moduleResolution": "NodeNext",
         "plugins": [
             {
                 "name": "typescript-plugin-css-modules",
