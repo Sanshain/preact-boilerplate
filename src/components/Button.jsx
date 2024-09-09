@@ -16,6 +16,7 @@ export const Icon = styled('span')`
 export const Button = styled('button')`
     background: dodgerblue;
     color: white;
+    margin-top: 1em;  
     border: ${Math.random()}px solid white;
     transition: .2s;
 

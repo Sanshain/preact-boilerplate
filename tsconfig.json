@@ -7,7 +7,7 @@
         "allowJs": true,
         "esModuleInterop": true,
         "module": "NodeNext",
-        "moduleResolution": "NodeNext",
+        "moduleResolution": "Node",
         "plugins": [
             {
                 "name": "typescript-plugin-css-modules",

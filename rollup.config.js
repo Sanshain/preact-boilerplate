@@ -72,7 +72,7 @@ let config = {
 		postcss({
 			exclude: /_[\d\w]{6,7}.css/,
 			hot: inDevelopment,                                              // hmr
-			extract: 'style.css',    /// it could be `style/styles.css`
+			// extract: 'style.css',    /// it could be `style/styles.css`
 			minimize: !inDevelopment,
 			modules: true,                                                   // css modules
 			namedExports: true

@@ -11,7 +11,7 @@ import style from './style.css'
 
 // till just with css:
 import { css } from '@linaria/core';
-import Footer from './components/Footer.jsx'; 
+import Footer from './components/Footer'; 
 
 // import { default as Title } from "./components/Title";   // styled attempts
 
@@ -38,13 +38,13 @@ function App () {
     return (
         <div class={'app'} style={{backgroundColor: 'aliceblue'}}>
             <h1>Hello World!!!</h1>
-            <div className={style.content}>some content</div>
+            <div className={style.content}>some content colored from css modules</div>
 
         {/* <Title /> */}
         
             <Button>click me</Button>
         
-            <Footer>123</Footer>
+            <Footer>linaria</Footer>
         </div>        
     );
 }
