@@ -1,7 +1,11 @@
 //@ts-check
 
-import { h } from 'preact';
-import { useRef } from 'preact/hooks';
+
+/// react aliases
+
+import React, { useRef } from 'react';
+// import { h } from 'preact';
+// import { useRef } from 'preact/hooks';
 
 
 /// cssmodules
@@ -18,6 +22,8 @@ import { Button } from "../../components/Button";
 
 import Footer from '../../components/Footer'; 
 
+
+/// nanostores
 
 
 // import { storeHandler as userStore, users$ } from '../../store/store';
@@ -40,7 +46,7 @@ const Home = () => {
 	// };
 
 
-	return <div class={style.home}>
+	return <div className={style.home}>
 
 		<h1>Home</h1>
 		<p>This is the Home component.</p>

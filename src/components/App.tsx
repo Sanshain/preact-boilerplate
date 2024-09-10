@@ -2,6 +2,7 @@
 
 import { h } from 'preact';
 import { Router, Route } from 'preact-router';
+// import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import Header from './header';
 
@@ -9,11 +10,24 @@ import Header from './header';
 import Home from '../routes/home';
 import Profile from '../routes/profile';
 
-const App = () => (
-	<div id="app">
+
+const App = () => {
+
+	const handleRoute = async e => {
+		
+		switch (e.url) {
+			case '/profile':
+				// const isAuthed = await this.isAuthenticated();
+				// if (!isAuthed) route('/', true);
+				// break;				
+		}
+		console.log(e.url)
+	};
+	
+	return <div id="app">
 		<Header />
-		<Router>
-			{/* <Home path="/" /> */}			
+		<Router onChange={handleRoute}>
+			{/* <Home path="/" /> */}
 			<Route path="/" component={Home} />
 			<Route path="/profile" component={Profile} user="me" />
 			<Route path="/profile/:user" component={Profile} />
@@ -21,6 +35,6 @@ const App = () => (
 			{/* <Profile path="/profile/:user" /> */}
 		</Router>
 	</div>
-)
+}
 
 export default App;

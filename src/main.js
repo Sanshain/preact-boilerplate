@@ -3,7 +3,8 @@
 import React, { createElement } from 'react';
 // import { createRoot } from 'react-dom/client';  // => https://react.dev/blog/2022/03/08/react-18-upgrade-guide#updates-to-client-rendering-apis
 import { render } from 'react-dom';
-import App from './App';
+// import App from './App';
+import App from './components/App';
 
 import { setup } from 'goober';
 

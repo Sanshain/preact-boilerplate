@@ -1,40 +1,27 @@
 //@ts-check
 
-// import { styled } from '@linaria/react';     //  still doesn't work
-
-import { styled } from 'goober';
-// import { families, sizes } from './fonts';
+import React from 'react';
+import { css } from '@linaria/core';
 
 
-const Title = styled('h6')`
-  font-family: 'monospace';
-  color: green;
-  font-family: 'Calibry';  
-`;
 
-// ${families.serif};
+const footer = css`
+  /* text-transform: uppercase; */
+  color: green;  
+  margin-top: 1em;
+  font-style: bold;
+  /* color: blue; */
 
-const Container = styled('div')`
-  color: ${props => props.color};
-  padding-bottom: 1px;
-
-  &:hover {
-    border-color: blue;
-  }
-
-  ${Title} {
-    margin-bottom: 24px;
+  &>a{
+    color: darkseagreen;
   }
 `;
 
-/* font-size: ${sizes.medium}px; */
- 
-export default function ({user = 'diar friend'}: {user: string}) {
-    return <>
-        <Container color="red">
 
-            <Title>And have a nice day, {user}!</Title>
-        </Container>
-    </>
+
+export default function Footer({ user, children }: { user?: string, children?: React.ReactNode }) {
+    return <div className={footer} title="based on linaria functionality">
+        
+      Welcome to {user}
+    </div>
 }
-

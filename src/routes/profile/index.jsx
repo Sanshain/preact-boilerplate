@@ -1,12 +1,26 @@
 //@ts-check
 
-import { h } from 'preact';
-import { useEffect, useState } from "preact/hooks";
+/// react aliases:
+
+import React, { useEffect, useState } from "react";
+// import { h } from 'preact';
+// import { useEffect, useState } from "preact/hooks";
+
+
+/// state manager:
+
 // import { useStore } from '@nanostores/react';
 // import { users$ } from '../../store/store';
 
 
+
+/// css modules:
+
 import style from './style.css';
+
+
+/// router:
+
 import { Link } from 'preact-router';
 
 
@@ -23,7 +37,7 @@ const Profile = ({ user }) => {
 	}, []);
 
 	return (
-		<div class={style.profile}>
+		<div className={style.profile}>
 			<h1>Profile: {user}</h1>
 			<p>This is the user profile for a user named { user }.</p>
 
