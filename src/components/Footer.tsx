@@ -22,6 +22,6 @@ const footer = css`
 export default function Footer({ user, children }: { user?: string, children?: React.ReactNode }) {
     return <div className={footer} title="based on linaria functionality">
         
-      Welcome to {user}
+      Welcome to {user || children}
     </div>
 }

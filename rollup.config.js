@@ -45,7 +45,7 @@ import { htmlInliner as inline } from 'rollup-plugin-html-inline';		// ? - look 
 
 // console.log(process.env)
 const inDevelopment = process.env.NODE_ENV === 'development';
-const production = process.env.NODE_ENV === 'production';
+const inProduction = process.env.NODE_ENV === 'production';
 
 const targetPath = 'dist';
 
@@ -135,6 +135,8 @@ let config = {
 		/// HMR
 
         inDevelopment && prefresh(),                                    // hmr
+
+        inProduction && terser(),
     ]
 }
 

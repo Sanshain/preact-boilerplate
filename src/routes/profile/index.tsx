@@ -26,7 +26,7 @@ import { Link } from 'preact-router';
 
 
 // Note: `user` comes from the URL, courtesy of our router
-const Profile = ({ user }) => {
+const Profile = ({ user }: {user?: 'me'}) => {
 	const [time, setTime] = useState(Date.now());
 	const [count, setCount] = useState(10);
 	// const users = useStore(users$);
