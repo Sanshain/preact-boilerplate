@@ -1,11 +1,30 @@
 //@ts-check
 
 import { h } from 'preact';
+import { useRef } from 'preact/hooks';
+
+
+/// cssmodules
+
 import style from './style.css';
+
+
+/// goober
+
+import { Button } from "../../components/Button";
+
+
+/// linaria
+
+import Footer from '../../components/Footer'; 
+
+
+
 // import { storeHandler as userStore, users$ } from '../../store/store';
 // import { useStore } from '@nanostores/react';
-import { useRef } from 'preact/hooks';
-// import './style.css';
+
+
+
 
 const Home = () => {
 	
@@ -18,10 +37,6 @@ const Home = () => {
 	// 		userStore.appendUser(value);
 	// 		inputRef.current['value'] = ''	
 	// 	}
-	// 	else {
-	// 		alert('too short!')
-	// 	}
-
 	// };
 
 
@@ -32,7 +47,13 @@ const Home = () => {
 
 		{/* <input ref={inputRef} placeholder='enter user name' />
 		<button onClick={addUser}>add</button> ({users.length}) */}
-			
+		
+        <Button>ckick me</Button>
+
+        <Footer>
+            <a href={"https://github.com/Sanshain/preact-boilerplate"} target={"_blank"}>Sanshain's templates</a>
+        </Footer>
+        
 	</div>
 };
 

@@ -9,7 +9,6 @@ import { useEffect, useState } from "preact/hooks";
 import style from './style.css';
 import { Link } from 'preact-router';
 
-// import './style.css';
 
 
 // Note: `user` comes from the URL, courtesy of our router
