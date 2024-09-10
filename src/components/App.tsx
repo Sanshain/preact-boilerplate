@@ -1,9 +1,9 @@
 //@ts-check
 
 // import { h } from 'preact';
-// import { Router, Route } from 'preact-router';
+import { Router, Route } from 'preact-router';
 import React, { useEffect } from "react";
-import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+// import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 
 import Header from './header';
 
@@ -27,16 +27,16 @@ const App = () => {
 
 
 	return <div id="app">
-		<BrowserRouter>		
-			<Header />
+		{/* <BrowserRouter>		 */}
+		<Header />
 			
-		{/* <Router onChange={handleRoute}>
+		<Router onChange={handleRoute}>
 			
 			<Route path="/" component={Home} />
 			<Route path="/profile" component={Profile} user="me" />
 			<Route path="/profile/:user" component={Profile} />		
 			
-		</Router> */}
+		</Router>
 
 		{/* Also possible: */}
 
@@ -44,12 +44,12 @@ const App = () => {
 		<Profile path="/profile/" user="me" />
 		<Profile path="/profile/:user" /> */}
 
-			<Routes>
+			{/* <Routes>
 				<Route index path="/" element={<Home/>} />
 				<Route path="profile" element={<Profile user="me" />} />
 				<Route path="profile/:user" element={<Profile />} />
-			</Routes>		
-		</BrowserRouter>
+			</Routes>		 */}
+		{/* </BrowserRouter> */}
 	</div>
 }
 
