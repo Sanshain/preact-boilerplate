@@ -40,7 +40,11 @@
         ],
         "react-dom/*": [
             "./node_modules/preact/compat/*"
-        ]
+        ],
+
+        "react-router": [
+            "./node_modules/preact-router/"
+        ],
     },
     "plugins": [
         {

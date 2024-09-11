@@ -81,7 +81,8 @@ let config = {
             entries: [
                 { find: 'react/hooks', replacement: 'preact/hooks' },
                 { find: 'react', replacement: 'preact/compat' },
-                { find: 'react-dom', replacement: 'preact/compat' }
+                { find: 'react-dom', replacement: 'preact/compat' },
+                { find: 'react-router', replacement: 'preact-router' },
             ]
 		}),
 
