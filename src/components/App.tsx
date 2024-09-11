@@ -1,7 +1,7 @@
 //@ts-check
 
 // import { h } from 'preact';
-import { Router, Route } from 'preact-router';
+import { Router, Route } from 'react-router';
 import React, { useEffect } from "react";
 // import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 

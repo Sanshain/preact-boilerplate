@@ -1,18 +1,77 @@
-#### Has been get started with: 
+#### These templates are based on `create-nollup-app` template
 
-```sh
-npm init nollup-app -- --name preact-app --template preact
+
+## Features
+
+- **React** compatible api (imports from react)
+- **Hot** module reloading
+- **Linaria** - out of the box (w/o styled feture and maps in hmr mode)
+- **cssmodules** based on postcss modules (works just like original css modules)
+- **goober** - tiny runtime styled components analogous
+- **typescript** support
+- **preact-router** - tiny simple equivalent for `react-router`
+- **33.9 kb** - minified template size (consisting of preact (~10kb), preact-hooks(~10kb), goober (~2kb), preact-routers(~6kb), template's code itself(~6kb))
+
+
+<br>
+
+### Getting started with `degit` or `git clone`: 
+
+
+```powershell
+degit user/Sanshain#react_ts_hmr_linaria_cssmodules_goober_preactroutes
 ```
 
+or 
 
-### Features
+```powershell
+git clone Sanshain#react_ts_hmr_linaria_cssmodules_goober_preactroutes
+```
+
+<details><summary><h4>more detailed if you don't aware of what do to next...<h4></summary>
+
+then
+
+```sh
+cd preact-boilerplate && npm i -f   # or the same due pnpm
+```
+If you initlized the app via git you should remove git history, cloned from the repo to start from scratch: 
+
+```sh
+rm -r .get && git init && git add .
+```
+
+and install all dependencies: 
+
+```sh
+npm i -f   # or the same due pnpm
+```
+
+## How to use
+
+#### Windows
+
+```sh
+npm run dev:w
+```
+
+#### Unix
+
+```sh
+npm run dev:u
+```
+
+</details>
 
 
-- **Hot** module reloading
-- **Linaria** out of the box (w/o maps in hmr mode)
+
+<br>
+<br>
+<br>
 
 
-### Cheat sheets, how to install from a scratch:
+
+## Cheat sheets, how to install from a scratch:
 
 
 - Install fixed @prefresh/nollup package with the corrected exports (created due [this service](https://gitpkg.vercel.app/about)):
@@ -72,42 +131,17 @@ npm init nollup-app -- --name preact-app --template preact
     npm i github:Sanshain/rollup-plugin-hot-css -D
     ```
 
+- Be sure you have settled option `target` inside your `tsconfig.json`, for example: 
 
-## How to use: 
+    ```json
+    "target": "es2016"
+    ```
 
-### Get started:
 
-#### via degit:
 
-```sh
-degit Sanshain/preact-boilerplate#js_hmr_html
-```
 
-#### via git: 
 
-```sh
-git clone Sanshain/preact-boilerplate#js_hmr_html && rm -r .get && git init
-```
 
-### Install deps: 
-
-```sh
-cd preact-boilerplate && npm i -f   # or the same due pnpm
-```
-
-### Develop with
-
-#### Windows
-
-```
-npm run dev:w
-```
-
-#### Unix
-
-```
-npm run dev:u
-```
 
 #### little details::
 
@@ -117,7 +151,13 @@ The command above starts nollup directly through nodejs ([why](https://github.co
 
 as usual due rollup (using `rollup -c` or `npm run rollup` or `npm run build` (no difference))
 
-### Packages destinations: 
+
+<br>
+<br>
+<br>
+<br>
+
+# Packages destinations: 
 
 ...collected by its features in the template:
 
@@ -145,3 +185,4 @@ as usual due rollup (using `rollup -c` or `npm run rollup` or `npm run build` (n
 - `rollup`
 - `rollup-plugin-static-files` (just copies static files to production dist - unneccessary)
 - `rollup-plugin-terser` (minifier)
+
