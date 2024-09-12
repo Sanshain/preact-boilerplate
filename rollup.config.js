@@ -94,6 +94,8 @@ let config = {
             extensions: ['.js', '.jsx', '.ts', '.tsx', '.json', '.css']
         }),
         inDevelopment && prefresh(),                                    // hmr
+        
+        production && terser()                                          // 
     ]
 }
 

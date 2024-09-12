@@ -4,6 +4,7 @@ import { render, h } from 'preact';
 import App from './components/App';
 
 import { setup } from 'goober';
+
 setup(h);
 
 

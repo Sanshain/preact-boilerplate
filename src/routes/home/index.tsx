@@ -11,12 +11,12 @@ import style from './style.css';
 
 /// goober
 
-import { Button } from "../../components/Button";
+import { Button } from "../../components/Button.jsx";
 
 
 /// linaria
 
-import Footer from '../../components/Footer'; 
+import Footer from '../../components/Footer.jsx'; 
 
 
 

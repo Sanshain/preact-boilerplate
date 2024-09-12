@@ -16,10 +16,10 @@ const Header = props => {
 
 	return <header class={style.header}>
 		<h1>Preact App</h1>
-		<nav>
-			<Link href="/">Home</Link>
-			<Link href="/profile">Me</Link>
-			<Link href="/profile/john">John</Link>
+		<nav>			
+			<Link activeClassName={style.active} href="/">Home</Link>
+			<Link activeClassName={style.active} href="/profile">Me</Link>
+			<Link activeClassName={style.active} href="/profile/john">John</Link>
 		</nav>
 	</header>
 }

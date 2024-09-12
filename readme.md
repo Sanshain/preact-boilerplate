@@ -6,7 +6,11 @@
 
 - **Hot** module reloading
 - **Linaria** out of the box (w/o maps in hmr mode)
-
+- **typescript** support
+- **goober** as tiny alternative of styled components
+- **preact-router** as tine router
+- **css modules** via postcss modules
+- **24kb** - minified template size (9kb - preact, 9kb - hooks, 5kb - router, 2kb - goober)
 
 
 ## How to use: 
