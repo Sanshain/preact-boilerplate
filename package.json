@@ -9,7 +9,9 @@
         "build": "rollup -c --environment NODE_ENV:production"
     },
     "dependencies": {
+        "@nanostores/preact": "^0.5.2",
         "goober": "^2.1.14",
+        "nanostores": "^0.11.3",
         "preact": "^10.5.14",
         "preact-router": "^4.1.2"
     },

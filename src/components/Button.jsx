@@ -2,6 +2,11 @@
 
 import { styled } from "goober";
 
+
+
+/// @ATTENTION hmr has stopped working on styled goober component
+
+
 const fonts = Object.freeze({
     heading: 'monospace'
 });
@@ -18,6 +23,7 @@ export const Button = styled('button')`
     color: white;
     margin-top: 1em;  
     border: ${Math.random()}px solid white;
+    padding: .5em;      
     transition: .2s;
 
     &:focus,

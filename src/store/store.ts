@@ -1,15 +1,30 @@
-// import { atom as poseStore } from 'nanostores';
+import {
+    atom as createStore,                    // for numbers, boolean, strings, arrays and sealed(!) objects
+    map as createMapStore,                  // for extensible objects
+} from 'nanostores';
 
 
 
-// export const users$ = poseStore<string[]>([])
+export const userScores$ = {
+
+    value: createStore<Record<string, number>>({
+        Me: 0,
+        John: 0
+    }),
+    
+    setScore(user: string, score: number) {
+        
+        userScores$.value.set({ ...userScores$.value.get(), [user]: score});
+    },    
+
+} as const
 
 
 
-// export const storeHandler = {
-//     appendUser(user: string) {
+export const isFriends$ = {
 
-//         users$.set([...users$.get(), user]);
-//     }
-// }
+    value: createStore<boolean>(false),
+
+    set: (v: boolean) => isFriends$.value.set(v)
+}
 

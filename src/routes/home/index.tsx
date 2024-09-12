@@ -20,15 +20,16 @@ import Footer from '../../components/Footer.jsx';
 
 
 
-// import { storeHandler as userStore, users$ } from '../../store/store';
-// import { useStore } from '@nanostores/react';
+import { userScores$, isFriends$ } from '../../store/store';
+import { useStore } from '@nanostores/preact';
 
 
 
 
 const Home = () => {
 	
-	// const users = useStore(users$);
+	const isFriends = useStore(isFriends$.value);
+
 	const inputRef = useRef(null);
 
 	// const addUser = (e) => {
@@ -48,7 +49,7 @@ const Home = () => {
 		{/* <input ref={inputRef} placeholder='enter user name' />
 		<button onClick={addUser}>add</button> ({users.length}) */}
 		
-        <Button>ckick me</Button>
+		<Button onClick={() => isFriends$.set(!!isFriends$.value)}>{isFriends ? 'Stop be friends' : 'Become friends'}</Button>
 
         <Footer>
             <a href={"https://github.com/Sanshain/preact-boilerplate"} target={"_blank"}>Sanshain's templates</a>
