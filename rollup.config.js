@@ -82,7 +82,7 @@ let config = {
                 { find: 'react/hooks', replacement: 'preact/hooks' },
                 { find: 'react', replacement: 'preact/compat' },
                 { find: 'react-dom', replacement: 'preact/compat' },
-                { find: 'react-router', replacement: 'preact-router' },
+                { find: 'wouter', replacement: 'wouter-preact' },
             ]
 		}),
 

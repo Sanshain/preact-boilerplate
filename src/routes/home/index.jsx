@@ -4,8 +4,6 @@
 /// react aliases
 
 import React, { useRef } from 'react';
-// import { h } from 'preact';
-// import { useRef } from 'preact/hooks';
 
 
 /// cssmodules

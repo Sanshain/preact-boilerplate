@@ -19,11 +19,6 @@ import React, { useEffect, useState } from "react";
 import style from './style.css';
 
 
-/// router:
-
-import { Link } from 'preact-router';
-
-
 
 // Note: `user` comes from the URL, courtesy of our router
 const Profile = ({ user }: {user?: 'me'}) => {

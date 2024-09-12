@@ -42,8 +42,8 @@
             "./node_modules/preact/compat/*"
         ],
 
-        "react-router": [
-            "./node_modules/preact-router/"
+        "wouter": [
+            "./node_modules/preact-wouter/"
         ],
     },
     "plugins": [

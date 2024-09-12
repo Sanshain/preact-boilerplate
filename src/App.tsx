@@ -3,7 +3,7 @@
 
 /// CSS MODULES:
 
-// import './style.css';
+
 import style from './style.css';
 
 
