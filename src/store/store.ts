@@ -1,15 +1,15 @@
-import { atom as poseStore } from 'nanostores';
+// import { atom as poseStore } from 'nanostores';
 
 
 
-export const users$ = poseStore<string[]>([])
+// export const users$ = poseStore<string[]>([])
 
 
 
-export const storeHandler = {
-    appendUser(user: string) {
+// export const storeHandler = {
+//     appendUser(user: string) {
 
-        users$.set([...users$.get(), user]);
-    }
-}
+//         users$.set([...users$.get(), user]);
+//     }
+// }
 

@@ -1,13 +1,13 @@
 {
     "compilerOptions": {
         "target": "ES2016",
-        "outDir": "built",
+        "outDir": "./dist/built",
         "jsx": "react-jsx",
         "jsxImportSource": "preact",
         "allowJs": true,
         "esModuleInterop": true,
         "module": "NodeNext",
-        "moduleResolution": "Node",
+        "moduleResolution": "NodeNext",
         "plugins": [
             {
                 "name": "typescript-plugin-css-modules",

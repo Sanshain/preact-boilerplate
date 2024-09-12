@@ -1,5 +1,6 @@
+//@ts-check
+
 import { render, h } from 'preact';
-// import App from './App';
 import App from './components/App';
 
 import { setup } from 'goober';

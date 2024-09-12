@@ -1,35 +1,27 @@
 //@ts-check
 
 
-/// HOT CSS:
+/// HOT CSS and CSS MODULES:
 
-// import './App.css';
+
 import style from './style.css'
 
 
 /// LINARIA: (works with goober just via importing final component from separated file)
 
-// till just with css:
-import { css } from '@linaria/core';
-import Footer from './components/Footer'; 
 
+import { css } from '@linaria/core';    // till just with css:
+import Footer from './components/Footer'; 
 // import { default as Title } from "./components/Title";   // styled attempts
 
 
 /// GOOBER: 
 
 import { styled } from 'goober';
-import { Button } from './components/Button.jsx';
+import { Button } from './components/Button';
 
 
-/// ADDITIONAL LINARIA OPPORTUNITIES:
 
-// import { modularScale, hiDPI } from 'polished';
-
-// font - size: ${ modularScale(2) };
-//   ${ hiDPI(1.5) } {
-//   font - size: ${ modularScale(2.5) };
-// }
 
 
 
@@ -40,7 +32,7 @@ function App () {
             <h1>Hello World!!!</h1>
             <div className={style.content}>some content colored from css modules</div>
 
-        {/* <Title /> */}
+            {/* <Title /> */}
         
             <Button>click me</Button>
         

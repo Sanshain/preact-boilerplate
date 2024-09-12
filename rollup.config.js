@@ -12,6 +12,7 @@ import static_files from 'rollup-plugin-static-files';
 import terser from '@rollup/plugin-terser';
 import prefresh from '@prefresh/nollup';
 
+import typescript from '@rollup/plugin-typescript';
 import linaria from "@linaria/rollup";
 import postcss from 'rollup-plugin-postcss-hot'
 
@@ -22,6 +23,7 @@ import postcss from 'rollup-plugin-postcss-hot'
 import { htmlInliner as inline } from 'rollup-plugin-html-inline';
 // import htmlTemplate from 'rollup-plugin-generate-html-template';
 // import html from '@open-wc/rollup-plugin-html';
+
 
 
 // console.log(process.env)
@@ -78,6 +80,11 @@ let config = {
 			namedExports: true
 			// extract: true
 		}),
+
+        typescript({
+            tsconfig: './tsconfig.json'
+        }),        
+
         babel({
             exclude: 'node_modules/**',
             babelHelpers: 'bundled',

@@ -1,15 +1,54 @@
-#### Has been get started with: 
 
-```sh
-npm init nollup-app -- --name preact-app --template preact
-```
-
+#### Preact template based on `create-nollup-app`
 
 ### Features
 
 
 - **Hot** module reloading
 - **Linaria** out of the box (w/o maps in hmr mode)
+
+
+
+## How to use: 
+
+### Get started:
+
+#### via degit:
+
+```sh
+degit Sanshain/preact-boilerplate#ts_hmr_linaria_goober_cssmosules_routes
+```
+
+#### via git: 
+
+```sh
+git clone Sanshain/preact-boilerplate#ts_hmr_linaria_goober_cssmosules_routes && cd preact-boilerplate && rm -r .git && git init
+```
+
+### Install dependencies: 
+
+```sh
+npm i --legacy-peer-deps
+```
+
+### Develop with
+
+#### Windows
+
+```
+npm run dev:w
+```
+
+#### Unix
+
+```
+npm run dev:u
+```
+
+### Build with
+```
+npm run build
+```
 
 
 ### Cheat sheets, how to install from a scratch:
@@ -25,6 +64,12 @@ npm init nollup-app -- --name preact-app --template preact
 
     ```sh
     npm i @linaria/rollup -D -f
+    ```
+
+    or set `legacy-peer-deps` true and not to use `--force` flag every time:
+
+    ```sh
+    npm config set legacy-peer-deps true
     ```
 
 - Install fixed `nollup` (inter alia in dev branch source-map-fast version is fixed) to drown out linaria sourcemap merging error in hmr mode (`linaria` will be without maps. Unfortunately, it's an unavoidable sacrifice). 
@@ -47,43 +92,13 @@ npm init nollup-app -- --name preact-app --template preact
     }    
     ```
 
-## How to use: 
 
-### Get started:
-
-#### via degit:
-
-```sh
-degit Sanshain/preact-boilerplate#js_hmr_html
-```
-
-#### via git: 
-
-```sh
-git clone Sanshain/preact-boilerplate#js_hmr_html && rm -r .get && git init
-```
-
-### Develop with
-
-#### Windows
-
-```
-npm run dev:w
-```
-
-#### Unix
-
-```
-npm run dev:u
-```
 
 #### little details::
 
 The command above starts nollup directly through nodejs ([why](https://github.com/nodejs/node/issues/45580)) with `--no-experimental-fetch` (`--environment` for rollup cli doesn't work (may be because of nollup, but not sure)). Else sourcemaps will think it's a browser env and will require link to `mappings.wasm`.
 
-### Build with
 
-as usual due rollup (using `rollup -c` or `npm run rollup` or `npm run build` (no difference))
 
 ### Packages destinations: 
 
