@@ -3,6 +3,8 @@
 //@ts-expect-error
 globalThis.fetch = null;
 
+import fs from "fs"
+
 import node_resolve from '@rollup/plugin-node-resolve';
 import babel from '@rollup/plugin-babel';
 import hotcss from 'rollup-plugin-hot-css';
@@ -17,7 +19,9 @@ import linaria from "@linaria/rollup";
 import postcss from 'rollup-plugin-postcss-hot'
 
 import esbuild from 'rollup-plugin-esbuild'
-
+// import { swc } from 'rollup-plugin-swc3';
+import sucrase from '@rollup/plugin-sucrase';
+import swc from '@rollup/plugin-swc';
 
 
 /// html:
@@ -50,6 +54,10 @@ const targetPath = 'dist';
 // }
 
 
+
+const swcrc = JSON.parse(fs.readFileSync('./.swcrc', 'utf8'));
+
+
 /** @_type {import('rollup').RollupOptions} */
 
 let config = {
@@ -60,6 +68,15 @@ let config = {
         assetFileNames: `[name][extname]`,        
     },
     plugins: [
+
+        swc({
+            tsconfig: './tsconfig.json',
+            ...swcrc,
+            jsc: {
+                ...swcrc.jsc
+            }
+        }),
+
         linaria({
             // sourceMap: !inDevelopment       /// <- works just with `!inDevelopment` mode (due rollup)
             sourceMap: true
@@ -84,22 +101,39 @@ let config = {
 			// extract: true
 		}),
 
-        babel({            
-            exclude: 'node_modules/**',
-            babelHelpers: 'bundled',            
-            configFile: inDevelopment ? './.dev.babelrc' : './.babelrc' // hmr           
-        }),
-
-        production
-            ? typescript({ tsconfig: './tsconfig.json' })
-            : esbuild({
-                minify: false,
-                tsconfig: './tsconfig.json',            
-            }),
 
         node_resolve({
             extensions: ['.js', '.jsx', '.ts', '.tsx', '.json', '.css']
         }),
+
+        swc({
+            swc: {
+                jsc: {
+                    parser: {
+                        syntax: 'typescript'
+                    },
+                    target: 'es2016'
+                }
+            }
+        }),
+
+        // production
+        //     ? typescript({ tsconfig: './tsconfig.json' })
+        //     : esbuild({
+        //         include: /\.[jt]sx?$/,
+        //         minify: false,
+        //         tsconfig: './tsconfig.json',
+        //         loaders: {
+        //             '.js': 'jsx'
+        //         }
+        //     }),
+
+        babel({            
+            exclude: 'node_modules/**',
+            babelHelpers: 'bundled',            
+            configFile: inDevelopment ? './.dev.babelrc' : './.babelrc' // hmr           
+        }),        
+        
 
         inDevelopment && prefresh(),                                    // hmr
         
