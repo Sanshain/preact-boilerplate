@@ -31,6 +31,7 @@
         "react-refresh": "^0.10.0",
         "rollup": "^4.17.2",
         "rollup-plugin-css-only": "^4.5.2",
+        "rollup-plugin-esbuild": "^6.1.1",
         "rollup-plugin-generate-html-template": "^1.7.0",
         "rollup-plugin-hot-css": "github:Sanshain/rollup-plugin-hot-css",
         "rollup-plugin-html-inline": "^1.0.12",
@@ -44,6 +45,8 @@
     "name": "preact-hmr-app",
     "version": "",
     "optionalDependencies": {
+        "@rollup/plugin-swc": "^0.4.0",
+        "@swc/core": "^1.7.26",
         "vite": "^5.4.4"
     }
 }

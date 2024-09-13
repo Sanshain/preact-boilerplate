@@ -13,6 +13,9 @@ import terser from '@rollup/plugin-terser';
 import prefresh from '@prefresh/nollup';
 
 import typescript from '@rollup/plugin-typescript';
+import { default as typescriptParser } from 'rollup-plugin-esbuild'
+
+
 import linaria from "@linaria/rollup";
 import postcss from 'rollup-plugin-postcss-hot'
 
@@ -81,9 +84,19 @@ let config = {
 			// extract: true
 		}),
 
-        typescript({
-            tsconfig: './tsconfig.json'
-        }),        
+        inDevelopment 
+            ? typescriptParser({
+                include: /\.[jt]sx?$/,
+                tsconfig: './tsconfig.json',
+                minify: false,
+                loaders: {
+                    '.js': 'jsx',
+                    '.ts': 'ts'
+                }
+            })
+            : typescript({
+                tsconfig: './tsconfig.json'
+            }),        
 
         babel({
             exclude: 'node_modules/**',
