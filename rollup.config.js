@@ -4,6 +4,7 @@
 globalThis.fetch = null;
 
 import fs from "fs"
+import path from "path"
 
 import node_resolve from '@rollup/plugin-node-resolve';
 import babel from '@rollup/plugin-babel';
@@ -18,7 +19,8 @@ import typescript from '@rollup/plugin-typescript';
 import linaria from "@linaria/rollup";
 import postcss from 'rollup-plugin-postcss-hot'
 
-import esbuild from 'rollup-plugin-esbuild'
+// import esbuild from 'rollup-plugin-esbuild'
+import esbuild from 'rollup-plugin-esbuild-transform'
 // import { swc } from 'rollup-plugin-swc3';
 import sucrase from '@rollup/plugin-sucrase';
 import swc from '@rollup/plugin-swc';
@@ -106,16 +108,25 @@ let config = {
             extensions: ['.js', '.jsx', '.ts', '.tsx', '.json', '.css']
         }),
 
-        swc({
-            swc: {
-                jsc: {
-                    parser: {
-                        syntax: 'typescript'
-                    },
-                    target: 'es2016'
-                }
-            }
-        }),
+        // esbuild([
+        //     {
+        //         loader: 'json'
+        //     },
+        //     {
+        //         loader: 'tsx',
+        //         legalComments: 'eof'
+        //     },
+        //     {
+        //         loader: 'ts',
+        //         include: /\.tsx?$/,
+        //         tsconfig: path.join(__dirname, 'tsconfig.json')
+        //     },
+        //     {
+        //         output: true,
+        //         minify: true,
+        //         target: 'es2015'
+        //     }
+        // ]),
 
         // production
         //     ? typescript({ tsconfig: './tsconfig.json' })
