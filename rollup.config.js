@@ -19,8 +19,8 @@ import typescript from '@rollup/plugin-typescript';
 import linaria from "@linaria/rollup";
 import postcss from 'rollup-plugin-postcss-hot'
 
-// import esbuild from 'rollup-plugin-esbuild'
-import esbuild from 'rollup-plugin-esbuild-transform'
+import esbuild from 'rollup-plugin-esbuild'
+// import esbuild from 'rollup-plugin-esbuild-transform'
 // import { swc } from 'rollup-plugin-swc3';
 import sucrase from '@rollup/plugin-sucrase';
 import swc from '@rollup/plugin-swc';
@@ -71,14 +71,6 @@ let config = {
     },
     plugins: [
 
-        swc({
-            tsconfig: './tsconfig.json',
-            ...swcrc,
-            jsc: {
-                ...swcrc.jsc
-            }
-        }),
-
         linaria({
             // sourceMap: !inDevelopment       /// <- works just with `!inDevelopment` mode (due rollup)
             sourceMap: true
@@ -128,22 +120,22 @@ let config = {
         //     }
         // ]),
 
-        // production
-        //     ? typescript({ tsconfig: './tsconfig.json' })
-        //     : esbuild({
-        //         include: /\.[jt]sx?$/,
-        //         minify: false,
-        //         tsconfig: './tsconfig.json',
-        //         loaders: {
-        //             '.js': 'jsx'
-        //         }
-        //     }),
-
         babel({            
             exclude: 'node_modules/**',
             babelHelpers: 'bundled',            
             configFile: inDevelopment ? './.dev.babelrc' : './.babelrc' // hmr           
-        }),        
+        }),
+        
+        production
+            ? typescript({ tsconfig: './tsconfig.json' })
+            : esbuild({
+                include: /\.[jt]sx?$/,
+                minify: false,
+                tsconfig: './tsconfig.json',
+                loaders: {
+                    '.js': 'jsx'
+                }
+            }),
         
 
         inDevelopment && prefresh(),                                    // hmr
