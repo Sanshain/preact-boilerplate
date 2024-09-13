@@ -34,7 +34,7 @@ interface ChildrenProps {
 }
 
 
-function App({ title = 'guy', children }: ChildrenProps): h.JSX.Element {
+function App({ title = 'budy', children }: ChildrenProps): h.JSX.Element {
     return (
         <div class={app}>
             <h1>Hello World, {title}!!!</h1>
