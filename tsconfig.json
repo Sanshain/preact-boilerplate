@@ -1,5 +1,5 @@
 {
-    "compilerOptions": {
+    "compilerOptions": {        
         "target": "ES2016",
         "outDir": "./dist/built",
         "jsx": "react-jsx",

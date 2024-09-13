@@ -16,6 +16,8 @@ import typescript from '@rollup/plugin-typescript';
 import linaria from "@linaria/rollup";
 import postcss from 'rollup-plugin-postcss-hot'
 
+import esbuild from 'rollup-plugin-esbuild'
+
 
 
 /// html:
@@ -48,6 +50,7 @@ const targetPath = 'dist';
 // }
 
 
+/** @_type {import('rollup').RollupOptions} */
 
 let config = {
     input: './src/main.js',
@@ -81,22 +84,48 @@ let config = {
 			// extract: true
 		}),
 
-        typescript({
-            tsconfig: './tsconfig.json'
-        }),
-
-        babel({
+        babel({            
             exclude: 'node_modules/**',
-            babelHelpers: 'bundled',
+            babelHelpers: 'bundled',            
             configFile: inDevelopment ? './.dev.babelrc' : './.babelrc' // hmr           
         }),
+
+        // typescript({
+        //     tsconfig: './tsconfig.json'
+        // }),
+
+        esbuild({                        
+            include: /\.[jt]sx?$/, // default, inferred from `loaders` option
+            exclude: /node_modules/, // default
+            sourceMap: true, // default
+            minify: process.env.NODE_ENV === 'production',            
+            
+            // jsx: 'transform', // default, or 'preserve'
+            // jsxFactory: 'React.createElement',
+            // jsxFragment: 'React.Fragment',
+            // Like @rollup/plugin-replace
+            // define: { __VERSION__: '"x.y.z"' },
+
+            tsconfig: './tsconfig.json',
+            // Add extra loaders
+            loaders: {
+                // Add .json files support
+                // require @rollup/plugin-commonjs
+                // '.json': 'json',
+
+                // Enable JSX in .js files too
+                // '.js': 'jsx',
+            },
+        }),        
+
         node_resolve({
             extensions: ['.js', '.jsx', '.ts', '.tsx', '.json', '.css']
         }),
+
         inDevelopment && prefresh(),                                    // hmr
         
         production && terser()                                          // 
-    ]
+    ],
 }
 
 // if (process.env.NODE_ENV === 'production') {
