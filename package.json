@@ -36,7 +36,6 @@
         "rollup-plugin-html-inline": "^1.0.12",
         "rollup-plugin-postcss-hot": "github:Sanshain/rollup-plugin-postcss-hot#dev",
         "rollup-plugin-static-files": "^0.2.0",
-        "rollup-plugin-swc": "^0.2.1",
         "shx": "^0.3.3",
         "source-map": "github:mozilla/source-map#60adcb0",
         "typescript": "^5.6.2",

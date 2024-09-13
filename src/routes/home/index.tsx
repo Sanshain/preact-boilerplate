@@ -43,7 +43,7 @@ const Home = () => {
 
 	return <div class={style.home}>
 
-		<h1>Home!!33?11d3{a}</h1>
+		<h1>Home!!</h1>
 		<p>This is the Home component.</p>
 
 		{/* <input ref={inputRef} placeholder='enter user name' />
