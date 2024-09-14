@@ -43,13 +43,13 @@ const Home = () => {
 
 	return <div class={style.home}>
 
-		<h1>Home!</h1>
+		<h1>Home!!!</h1>
 		<p>This is the Home component.</p>
 
 		{/* <input ref={inputRef} placeholder='enter user name' />
 		<button onClick={addUser}>add</button> ({users.length}) */}
 		
-		<Button onClick={() => isFriends$.set(!!isFriends$.value)}>{isFriends ? 'Stop be friends' : 'Become friends'}</Button>
+		<Button onClick={() => isFriends$.set(!isFriends$.value.get())}>{isFriends ? 'Stop be friends' : 'Become friends'}</Button>
 
         <Footer>
             <a href={"https://github.com/Sanshain/preact-boilerplate"} target={"_blank"}>Sanshain's templates</a>

@@ -34,23 +34,6 @@ const Profile = ({ user }) => {
 				{' '}
 				Clicked {count} times.
 			</p>
-
-			{user == 'me'
-				? <p>
-					<br></br>
-					<h4>User list:</h4>
-					{/* <ul>
-						{
-							users.map(u => {
-								return <li class={style.user_point}>
-									<Link href={"/profile/" + u}>{u}</Link>
-								</li>
-							})
-						}
-					</ul>					 */}
-				</p>
-				: ''
-			}
 			
 		</div>
 	);
