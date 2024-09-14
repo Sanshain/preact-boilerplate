@@ -11,13 +11,13 @@ import style from './style.css';
 
 /// goober
 
-import { Button } from "../../components/Button.jsx";
+// import { Button } from "../../components/Button.jsx";
 
 
 /// linaria
 
-import Footer from '../../components/Footer.jsx'; 
-import { a } from '../../store/store';
+// import Footer from '../../components/Footer.jsx'; 
+// import { a } from '../../store/store';
 
 
 
@@ -43,17 +43,17 @@ const Home = () => {
 
 	return <div class={style.home}>
 
-		<h1>Home!! {a} {b} 1</h1>
+		<h1>Home {b}!!</h1>
 		<p>This is the Home component.</p>
 
 		{/* <input ref={inputRef} placeholder='enter user name' />
 		<button onClick={addUser}>add</button> ({users.length}) */}
 		
-        <Button>ckick me</Button>
+        {/* <Button>ckick me</Button> */}
 
-        <Footer>
+        {/* <Footer>
             <a href={"https://github.com/Sanshain/preact-boilerplate"} target={"_blank"}>Sanshain's templates</a>
-        </Footer>
+        </Footer> */}
         
 	</div>
 };

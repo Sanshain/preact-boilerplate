@@ -8,7 +8,8 @@ import style from './style.css';
 
 // let r = '5'
 
-const Header = props => {
+
+const Header = (/** @type {{}} */ props) => {
 
 	const [ name ] = useState('cls');
 
