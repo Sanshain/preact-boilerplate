@@ -59,7 +59,7 @@ const linariaNamingPattern = /_[\d\w]{6,7}.css/;
 
 
 let config = {
-    input: './src/main.js',
+    input: './src/main.ts',
     output: {
         dir: targetPath,
         format: 'iife',
@@ -98,7 +98,7 @@ let config = {
         
         typescript({
             tsconfig: "./tsconfig.json",
-        }),        
+        }),
         
         babel({
             exclude: 'node_modules/**',
