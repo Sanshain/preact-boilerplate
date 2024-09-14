@@ -1,17 +1,16 @@
-// import { atom as poseStore } from 'nanostores';
+import { createStoreon, StoreonModule } from 'storeon'
 
 
-
-// export const users$ = poseStore<string[]>([])
-
-
-
-// export const storeHandler = {
-//     appendUser(user: string) {
-
-//         users$.set([...users$.get(), user]);
-//     }
-// }
+// import { projects } from './projects'
+// import { users } from './users'
 
 
-export const a: string = '?';
+const score: StoreonModule<{ scores: number[] }, {'score/add': number}> = function(store) {
+    store.on('@init', () => ({ scores: [] }))
+
+    store.on('score/add', ({ scores }, score) => {
+        return { scores: scores.concat([score]) }
+    })
+}
+
+export const store = createStoreon([score])
