@@ -58,8 +58,24 @@ let config = {
         dir: targetPath,
         format: 'iife',
         assetFileNames: `[name][extname]`,        
-    },
+    },    
     plugins: [
+
+
+        inDevelopment
+            ? typescriptParser({
+                include: /\.[jt]sx?$/,
+                tsconfig: './tsconfig.json',
+                minify: false,
+                loaders: {
+                    '.js': 'jsx',
+                    '.ts': 'ts'
+                }
+            })
+            : typescript({
+                tsconfig: './tsconfig.json'
+            }),        
+
         linaria({
             // sourceMap: !inDevelopment       /// <- works just with `!inDevelopment` mode (due rollup)
             sourceMap: true
@@ -83,20 +99,6 @@ let config = {
 			namedExports: true
 			// extract: true
 		}),
-
-        inDevelopment 
-            ? typescriptParser({
-                include: /\.[jt]sx?$/,
-                tsconfig: './tsconfig.json',
-                minify: false,
-                loaders: {
-                    '.js': 'jsx',
-                    '.ts': 'ts'
-                }
-            })
-            : typescript({
-                tsconfig: './tsconfig.json'
-            }),        
 
         babel({
             exclude: 'node_modules/**',
