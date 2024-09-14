@@ -16,6 +16,8 @@ import linaria from "@linaria/rollup";
 
 
 import postcss from 'rollup-plugin-postcss-hot';
+import esbuild from 'rollup-plugin-esbuild'
+
 
 
 /// ts: 
@@ -67,8 +69,37 @@ let config = {
     },
     plugins: [
 
-        // typescript(), /// <- works as well too 
+        // typescript(), /// <- works as well too
 
+        esbuild({
+            // All options are optional
+            include: /\.[jt]sx?$/, // default, inferred from `loaders` option
+            exclude: /node_modules/, // default
+            sourceMap: true, // default
+            // minify: process.env.NODE_ENV === 'production',
+            minify: false,
+            // target: 'es2017', // default, or 'es20XX', 'esnext'
+            // jsx: 'transform', // default, or 'preserve'
+            // jsxFactory: 'React.createElement',
+            // jsxFragment: 'React.Fragment',
+            // Like @rollup/plugin-replace
+            // define: {
+            //     __VERSION__: '"x.y.z"',
+            // },
+            tsconfig: 'tsconfig.json', // default
+            // Add extra loaders
+            loaders: {
+                // Add .json files support
+                // require @rollup/plugin-commonjs
+                '.json': 'json',
+                // Enable JSX in .js files too
+                '.js': 'jsx',
+            },
+        }),        
+        
+        // typescript({
+        //     tsconfig: "./tsconfig.json",
+        // }),
 
         linaria({
             // sourceMap: !inDevelopment       /// <- works just with `!inDevelopment` mode (via rollup)
@@ -93,12 +124,8 @@ let config = {
             modules: true,                                                   // css modules
             namedExports: true
             // extract: true
-        }),           
-  
-        
-        typescript({
-            tsconfig: "./tsconfig.json",
-        }),        
+        }),                
+              
         
         babel({
             exclude: 'node_modules/**',
