@@ -1,6 +1,9 @@
 
-import './style.css'
 import { ComponentChildren, h } from "preact";
+
+
+// import './style.css'
+import style from "./style.css";
 
 
 /// @ LINAIRIA:
@@ -35,14 +38,14 @@ interface ChildrenProps {
 
 
 function App({ title = 'budy', children }: ChildrenProps): h.JSX.Element {
-    return (
-        <div class={app}>
-            <h1>Hello World, {title}!!!</h1>
-            <div className="header">111-111-1112</div>
-        
-            {/* <Title /> */}
-        </div>        
-    );
+  return (
+    <div class={app}>
+      <h1>Hello World, {title}!</h1>
+      <div className={style.header}>111-111-1112</div>
+
+      {/* <Title /> */}
+    </div>
+  );
 }
 
 export default App;

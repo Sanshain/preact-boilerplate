@@ -42,6 +42,8 @@ npm init nollup-app -- --name preact-app --template preact
     npm i github:Sanshain/nollup#dev -D -f    
     ```    
 
+- Install `Sanshain/rollup-plugin-hot-css` to have support of `include` option
+
 - set global variable in public directory html head script: 
 
     ```js

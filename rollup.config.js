@@ -13,7 +13,9 @@ import terser from '@rollup/plugin-terser';
 import prefresh from '@prefresh/nollup';
 
 import linaria from "@linaria/rollup";
-import wyw from '@wyw-in-js/rollup';
+
+
+import postcss from 'rollup-plugin-postcss-hot';
 
 
 /// ts: 
@@ -52,6 +54,10 @@ const targetPath = 'dist';
 
 
 
+const linariaNamingPattern = /_[\d\w]{6,7}.css/;
+// const cssModulesNamePattern = /_module\.css/
+
+
 let config = {
     input: './src/main.js',
     output: {
@@ -61,7 +67,8 @@ let config = {
     },
     plugins: [
 
-        // typescript(), /// <- works as well too
+        // typescript(), /// <- works as well too 
+
 
         linaria({
             // sourceMap: !inDevelopment       /// <- works just with `!inDevelopment` mode (via rollup)
@@ -70,12 +77,24 @@ let config = {
         // It seems this one works just in memory:
         inDevelopment
             ? hotcss({
+                include: linariaNamingPattern,                
                 hot: true,
                 file: `styles.css`  // 'styles.css' works too
                 // loaders: [postCSSLoader] || ['scss', 'less', 'stylus']
             })
             // : css({ output: `styles.${hash}.css` }),
             : css({ output: `styles.css` }),    
+        
+        postcss({
+            exclude: linariaNamingPattern,
+            hot: inDevelopment,                                              // hmr
+            // extract: 'styles.css',    /// it could be `style/styles.css`
+            minimize: !inDevelopment,
+            modules: true,                                                   // css modules
+            namedExports: true
+            // extract: true
+        }),           
+  
         
         typescript({
             tsconfig: "./tsconfig.json",
