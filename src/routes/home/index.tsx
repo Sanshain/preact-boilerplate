@@ -25,7 +25,7 @@ import style from './style.css';
 // import { useStore } from '@nanostores/react';
 
 
-const b: string = '22';
+const b: string = 323;
 
 const Home = () => {
 	

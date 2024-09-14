@@ -69,11 +69,12 @@ let config = {
     },
     plugins: [
 
-        // typescript(), /// <- works as well too
+        /// used esbuild in development because of hmr failing on tsx files (original tsc for some reason cuts `RefreshSig` variables required for hmr)
 
-        esbuild({
+        inDevelopment && esbuild({
             // All options are optional
-            include: /\.[jt]sx?$/, // default, inferred from `loaders` option
+            include: /\.[t]sx?$/, // default, inferred from `loaders` option
+            // include: /\.[jt]sx?$/, // default, inferred from `loaders` option
             exclude: /node_modules/, // default
             sourceMap: true, // default
             // minify: process.env.NODE_ENV === 'production',
@@ -95,11 +96,12 @@ let config = {
                 // Enable JSX in .js files too
                 '.js': 'jsx',
             },
-        }),        
+        }),
         
-        // typescript({
-        //     tsconfig: "./tsconfig.json",
-        // }),
+        typescript({
+            tsconfig: "./tsconfig.json",
+            // noEmit: true,
+        }),
 
         linaria({
             // sourceMap: !inDevelopment       /// <- works just with `!inDevelopment` mode (via rollup)
