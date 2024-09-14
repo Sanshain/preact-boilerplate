@@ -11,7 +11,7 @@ import Profile from '../routes/Profile';
 
 const App = () => (
 	<div id="app">
-		<Header />		
+		<Header />
 		<Router>
 			{/* <Home path="/" /> */}			
 			<Route path="/" component={Home} />

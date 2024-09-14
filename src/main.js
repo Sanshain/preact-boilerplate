@@ -1,10 +1,7 @@
-import { render, h } from 'preact';
+import { render } from 'preact';
 // import App from './App';
 import App from './components/App';
 
 let root = document.querySelector('#app');
 
-// render(<App />, root);
-render(
-    h(App, null), root
-);
+render(<App />, root);
