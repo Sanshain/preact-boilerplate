@@ -25,7 +25,7 @@ import { a } from '../../store/store';
 // import { useStore } from '@nanostores/react';
 
 
-const b: string = '22';
+const b: string = '2';
 
 const Home = () => {
 	
@@ -43,7 +43,7 @@ const Home = () => {
 
 	return <div class={style.home}>
 
-		<h1>Home!! {a} {b} 1</h1>
+		<h1>Home {a} {b}!!!</h1>
 		<p>This is the Home component.</p>
 
 		{/* <input ref={inputRef} placeholder='enter user name' />

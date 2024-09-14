@@ -22,7 +22,7 @@ import postcss from 'rollup-plugin-postcss-hot'
 import esbuild from 'rollup-plugin-esbuild'
 // import esbuild from 'rollup-plugin-esbuild-transform'
 // import { swc } from 'rollup-plugin-swc3';
-import sucrase from '@rollup/plugin-sucrase';
+// import sucrase from '@rollup/plugin-sucrase';
 import swc from '@rollup/plugin-swc';
 
 
@@ -71,6 +71,17 @@ let config = {
     },
     plugins: [
 
+        production
+            ? typescript({ tsconfig: './tsconfig.json' })
+            : esbuild({
+                include: /\.[jt]sx?$/,
+                minify: false,
+                tsconfig: './tsconfig.json',
+                loaders: {
+                    '.js': 'jsx'
+                }
+            }),        
+
         linaria({
             // sourceMap: !inDevelopment       /// <- works just with `!inDevelopment` mode (due rollup)
             sourceMap: true
@@ -100,42 +111,11 @@ let config = {
             extensions: ['.js', '.jsx', '.ts', '.tsx', '.json', '.css']
         }),
 
-        // esbuild([
-        //     {
-        //         loader: 'json'
-        //     },
-        //     {
-        //         loader: 'tsx',
-        //         legalComments: 'eof'
-        //     },
-        //     {
-        //         loader: 'ts',
-        //         include: /\.tsx?$/,
-        //         tsconfig: path.join(__dirname, 'tsconfig.json')
-        //     },
-        //     {
-        //         output: true,
-        //         minify: true,
-        //         target: 'es2015'
-        //     }
-        // ]),
-
         babel({            
             exclude: 'node_modules/**',
             babelHelpers: 'bundled',            
             configFile: inDevelopment ? './.dev.babelrc' : './.babelrc' // hmr           
-        }),
-        
-        production
-            ? typescript({ tsconfig: './tsconfig.json' })
-            : esbuild({
-                include: /\.[jt]sx?$/,
-                minify: false,
-                tsconfig: './tsconfig.json',
-                loaders: {
-                    '.js': 'jsx'
-                }
-            }),
+        }),    
         
 
         inDevelopment && prefresh(),                                    // hmr

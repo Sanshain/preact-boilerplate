@@ -3,11 +3,11 @@
 import { h } from 'preact';
 import { Router, Route } from 'preact-router';
 
-import Header from './header';
+import Header from './Header';
 
 // Code-splitting is automated for `routes` directory
-import Home from '../routes/home';
-import Profile from '../routes/profile';
+import Home from '../routes/Home';
+import Profile from '../routes/Profile';
 
 const App = () => (
 	<div id="app">
