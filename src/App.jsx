@@ -7,17 +7,17 @@ import { useCountStore } from "./store/index";
 
 
 function App() {
-
+    
     const increase = useCountStore((state) => state.increase)
 
-    return (
+    return (  
         <div>
             <div class={style.title}>
                 <h1>Hello World!!!</h1>
                 <div className={style.header}>111-111-122</div>
             </div>
             <Title />
-            <button onClick={increase}>increment</button>
+            <button onClick={increase}>increment</button>        
         </div>
     );
 }
