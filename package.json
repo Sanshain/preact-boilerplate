@@ -15,7 +15,8 @@
         "preact": "^10.5.14",
         "preact-router": "^4.1.2",
         "react-redux": "^9.1.2",
-        "redux": "^5.0.1"
+        "redux": "^5.0.1",
+        "valtio": "^2.0.0"
     },
     "devDependencies": {
         "@babel/core": "^7.15.5",

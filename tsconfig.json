@@ -6,6 +6,7 @@
         "jsxImportSource": "preact",
         "allowJs": true,
         "esModuleInterop": true,
+        "allowArbitraryExtensions": true,
         "module": "ES2015",
         "moduleResolution": "Node",        
         "plugins": [
