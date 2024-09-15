@@ -1,8 +1,6 @@
-#### Has been get started with: 
+#### Based on `create-nollup-app`
 
-```sh
-npm init nollup-app -- --name preact-app --template preact
-```
+# Not recommended because jotai takes 26 minified kb (excluding `preact-compat`)
 
 ### Cheat sheets, how to install from a scratch:
 
