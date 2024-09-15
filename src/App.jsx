@@ -1,7 +1,11 @@
 import style from './style.module.css'
 
+import { useEffect } from "preact/hooks";
 
-function App () {
+function App() {
+    
+    useEffect(() => console.log('effect'), [])
+
     return (
         <div class={style.title}>
             <h1>Hello World!!!</h1>

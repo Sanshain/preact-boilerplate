@@ -1,8 +1,10 @@
-#### Has been get started with: 
+#### Based on `npm init nollup-app -- --template preact` 
 
-```sh
-npm init nollup-app -- --name preact-app --template preact
-```
+### Features: 
+
+- HMR
+- cssmodules
+- **13kb** - minified template size
 
 ### Cheat sheets, how to install from a scratch:
 
