@@ -10,6 +10,7 @@
     },
     "dependencies": {
         "goober": "^2.1.14",
+        "nanostores": "^0.11.3",
         "polished": "^4.3.1",
         "preact": "^10.5.14",
         "preact-router": "^4.1.2",
@@ -22,7 +23,8 @@
         "@emotion/react": "^11.11.4",
         "@open-wc/rollup-plugin-html": "^1.2.5",
         "@wyw-in-js/babel-preset": "^0.5.3",
-        "@wyw-in-js/rollup": "^0.5.3"
+        "@wyw-in-js/rollup": "^0.5.3",
+        "vite": "^5.4.5"
     },
     "devDependencies": {
         "@babel/core": "^7.15.5",
@@ -30,6 +32,7 @@
         "@linaria/babel-preset": "^5.0.4",
         "@linaria/react": "^6.2.1",
         "@linaria/rollup": "^5.0.4",
+        "@nanostores/react": "^0.7.3",
         "@prefresh/babel-plugin": "^0.5.1",
         "@prefresh/nollup": "https://gitpkg.now.sh/Sanshain/prefresh/packages/nollup?main",
         "@rollup/plugin-alias": "^5.1.0",

@@ -10,7 +10,7 @@
 - **goober** - tiny runtime styled components analogous
 - **typescript** support
 - **preact-router** - tiny simple equivalent for `react-router`
-- **32 kb** - minified template size (consisting of preact (~10kb), preact-hooks(~10kb), goober (~2kb), preact-wouter(~4kb), template's code itself(~6kb))
+- **32 kb** - minified template size (consisting of preact (~10kb), preact-hooks(~10kb), preact-compat (6kb), goober (~2kb), preact-wouter(~4kb))
 
 
 <br>
