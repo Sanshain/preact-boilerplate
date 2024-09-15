@@ -1,9 +1,13 @@
 import style from './style.module.css'
 
+import { useEffect } from 'preact/hooks'
 
 const a: string = 'aaa';
 
-function App () {
+function App() {
+    
+    useEffect(() => console.log('effect'), []);
+
     return (
         <div class={style.title}>
             <h1>Hello World, {a}!!</h1>
