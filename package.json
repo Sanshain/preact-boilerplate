@@ -9,9 +9,12 @@
         "build": "rollup -c --environment NODE_ENV:production"
     },
     "dependencies": {
+        "@reduxjs/toolkit": "^2.2.7",
         "goober": "^2.1.14",
         "preact": "^10.5.14",
-        "preact-router": "^4.1.2"
+        "preact-router": "^4.1.2",
+        "react-redux": "^9.1.2",
+        "redux": "^5.0.1"
     },
     "devDependencies": {
         "@babel/core": "^7.15.5",
@@ -33,6 +36,7 @@
         "nollup": "github:Sanshain/nollup#fix",
         "react-refresh": "^0.10.0",
         "rollup": "^4.17.2",
+        "rollup-plugin-commonjs-alternate": "^0.8.0",
         "rollup-plugin-css-only": "^4.5.2",
         "rollup-plugin-esbuild": "^6.1.1",
         "rollup-plugin-esbuild-transform": "^1.5.0",
@@ -51,7 +55,9 @@
     "version": "",
     "optionalDependencies": {
         "@babel/preset-typescript": "^7.24.7",
+        "@rollup/plugin-commonjs": "^26.0.1",
         "rollup-plugin-commonjs-alternate": "^0.8.0",
+        "use-sync-external-store": "^1.2.2",
         "vite": "^5.4.4"
     }
 }

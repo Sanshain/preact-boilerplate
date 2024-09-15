@@ -2,12 +2,17 @@
 
 import { h } from 'preact';
 import { useEffect, useState } from "preact/hooks";
-// import { useStore } from '@nanostores/react';
-// import { users$ } from '../../store/store';
 
+/// @ redux:
+
+// import { incremented, globalStore, GlobalState } from '../../store/store';
+// import { useSelector, useDispatch, TypedUseSelectorHook } from 'react-redux'
+
+
+/// @ css modules:
 
 import style from './style.css';
-import { Link } from 'preact-router';
+
 
 
 
@@ -15,8 +20,17 @@ import { Link } from 'preact-router';
 const Profile = ({ user }) => {
 	const [time, setTime] = useState(Date.now());
 	const [count, setCount] = useState(10);
+	
+	// const globalCount = useSelector.withTypes<ReturnType<typeof globalStore['getState']>>()
+	// const useAppSelector: TypedUseSelectorHook<GlobalState> = useSelector
+
+	
+	// const globalCount = useSelector<GlobalState>(state => state.counter.value)
+	// const dispatch = useDispatch()
+
 	// const users = useStore(users$);
 
+	/// @ timer:
 	useEffect(() => {		
 		let timer = setInterval(() => setTime(Date.now()), 1000);
 		return () => clearInterval(timer);
@@ -30,27 +44,17 @@ const Profile = ({ user }) => {
 			<div>Current time: {new Date(time).toLocaleString()}</div>
 
 			<p>
-				<button onClick={() => setCount((count) => count + 1)}>Click Me</button>
+				<button onClick={() => {
+					setCount((count) => count + 1)
+					// dispatch(incremented())
+				}}>
+					Increment
+				</button>
 				{' '}
 				Clicked {count} times.
+				<br />
+				{/* Total clicked {globalCount} */}
 			</p>
-
-			{user == 'me'
-				? <p>
-					<br></br>
-					<h4>User list:</h4>
-					{/* <ul>
-						{
-							users.map(u => {
-								return <li class={style.user_point}>
-									<Link href={"/profile/" + u}>{u}</Link>
-								</li>
-							})
-						}
-					</ul>					 */}
-				</p>
-				: ''
-			}
 			
 		</div>
 	);

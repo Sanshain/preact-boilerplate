@@ -17,7 +17,6 @@ import { Button } from "../../components/Button.jsx";
 /// linaria
 
 import Footer from '../../components/Footer.jsx'; 
-import { a } from '../../store/store';
 
 
 
@@ -43,7 +42,7 @@ const Home = () => {
 
 	return <div class={style.home}>
 
-		<h1>Home {a} {b}!!!</h1>
+		<h1>Home {b}!!!</h1>
 		<p>This is the Home component.</p>
 
 		{/* <input ref={inputRef} placeholder='enter user name' />
