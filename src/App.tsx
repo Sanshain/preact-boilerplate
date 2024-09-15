@@ -1,14 +1,11 @@
 import style from './style.module.css'
 
 import Title from "./components/Title";
-
-import { useCountStore } from "./store/index";
-
+import { state } from './store';
 
 
 function App() {
-
-    const increase = useCountStore((state) => state.increase)
+    
 
     return (
         <div>
@@ -17,7 +14,7 @@ function App() {
                 <div className={style.header}>111-111-122</div>
             </div>
             <Title />
-            <button onClick={increase}>increment</button>
+            <button onClick={() => state.count++}>increment</button>
         </div>
     );
 }

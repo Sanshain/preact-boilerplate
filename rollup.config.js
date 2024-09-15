@@ -36,6 +36,10 @@ import postcss from 'rollup-plugin-postcss-hot'
 
 
 
+import commonjs from "@rollup/plugin-commonjs";
+// import commonjs from "rollup-plugin-commonjs-alternate";
+
+
 // import htmlTemplate from 'rollup-plugin-generate-html-template'; // or rollup-plugin-html-inline
 
 
@@ -86,10 +90,11 @@ const config = {
                 './**/*.css'
             ]
         }),        
-
+        
         node_resolve({
             extensions: ['.js', '.jsx', '.ts', '.tsx', '.json', '.css']
         }),
+        commonjs(),
         
         //@ts-expect-errorz
         inDevelopment && prefresh(),                                          // hmr

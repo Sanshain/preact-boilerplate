@@ -1,7 +1,3 @@
-import { create } from 'zustand'
+import { proxy, useSnapshot } from 'valtio'
 
-export const useCountStore = create((set) => ({
-    count: 0,
-    increase: () => set((state) => ({ count: state.count + 1 })),
-    reset: () => set({ count: 0 }),
-}))
+export const state = proxy({ count: 0, text: 'hello' })

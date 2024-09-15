@@ -3,6 +3,7 @@
     "scripts": {
         "clean": "shx rm -rf dist",
         "rollup": "rollup -c",
+        "dev": "node --no-experimental-fetch ./node_modules/nollup/lib/cli.js --environment NODE_ENV:development",
         "start": "nollup -c --environment NODE_ENV:development",
         "build": "rollup -c --environment NODE_ENV:production"
     },
@@ -22,12 +23,15 @@
         "@prefresh/nollup": "https://gitpkg.now.sh/Sanshain/prefresh/packages/nollup?main",
         "@rollup/plugin-alias": "^5.1.0",
         "@rollup/plugin-babel": "^6.0.4",
+        "@rollup/plugin-commonjs": "^26.0.1",
         "@rollup/plugin-node-resolve": "^15.2.3",
         "@rollup/plugin-terser": "^0.4.4",
         "@rollup/plugin-typescript": "^11.1.6",
+        "@types/node": "^22.5.5",
         "nollup": "github:Sanshain/nollup",
         "react-refresh": "^0.10.0",
         "rollup": "^4.17.2",
+        "rollup-plugin-commonjs-alternate": "^0.8.0",
         "rollup-plugin-css-only": "^4.5.2",
         "rollup-plugin-hot-css": "^0.5.1",
         "rollup-plugin-html-inline": "^1.0.12",

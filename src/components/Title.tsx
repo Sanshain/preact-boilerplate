@@ -1,10 +1,8 @@
-import { useCountStore } from "../store/index";
+import { state } from "../store";
 
-export default function Title() {
-
-    const value = useCountStore((state) => state.value)
+export default function Title() {    
 
     return <h3>
-        There are {value} counts
+        There are {state} counts
     </h3>
 }
