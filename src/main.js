@@ -1,8 +1,21 @@
-import { render } from 'preact';
+//@ts-check
+
+// import { render } from 'preact';
+
+import React from 'react';
+import { createRoot } from 'react-dom/client';
+
 import App from './App';
 
-let root = document.querySelector('#app');
+const rootNode = document.querySelector('#app');
 
-// document.body.appendChild(root);
+if (rootNode) {
+    const root = createRoot(rootNode);
+    root.render(<App />, );
+}
+else {
+    console.error(`rootNode is not found`)
+}
 
-render(<App />, root);
+
+

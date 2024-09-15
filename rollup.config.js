@@ -11,6 +11,11 @@ import babel from '@rollup/plugin-babel';
 import typescript from '@rollup/plugin-typescript';
 
 
+/// react
+
+import alias from '@rollup/plugin-alias';
+
+
 /** 
 * `rollup-plugin-hot-css` i couldn't force to work with postcss as well as with css-only
 *   But they works togather quite harmoniously (moved to optional dependencies)
@@ -53,7 +58,13 @@ const config = {
         assetFileNames: `[name][extname]`,   
     },
     plugins: [
-
+        alias({
+            entries: [
+                { find: 'react/hooks', replacement: 'preact/hooks' },
+                { find: 'react', replacement: 'preact/compat' },
+                { find: 'react-dom', replacement: 'preact/compat' }
+            ]
+        }),
         // It seems this one works just in memory:
         postcss({
             hot: inDevelopment,                                              // hmr
