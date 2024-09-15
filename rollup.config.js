@@ -24,8 +24,9 @@ import esbuild from 'rollup-plugin-esbuild'
 // import { swc } from 'rollup-plugin-swc3';
 // import sucrase from '@rollup/plugin-sucrase';
 // import swc from '@rollup/plugin-swc';
+
 // import commonjs from '@rollup/plugin-commonjs';
-import commonjs from 'rollup-plugin-commonjs-alternate';
+// import commonjs from 'rollup-plugin-commonjs-alternate';
 
 
 /// html:
@@ -111,16 +112,6 @@ let config = {
         node_resolve({
             // browser: true,
             extensions: ['.js', '.jsx', '.ts', '.tsx', '.json', '.css'],
-        }),
-        commonjs({
-            // ignoreGlobal: true,
-            // include: [
-            //     /use\-sync\-external\-store/,
-            //     /@reduxjs/
-            // ]
-            // namedExports: {
-            //     // './node_modules/use-sync-external-store/index.js'
-            // }
         }),        
 
         babel({            

@@ -1,12 +1,14 @@
-//@ts-check
+// @ ts-check
 
 import { h } from 'preact';
 import { useEffect, useState } from "preact/hooks";
 
-/// @ redux:
 
-// import { incremented, globalStore, GlobalState } from '../../store/store';
-// import { useSelector, useDispatch, TypedUseSelectorHook } from 'react-redux'
+/// @ zustand:
+
+
+import { countAtom } from '../../store/store';
+import { useAtom } from 'jotai/react';
 
 
 /// @ css modules:
@@ -16,10 +18,16 @@ import style from './style.css';
 
 
 
+
+
+
 // Note: `user` comes from the URL, courtesy of our router
 const Profile = ({ user }) => {
+
 	const [time, setTime] = useState(Date.now());
 	const [count, setCount] = useState(10);
+	const [globalCount, setGlobalCount] = useAtom(countAtom);
+
 	
 	// const globalCount = useSelector.withTypes<ReturnType<typeof globalStore['getState']>>()
 	// const useAppSelector: TypedUseSelectorHook<GlobalState> = useSelector
@@ -46,7 +54,7 @@ const Profile = ({ user }) => {
 			<p>
 				<button onClick={() => {
 					setCount((count) => count + 1)
-					// dispatch(incremented())
+					// setGlobalCount(count => count + 1)
 				}}>
 					Increment
 				</button>
