@@ -35,8 +35,13 @@ import prefresh from '@prefresh/nollup';
 import postcss from 'rollup-plugin-postcss-hot'
 
 
+/// state managment (valtio):
 
-import commonjs from "@rollup/plugin-commonjs";
+import replace from '@rollup/plugin-replace'
+
+
+
+// import commonjs from "@rollup/plugin-commonjs";
 // import commonjs from "rollup-plugin-commonjs-alternate";
 
 
@@ -69,6 +74,13 @@ const config = {
                 { find: 'react-dom', replacement: 'preact/compat' }
             ]
         }),
+
+        replace({
+            'import.meta.env': '(0)',
+            'import.meta.env.MODE': 'undefined',
+            preventAssignment: true
+        }),
+
         // It seems this one works just in memory:
         postcss({
             hot: inDevelopment,                                              // hmr
@@ -94,9 +106,9 @@ const config = {
         node_resolve({
             extensions: ['.js', '.jsx', '.ts', '.tsx', '.json', '.css']
         }),
-        commonjs(),
+        // commonjs(),
         
-        //@ts-expect-errorz
+        //@ts-expect-error
         inDevelopment && prefresh(),                                          // hmr
     ],
 
