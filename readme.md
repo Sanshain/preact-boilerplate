@@ -1,53 +1,134 @@
-# preact-rollup bolilerplate
+
+#### Preact template based on `create-nollup-app`
+
+### Features
 
 
+- **Hot** module reloading
+- **Linaria** out of the box (w/o maps in hmr mode)
+- **typescript** support
+- **goober** as tiny alternative of styled components
+- **preact-router** as tine router
+- **css modules** via postcss modules
+- **28kb** - minified template size (9kb - preact, 9kb - hooks, 5kb - router, 4kb - nanostores, 1kb - goober)
 
-## Features: 
 
-- Usage styled components via [`goober`](https://www.npmjs.com/package/goober) with minimal runtime (look [`App.jsx`](https://github.com/Sanshain/preact-boilerplate/blob/main/source/App.jsx)) 
-- Isolated styles via postcss modules (like `react-css-modules`)
-- Typescript out of the box (`ts-config` branch)
-- `preact-routers` out of the box
-- prerender out of the box
+## How to use: 
 
-- Created on Preact 10.* + Rollup 2.* + Babel 7 template for SPAs.
+### Get started:
 
-## Setup
+#### via degit:
 
-1. Clone the repo
 ```sh
-git clone https://github.com/Sanshain/preact-boilerplate.git && cd project-templates
+degit Sanshain/preact-boilerplate#ts_hmr_linaria_goober_cssmosules_routes
 ```
 
-2. Install the deps
+#### via git: 
+
 ```sh
-npm i
+git clone Sanshain/preact-boilerplate#ts_hmr_linaria_goober_cssmosules_routes && cd preact-boilerplate && rm -r .git && git init
 ```
 
-3. Compile
+### Install dependencies: 
+
 ```sh
-rollup -c
+npm i --legacy-peer-deps
+```
+
+### Develop with
+
+#### Windows
+
+```
+npm run dev:w
+```
+
+#### Unix
+
+```
+npm run dev:u
+```
+
+### Build with
+```
+npm run build
 ```
 
 
-## Prerender (SSR) usage:
-
-- Change `options.prerender` to `true` 
-- Apply `rollup -c` => will created init.js inside `realese` folder
-- apply `node init` => will created `prerender.html` in the same folder
+### Cheat sheets, how to install from a scratch:
 
 
-## CLI
+- Install fixed @prefresh/nollup package with the corrected exports (created due [this service](https://gitpkg.vercel.app/about)):
 
-### `npm start`
+    ```sh
+    npm install 'https://gitpkg.now.sh/Sanshain/prefresh/packages/nollup?main' -D
+    ```
 
-Launch a dev server at `localhost:3000` and reload on file changes.
+- Install `@linaria/rollup` with force flag (inapproproiate peer debendencies with `@linaria/rollup` package (it seems so), but I couldn't find out where is it inside linaria repository):
 
-### `npm run build`
+    ```sh
+    npm i @linaria/rollup -D -f
+    ```
 
-Build a production bundle in `release` folder.
+    or set `legacy-peer-deps` true and not to use `--force` flag every time:
 
-### `npm run serve`
+    ```sh
+    npm config set legacy-peer-deps true
+    ```
 
-Serve production assets on localhost.
+- Install fixed `nollup` (inter alia in dev branch source-map-fast version is fixed) to drown out linaria sourcemap merging error in hmr mode (`linaria` will be without maps. Unfortunately, it's an unavoidable sacrifice). 
 
+    ```sh
+    npm i github:Sanshain/nollup#fix -D -f    
+    ```
+    or might to choice dev branch  as well: 
+    ```sh
+    npm i github:Sanshain/nollup#dev -D -f    
+    ```    
+
+- set global variable in public directory html head script: 
+
+    ```js
+    window.process = {
+        env: {
+            NODE_ENV: undefined
+        }
+    }    
+    ```
+
+
+
+#### little details::
+
+The command above starts nollup directly through nodejs ([why](https://github.com/nodejs/node/issues/45580)) with `--no-experimental-fetch` (`--environment` for rollup cli doesn't work (may be because of nollup, but not sure)). Else sourcemaps will think it's a browser env and will require link to `mappings.wasm`.
+
+
+
+### Packages destinations: 
+
+...collected by its features in the template:
+
+## JSX compilation: 
+
+- `@rollup/plugin-babel`
+- `@babel/core`
+- `@babel/plugin-transform-react-jsx`
+
+## HMR:
+
+- `@prefresh/nollup`
+- `@prefresh/babel-plugin` ([recomended for hooks](https://github.com/Sanshain/prefresh/tree/main/packages/nollup#using-hooks))
+- `nollup`
+- `react-refresh`
+- `rollup-plugin-hot-css` (hot reloading for css)
+
+
+## Code building (it's default): 
+
+- `@rollup/plugin-node-resolve`
+
+## Production compilation: 
+
+- `rollup`
+- `rollup-plugin-static-files` (just copies static files to production dist - unneccessary)
+- `rollup-plugin-terser` (minifier)

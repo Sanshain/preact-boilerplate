@@ -1,96 +1,127 @@
 //@ts-check
-import babel from 'rollup-plugin-babel'
 
-import { terser } from 'rollup-plugin-terser'
-import resolve from 'rollup-plugin-node-resolve'
-import livereload from 'rollup-plugin-livereload'
-import serve from 'rollup-plugin-serve'
-import typescript from 'rollup-plugin-typescript2';
+//@ts-expect-error
+globalThis.fetch = null;
 
-import alias from '@rollup/plugin-alias';
-import es3 from 'rollup-plugin-es3';
-import css from 'rollup-plugin-css-only';
-import postcss from 'rollup-plugin-postcss'
-import commonjs from "@rollup/plugin-commonjs";
-// import postcss from 'rollup-plugin-postcss'
+import node_resolve from '@rollup/plugin-node-resolve';
+import babel from '@rollup/plugin-babel';
+import hotcss from 'rollup-plugin-hot-css';
+import css from 'rollup-plugin-css-only'
 
+import static_files from 'rollup-plugin-static-files';
+import terser from '@rollup/plugin-terser';
+import prefresh from '@prefresh/nollup';
 
-import { execSync } from "child_process";
-import fs from "fs";
-import path from "path";
+import typescript from '@rollup/plugin-typescript';
+import { default as typescriptParser } from 'rollup-plugin-esbuild'
 
 
-const dist = 'release'
-// const production = !process.env.ROLLUP_WATCH
-let production = false;
-const development = !production
-
-const options = {
-	prerender: false,
-	source: {
-		file: 'index__prer'
-	},
-	target: {
-		dirname: dist,
-		ssr: 'init'
-	}
-}
+import linaria from "@linaria/rollup";
+import postcss from 'rollup-plugin-postcss-hot'
 
 
-export default {
-	input: `source/${options.prerender ? options.source.file : 'index'}.js`,
-	output: {
-		file: `${dist}/${options.prerender ? options.target.ssr : 'bundle'}.js`,
-		format: 'iife',
-		sourcemap: true
-	},
-	plugins: [
-		alias({
-			entries: [
-				{ find: 'react/hooks', replacement: 'preact/hooks' },
-				{ find: 'react', replacement: 'preact/compat' },
-				{ find: 'react-dom', replacement: 'preact/compat' }
-			]
-		}),
-		resolve({
-			browser: true,
-			extensions: ['.js', '.jsx', '.ts', '.tsx', '.json']
-		}),
-		development && serve({
-			open: true,
-			port: 3000,
-			contentBase: dist,
-			historyApiFallback: true
-		}),
-		// development && livereload({
-		// 	watch: dist
-		// }),
-		babel({
-			exclude: 'node_modules/**'
-		}),
-		// typescript({
-		// 	typescript: require('typescript')
-		// }),				
-		commonjs(),
-		es3(),
-		// css({ output: 'style/bundle.css', minimize: production }),
-		// css({ output: false }),
+
+/// html:
+
+import { htmlInliner as inline } from 'rollup-plugin-html-inline';
+// import htmlTemplate from 'rollup-plugin-generate-html-template';
+// import html from '@open-wc/rollup-plugin-html';
+
+
+
+// console.log(process.env)
+const inDevelopment = process.env.NODE_ENV === 'development';
+const production = process.env.NODE_ENV === 'production';
+
+const targetPath = 'dist';
+
+// console.log('inDevelopment', inDevelopment)
+
+// console.log(process.env.NODE_OPTIONS)
+
+
+// let autoprefixer = require('autoprefixer')
+// let postcss = require('postcss')
+// function postCSSLoader(input, id) {
+//     return postcss([autoprefixer]).process(input.code).then(res => {
+//         return {
+//             code: res.css
+//         };
+//     });
+// }
+
+
+
+let config = {
+    input: './src/main.js',
+    output: {
+        dir: targetPath,
+        format: 'iife',
+        assetFileNames: `[name][extname]`,        
+    },    
+    plugins: [
+
+
+        inDevelopment
+            ? typescriptParser({
+                include: /\.[jt]sx?$/,
+                tsconfig: './tsconfig.json',
+                minify: false,
+                loaders: {
+                    '.js': 'jsx',
+                    '.ts': 'ts'
+                }
+            })
+            : typescript({
+                tsconfig: './tsconfig.json'
+            }),        
+
+        linaria({
+            // sourceMap: !inDevelopment       /// <- works just with `!inDevelopment` mode (due rollup)
+            sourceMap: true
+        }),
+        // It seems this one works just in memory:
+        inDevelopment
+			? hotcss({
+				include: /_[\d\w]{6,7}.css/,
+                hot: true,
+                file: `styles.css`  // 'styles.css' works too
+                // loaders: [postCSSLoader] || ['scss', 'less', 'stylus']
+            })
+            // : css({ output: `styles.${hash}.css` }),
+			: css({ output: `styles.css` }),  
 		postcss({
-			extract: 'style/bundle.css',
-			minimize: production,
-			modules: true
+			exclude: /_[\d\w]{6,7}.css/,
+			hot: inDevelopment,                                              // hmr
+			// extract: 'style.css',    /// it could be `style/styles.css`
+			minimize: !inDevelopment,
+			modules: true,                                                   // css modules
+			namedExports: true
+			// extract: true
 		}),
-		production && terser()
-	]
+
+        babel({
+            exclude: 'node_modules/**',
+            babelHelpers: 'bundled',
+            configFile: inDevelopment ? './.dev.babelrc' : './.babelrc' // hmr           
+        }),
+        node_resolve({
+            extensions: ['.js', '.jsx', '.ts', '.tsx', '.json', '.css']
+        }),
+        inDevelopment && prefresh(),                                    // hmr
+        
+        production && terser()                                          // 
+    ]
 }
 
+// if (process.env.NODE_ENV === 'production') {
+//     config.plugins = config.plugins.concat([
+//         //@ts-expect-error
+//         static_files({
+//             include: ['./dist']
+//         }),
+//         terser()
+//     ]);
+// }
 
-if (options.prerender) {
-
-	const file = path.resolve(__dirname, options.target.dirname, options.target.ssr + '.js');
-	if (fs.existsSync(file)) {
-
-		execSync(`cd ${dist} && node ` + options.target.ssr);
-		console.log('prerender finished');
-	}
-}
+export default config;
