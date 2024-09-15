@@ -31,6 +31,9 @@ import prefresh from '@prefresh/nollup';
 // import postcss from 'rollup-plugin-postcss'
 import postcss from 'rollup-plugin-postcss-hot'
 
+import alias from "@rollup/plugin-alias";
+import replace from "@rollup/plugin-replace";
+
 
 
 // import htmlTemplate from 'rollup-plugin-generate-html-template'; // or rollup-plugin-html-inline
@@ -54,20 +57,19 @@ const config = {
     },
     plugins: [
 
-        // It seems this one works just in memory:
-        postcss({
-            hot: inDevelopment,                                              // hmr
-            extract: 'styles.css',        /// it could be `style/styles.css` as well
-            minimize: !inDevelopment,
-            modules: true,                                                   // css modules
-            namedExports: true
-            // extract: true
+        alias({
+            entries: [
+                { find: 'react/hooks', replacement: 'preact/hooks' },
+                { find: 'react', replacement: 'preact/compat' },
+                { find: 'react-dom', replacement: 'preact/compat' }
+            ]
         }),
-        babel({
-            exclude: 'node_modules/**',
-            babelHelpers: 'bundled',
-            configFile: inDevelopment ? './.dev.babelrc' : './.babelrc'      // hmr           
+        replace({
+            'import.meta.env': '(0)',
+            'import.meta.env.MODE': undefined,
+            preventAssignment: true
         }),
+
 
         !inDevelopment
             ? typescript({
@@ -93,6 +95,21 @@ const config = {
                 },
             }),
 
+
+        // It seems this one works just in memory:
+        postcss({
+            hot: inDevelopment,                                              // hmr
+            extract: 'styles.css',        /// it could be `style/styles.css` as well
+            minimize: !inDevelopment,
+            modules: true,                                                   // css modules
+            namedExports: true
+            // extract: true
+        }),
+        babel({
+            exclude: 'node_modules/**',
+            babelHelpers: 'bundled',
+            configFile: inDevelopment ? './.dev.babelrc' : './.babelrc'      // hmr           
+        }),
 
 
         node_resolve({
