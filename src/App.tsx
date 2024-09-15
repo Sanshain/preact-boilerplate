@@ -1,11 +1,13 @@
 import style from './style.module.css'
 
-import Title from "./components/Title";
-import { state } from './store';
+// import Title from "./components/Title";
+// import { state } from './store/index';
 
+import { useEffect } from "preact/hooks";
 
 function App() {
     
+    useEffect(() => console.log('effect'), [])
 
     return (
         <div>
@@ -13,8 +15,8 @@ function App() {
                 <h1>Hello World!!!</h1>
                 <div className={style.header}>111-111-122</div>
             </div>
-            <Title />
-            <button onClick={() => state.count++}>increment</button>
+            {/* <Title /> */}
+            {/* <button onClick={() => state.count++}>increment</button> */}
         </div>
     );
 }
