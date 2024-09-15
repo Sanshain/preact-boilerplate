@@ -7,9 +7,9 @@ import { useEffect, useState } from "preact/hooks";
 /// @ zustand:
 
 
-import { globalState } from '../../store/store';
+import { globalCount } from '../../store/store';
 // import { useSnapshot } from 'valtio/react';
-import { useSnapshot } from 'valtio/react';
+// import { useSnapshot } from 'valtio/react';
 // import { useAtom } from 'jotai';
 
 
@@ -28,7 +28,7 @@ const Profile = ({ user }) => {
 
 	const [time, setTime] = useState(Date.now());
 	const [count, setCount] = useState(10);	
-	const snap = useSnapshot(globalState);
+	// const snap = useSnapshot(globalState);
 	
 	// const globalCount = useSelector.withTypes<ReturnType<typeof globalStore['getState']>>()
 	// const useAppSelector: TypedUseSelectorHook<GlobalState> = useSelector
@@ -56,14 +56,16 @@ const Profile = ({ user }) => {
 				<button onClick={() => {
 					setCount((count) => count + 1)
 					// setGlobalCount(count => count + 1)
-					globalState.count++;
+					globalCount.value++;
+					// globalState.count++;
 				}}>
 					Increment
 				</button>
 				{' '}
 				Clicked {count} times.
 				<br />
-				Total clicked {snap.count}
+				<hr />
+				Total clicked {globalCount}
 			</p>
 			
 		</div>

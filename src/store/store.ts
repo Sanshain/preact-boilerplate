@@ -1,7 +1,5 @@
-// import { atom } from 'jotai'
+import { signal } from "@preact/signals";
 
-// export const countAtom = atom(0)
+/// works like valtio's proxy state managment
 
-import { proxy, useSnapshot } from 'valtio'
-
-export const globalState = proxy({ count: 0, text: 'hello' })
+export const globalCount = signal(10);  
