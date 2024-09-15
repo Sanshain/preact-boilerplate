@@ -15,6 +15,7 @@ function App() {
             <h1>Hello World!!!</h1>
             <Title />
             <div className={style.header}>111-111-122</div>
+            <hr />
             <button onClick={e => setCount(c => c + 1)}>Increase</button>
         </div>
     );

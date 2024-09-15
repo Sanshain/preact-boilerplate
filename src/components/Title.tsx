@@ -5,7 +5,7 @@ export function Title() {
 
     const [count, setCount] = useAtom(countAtom)
 
-    return <h3>
+    return <h3 style={{color: 'brown'}}>
         Total counts is {count}
     </h3>
 }

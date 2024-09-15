@@ -9,11 +9,15 @@ import babel from '@rollup/plugin-babel';
 
 // import jsx from 'acorn-jsx';
 import typescript from '@rollup/plugin-typescript';
-
+import esbuild from 'rollup-plugin-esbuild'
 
 /// react
 
 import alias from '@rollup/plugin-alias';
+
+/// jotai state managment:
+
+import replace from '@rollup/plugin-replace'
 
 
 /** 
@@ -44,7 +48,7 @@ const inDevelopment = process.env.NODE_ENV === 'development';
 const targetPath = 'dist';
 
 
-inDevelopment && console.log('in development mode')
+
 
 
 /**
@@ -65,6 +69,36 @@ const config = {
                 { find: 'react-dom', replacement: 'preact/compat' }
             ]
         }),
+
+        replace({
+            'import.meta.env': '(0)',
+            'import.meta.env.MODE': 'undefined',
+            preventAssignment: true
+        }),
+
+        inDevelopment 
+            ? esbuild({
+                // All options are optional
+                include: /\.[jt]sx?$/, // default, inferred from `loaders` option
+                exclude: /node_modules/, // default                
+                minify: false,                
+                tsconfig: 'tsconfig.json', // default
+                // Add extra loaders
+                loaders: {
+                    // Add .json files support
+                    // require @rollup/plugin-commonjs
+                    // '.json': 'json',
+                    // Enable JSX in .js files too
+                    '.js': 'jsx',
+                },
+            })
+            : typescript({
+                tsconfig: './tsconfig.json',
+                exclude: [
+                    './**/*.css'
+                ]
+            }),  
+
         // It seems this one works just in memory:
         postcss({
             hot: inDevelopment,                                              // hmr
@@ -78,14 +112,7 @@ const config = {
             exclude: 'node_modules/**',
             babelHelpers: 'bundled',
             configFile: inDevelopment ? './.dev.babelrc' : './.babelrc'      // hmr           
-        }),
-
-        typescript({
-            tsconfig: './tsconfig.json',            
-            exclude: [
-                './**/*.css'
-            ]
-        }),        
+        }),      
 
         node_resolve({
             extensions: ['.js', '.jsx', '.ts', '.tsx', '.json', '.css']
