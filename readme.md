@@ -1,8 +1,12 @@
-#### Has been get started with: 
+#### Preact template based on `create-nollup-app`
 
-```sh
-npm init nollup-app -- --name preact-app --template preact
-```
+### Features
+
+- hmr 
+- cssmodules 
+- zustand state manager (with aliases to react)
+- `28 kb` - initial template's size
+
 
 ### Cheat sheets, how to install from a scratch:
 
@@ -26,6 +30,16 @@ npm init nollup-app -- --name preact-app --template preact
     ```
     npm i Sanshain/nollup -D
     ```
+- Using `zustand` requires some react hooks absented in preact. So we should use `preact-compat`. For this purpose install `@rollup/plugin-alias` and append aliases into our rollup config: 
+    ```js
+    alias({
+        entries: [
+            { find: 'react/hooks', replacement: 'preact/hooks' },
+            { find: 'react', replacement: 'preact/compat' },
+            { find: 'react-dom', replacement: 'preact/compat' }
+        ]
+    }),          
+    ```
 
 
 ## How to use: 
@@ -35,13 +49,13 @@ npm init nollup-app -- --name preact-app --template preact
 #### via degit:
 
 ```sh
-degit Sanshain/preact-boilerplate#js_hmr_html
+degit Sanshain/preact-boilerplate#js_hmr_cssmodules_zustand
 ```
 
 #### via git: 
 
 ```sh
-git clone Sanshain/preact-boilerplate#js_hmr_html && rm -r .get && git init
+git clone Sanshain/preact-boilerplate#js_hmr_cssmodules_zustand && cd preact-boilerplate && rm -r .git && git init
 ```
 
 ### Step 2: install
@@ -102,4 +116,4 @@ npm i --verbose
 ### Troubles: 
 
 - **Uncaught ReferenceError: $RefreshReg$ is not defined** - prefresh plugin is not included plugin to rollup config whereas `"@prefresh/babel-plugin"` is on.
-- **Cannot use 'import.meta' outside a module** - use patched version of `rollup-plugin-postcss-hot` from [there](https://github.com/Sanshain/rollup-plugin-postcss-hot).
+- **Cannot use 'import.meta' outside a module** - use patched version of `rollup-plugin-postcss-hot` from [there](https://github.com/Sanshain/rollup-plugin-postcss-hot) 

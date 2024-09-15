@@ -12,18 +12,27 @@ import babel from '@rollup/plugin-babel';
 // import hotcss from 'rollup-plugin-hot-css';
 // import css from 'rollup-plugin-css-only'
 
+
 /// prod
 
 import static_files from 'rollup-plugin-static-files';
 import terser from '@rollup/plugin-terser';
 
+
 /// hmr:
 
 import prefresh from '@prefresh/nollup';
-// import postcss from 'rollup-plugin-postcss'
-import postcss from 'rollup-plugin-postcss-hot'
 
 
+/// cssmodules and hmr:
+
+
+import postcss from 'rollup-plugin-postcss-hot' // import postcss from 'rollup-plugin-postcss'
+
+
+/// zustand
+
+import alias from '@rollup/plugin-alias';
 
 // import htmlTemplate from 'rollup-plugin-generate-html-template'; // or rollup-plugin-html-inline
 
@@ -44,6 +53,13 @@ let config = {
         assetFileNames: `[name][extname]`
     },
     plugins: [
+        alias({
+            entries: [
+                { find: 'react/hooks', replacement: 'preact/hooks' },
+                { find: 'react', replacement: 'preact/compat' },
+                { find: 'react-dom', replacement: 'preact/compat' }
+            ]
+        }),        
         // It seems this one works just in memory:
         postcss({
             hot: inDevelopment,                                              // hmr
