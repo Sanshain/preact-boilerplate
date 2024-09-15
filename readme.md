@@ -5,7 +5,7 @@
 - hmr 
 - cssmodules 
 - zustand state manager (with aliases to react)
-- `28 kb` - initial template's size
+- `27 kb` - initial template's size
 
 
 ### Cheat sheets, how to install from a scratch:
