@@ -4,9 +4,13 @@ import Title from "./components/Title";
 
 import { useCountStore } from "./store/index";
 
+import { useEffect } from "preact/hooks";
+
 
 
 function App() {
+
+    useEffect(() => console.log('effect'), []);
 
     const increase = useCountStore((state) => state.increase)
 
