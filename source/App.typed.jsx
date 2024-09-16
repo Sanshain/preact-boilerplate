@@ -14,12 +14,12 @@ import { useEffect } from 'preact/hooks';
 
 import { h, Fragment } from 'preact';
 
-// import { useSelector, useDispatch } from 'react-redux'
-// import { Provider } from 'react-redux'
-// import { store } from './redux/index'
-// import { incremented } from './redux/index'
+import { useSelector, useDispatch } from 'react-redux'
+import { Provider } from 'react-redux'
+import { store } from './redux/index'
+import { incremented } from './redux/index'
 
-// import Title from './components/Title'
+import Title from './components/Title'
 
 /// typescript
 
@@ -34,7 +34,7 @@ const App = ({ nameTitle, children }, context) => {
 
   useEffect(() => console.log('effect'))
 
-  // const dispatch = useDispatch()
+  const dispatch = useDispatch()
 
   console.log(context)
 
@@ -46,8 +46,8 @@ const App = ({ nameTitle, children }, context) => {
             <h4 style={{ color: 'blueviolet' }}>
               Ready to build something amazing?
             </h4>
-            {/* <Title /> */}
-            {/* <button onClick={() => dispatch(incyremented())}>increment</button> */}
+            <Title />
+            <button onClick={() => dispatch(incremented())}>increment</button>
             <hr />
             <a href="https://github.com/natemoo-re/microsite/tree/main/docs">Read the docs</a> to get started.          
         </p>
