@@ -1,6 +1,58 @@
 {
 	"compilerOptions": {
-	  "jsx": "react-jsx",
-	  "jsxImportSource": "preact"
-	}
- }
+		"target": "ES5",
+		"outDir": "./release/built",
+		"jsx": "react-jsx",
+		"rootDir": "./source",
+		// "jsx": "preserve",
+		"jsxImportSource": "preact",
+		// "jsxFactory": "React.createElement",
+		"allowJs": true,
+		"strict": false,
+		"esModuleInterop": true,		
+		"moduleResolution": "Node",
+		"module": "ES2020",
+		"plugins": [
+			{
+				"name": "typescript-plugin-css-modules",
+				"options": {
+					"classnameTransform": "dashes",
+					"customMatcher": "\\.module\\.css$",
+					// "customRenderer": "./myRenderer.js",
+					"dotenvOptions": {},
+					"postcssOptions": {},
+					"rendererOptions": {}
+				}				
+			}
+		],
+		// to preact/compat (https://preactjs.com/guide/v10/typescript/#typescript-preactcompat-configuration):
+		"skipLibCheck": true,
+		"baseUrl": "./",		
+		"paths": {
+			"react": [
+				"./node_modules/preact/compat/"
+			],
+			"react/jsx-runtime": [
+				"./node_modules/preact/jsx-runtime"
+			],
+			"react-dom": [
+				"./node_modules/preact/compat/"
+			],
+			"react-dom/*": [
+				"./node_modules/preact/compat/*"
+			]
+		}		
+	},
+	"include": [
+		// "./source/**/*.js",
+		// "./source/**/*.jsx",
+		// "./source/**/*.css"
+
+		// "./source/**/*.ts",
+		// "./source/**/*.tsx",
+		// "./source/redux/**/.ts",		
+
+		"./source/**/*",
+		// "node_modules/**/*"
+	]
+}

@@ -3,7 +3,7 @@
 // @ts-ignore
 // import { useState } from 'react/hooks'
 
-import type { StateUpdater } from 'preact/hooks'
+import type { Dispatch, StateUpdater } from 'preact/hooks'
 
 type UseState = (<S>(initialState: S | (() => S)) => [S, StateUpdater<S>])
 
@@ -35,7 +35,7 @@ export function useStateStore(_useState: UseState) : [unknown, StateUpdater<unkn
 
 export function useStore<T extends keyof Store>(key: T, init_value?: T | (() => T), uState? : UseState) : [
 	Store[T], 
-	StateUpdater<Store[T]>
+	Dispatch<StateUpdater<Store[T]>>
 ]	
 
 /**
@@ -55,7 +55,7 @@ export function useStore<T>(key: string, init_value?: T | (() => T), uState? : U
 // export function useStore<Store>(key: keyof Store, init_value?: Store | (() => Store), uState? : UseState) : [
 // 	Store[keyof Store], 
 // 	StateUpdater<Store[keyof Store]>
-// ]	
+// ]
 
 /**
  * @param {{ [x: string]: any; count?: number; }} init_dict

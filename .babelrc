@@ -1,20 +1,27 @@
 {
   "presets": [
     [
-      "@babel/env", {
-        "modules": false
-      },
-		"@babel/react"
+      "@babel/preset-env",
+      {
+        // "modules": false
+        // "targets": {
+        //   "chrome": "50",
+        //   "ie": "11"
+        // }
+        "targets": "> 0.25%, not dead"
+      }
+      // "@babel/react"
     ]
   ],
   "plugins": [
     [
       "@babel/transform-react-jsx",
       {
-        "pragma":"h", 
-		  "pragmaFrag": "Fragment"
+        // "pragma": "h",
+        // "pragmaFrag": "Fragment",
+        "runtime": "automatic",
+        "importSource": "preact"   
       }
     ]
   ]
-
 }
