@@ -59,10 +59,7 @@ export default {
 				{ find: 'react-dom', replacement: 'preact/compat' }
 			]
 		}),
-		resolve({
-			browser: true,			
-			extensions: ['.js', '.jsx', '.ts', '.tsx', '.json', '.css']
-		}),
+
 		development && serve({
 			open: true,
 			port: 3000,
@@ -72,6 +69,16 @@ export default {
 		development && livereload({
 			watch: distPath
 		}),
+
+		typescript({
+			tsconfig: "./tsconfig.json",
+			// compilerOptions: {
+			// 	lib: ["es5", "es6", "dom"],
+			// 	target: "es5"
+			// 	// typescript: require('typescript')
+			// }
+		}),
+
 		postcss({
 			// include: [
 			// 	'./source/**/*.css'
@@ -81,25 +88,22 @@ export default {
 			modules: true,
 			// extract: true
 		}),				
+
 		// css({ output: 'style/bundle.css' }),
 		/// for jsx
-		// babel({
-		// 	exclude: 'node_modules/**',
-		// 	babelHelpers: 'bundled'
-		// }),
-		jsx({ factory: 'React.createElement' }),
-		typescript({
-			tsconfig: "./tsconfig.json",			
-			// compilerOptions: {
-			// 	lib: ["es5", "es6", "dom"],
-			// 	target: "es5"
-			// 	// typescript: require('typescript')
-			// }
+		babel({
+			exclude: 'node_modules/**',
+			babelHelpers: 'bundled'
 		}),
+		// jsx({ factory: 'React.createElement' }),
+
 		commonjs(),
 		// es3(),
-
-		// production && terser()
+		resolve({
+			browser: true,
+			extensions: ['.js', '.jsx', '.ts', '.tsx', '.json', '.css']
+		}),
+		production && terser()
 	],
 	/**
 	 * @typedef {{

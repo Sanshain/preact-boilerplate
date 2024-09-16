@@ -21,6 +21,6 @@ const counterSlice = createSlice({
 
 export const { incremented, decremented } = counterSlice.actions
 
-const store = configureStore({
+export const store = configureStore({
     reducer: counterSlice.reducer
 })
