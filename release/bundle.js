@@ -16,7 +16,7 @@
   var App = function (_a, context) {
       var nameTitle = _a.nameTitle;
       console.log(context);
-      return (u(k$1, { children: u("main", { children: [u("h1", { className: style.title, children: [nameTitle, "!!"] }), u("p", { children: ["Ready to build something amazing?", u("a", { href: "https://github.com/natemoo-re/microsite/tree/main/docs", children: "Read the docs" }), " to get started."] })] }) }));
+      return (u(k$1, { children: u("main", { children: [u("h1", { className: style.title, children: [nameTitle, "!!"] }), u("p", { children: [u("h4", { style: { color: 'blueviolet' }, children: "Ready to build something amazing?" }), u("hr", {}), u("a", { href: "https://github.com/natemoo-re/microsite/tree/main/docs", children: "Read the docs" }), " to get started."] })] }) }));
   };
 
   //@ts-check
