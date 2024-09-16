@@ -1,28 +1,29 @@
-import { createSlice, configureStore } from '@reduxjs/toolkit'
+import { createStore } from 'redux'
 
+/**
+ * This is a reducer - a function that takes a current state value and an
+ * action object describing "what happened", and returns a new state value.
+ * A reducer's function signature is: (state, action) => newState
+ *
+ * The Redux state should contain only plain JS objects, arrays, and primitives.
+ * The root state value is usually an object. It's important that you should
+ * not mutate the state object, but return a new object if the state changes.
+ *
+ * You can use any conditional logic you want in a reducer. In this example,
+ * we use a switch statement, but it's not required.
+ */
 
+type Actions = { type: 'counter.increment' | 'counter.decrement' | 'counter.reset'}
 
-const counterSlice = createSlice({
-    name: 'counter',
-    initialState: {
-        value: 0
-    },
-    reducers: {
-        incremented: state => {
-            // Redux Toolkit allows us to write "mutating" logic in reducers. It
-            // doesn't actually mutate the state because it uses the Immer library,
-            // which detects changes to a "draft state" and produces a brand new
-            // immutable state based off those changes
-            state.value += 1
-        },
-        decremented: state => {
-            state.value -= 1
-        }
+function counterReducer(state = { value: 0 }, action: Actions) {
+    switch (action.type) {
+        case 'counter.increment': return { value: state.value + 1 }
+        case 'counter.decrement': return { value: state.value - 1 }        
+        default:
+            return state
     }
-})
+}
 
-export const { incremented, decremented } = counterSlice.actions
-
-export const store = configureStore({
-    reducer: counterSlice.reducer
-})
+// Create a Redux store holding the state of your app.
+// Its API is { subscribe, dispatch, getState }.
+export const store = createStore(counterReducer)
