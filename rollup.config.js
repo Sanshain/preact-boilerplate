@@ -60,25 +60,6 @@ export default {
 			]
 		}),
 
-		development && serve({
-			open: true,
-			port: 3000,
-			contentBase: distPath,
-			historyApiFallback: true
-		}),
-		development && livereload({
-			watch: distPath
-		}),
-
-		typescript({
-			tsconfig: "./tsconfig.json",
-			// compilerOptions: {
-			// 	lib: ["es5", "es6", "dom"],
-			// 	target: "es5"
-			// 	// typescript: require('typescript')
-			// }
-		}),
-
 		postcss({
 			// include: [
 			// 	'./source/**/*.css'
@@ -93,7 +74,10 @@ export default {
 		/// for jsx
 		babel({
 			exclude: 'node_modules/**',
-			babelHelpers: 'bundled'
+			babelHelpers: 'bundled',
+			presets: [
+				['@babel/preset-env', { targets: 'ie 10' },],
+			]			
 		}),
 		// jsx({ factory: 'React.createElement' }),
 
@@ -103,6 +87,26 @@ export default {
 			browser: true,
 			extensions: ['.js', '.jsx', '.ts', '.tsx', '.json', '.css']
 		}),
+
+		typescript({
+			tsconfig: "./tsconfig.json",
+			// compilerOptions: {
+			// 	lib: ["es5", "es6", "dom"],
+			// 	target: "es5"
+			// 	// typescript: require('typescript')
+			// }
+		}),		
+
+		development && serve({
+			open: true,
+			port: 3000,
+			contentBase: distPath,
+			historyApiFallback: true
+		}),
+		development && livereload({
+			watch: distPath
+		}),
+
 		production && terser()
 	],
 	/**

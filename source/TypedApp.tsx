@@ -12,7 +12,7 @@ import { useEffect } from 'preact/hooks';
 
 /// redux
 
-import { h, Fragment } from 'preact';
+// import { h, Fragment } from 'preact';
 
 import { useSelector, useDispatch } from 'react-redux'
 import { Provider } from 'react-redux'
@@ -28,6 +28,7 @@ import Title from './components/Title'
 
 /// jsx 
 
+let a: number = 0;
 
 // const App: FC<Props> = ({ nameTitle, children }, context?: unknown) => {
 const App = ({ nameTitle, children }, context) => {

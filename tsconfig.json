@@ -1,12 +1,17 @@
 {
 	"compilerOptions": {
-		"outDir": "built",
-		// "jsx": "react-jsx",
-		"jsx": "preserve",
+		"target": "ES5",
+		"outDir": "./release/built",
+		"jsx": "react-jsx",
+		"rootDir": "./source",
+		// "jsx": "preserve",
 		"jsxImportSource": "preact",
 		// "jsxFactory": "React.createElement",
 		"allowJs": true,
+		"strict": false,
 		"esModuleInterop": true,		
+		"moduleResolution": "Node",
+		"module": "ES2020",
 		"plugins": [
 			{
 				"name": "typescript-plugin-css-modules",
@@ -39,11 +44,15 @@
 		}		
 	},
 	"include": [
-		// "./source/**/*.ts",
 		// "./source/**/*.js",
 		// "./source/**/*.jsx",
-		// "./source/**/*.tsx",
 		// "./source/**/*.css"
-		"./source/**/*"
+
+		// "./source/**/*.ts",
+		// "./source/**/*.tsx",
+		// "./source/redux/**/.ts",		
+
+		"./source/**/*",
+		// "node_modules/**/*"
 	]
 }
