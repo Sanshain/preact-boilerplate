@@ -1,4 +1,5 @@
-import { createStore, combineReducers } from 'redux'
+import { createStore, combineReducers, applyMiddleware } from 'redux'
+import { middlewareLogger } from 'source/middleware/logger'
 
 /**
  * This is a reducer - a function that takes a current state value and an
@@ -42,10 +43,22 @@ function usersReducer(state: { value: string } = { value: undefined }, action: U
 export const counterStore = createStore(counterReducer)
 
 const rootReducer = combineReducers({
+    user: usersReducer,
     counter: counterReducer,
-    user: usersReducer
 })
 
-export const store = createStore(rootReducer);
+
+export const store = createStore(rootReducer, applyMiddleware(
+    middlewareLogger
+));
+
+
+
+// export type GlobalStore = typeof store;
+
+export type ReducerStateType = Parameters<typeof rootReducer>[0];
+export type RootAction = CountActions | UsersActions;
+export type GlobalStore = ReturnType<typeof createStore<ReducerStateType, RootAction>>;
+
 
 
