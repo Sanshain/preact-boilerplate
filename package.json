@@ -9,6 +9,8 @@
         "build": "rollup -c --environment NODE_ENV:production"
     },
     "dependencies": {
+        "@reatom/core": "^3.9.0",
+        "@reatom/npm-react": "^3.8.10",
         "goober": "^2.1.14",
         "polished": "^4.3.1",
         "preact": "^10.5.14",
@@ -22,7 +24,8 @@
         "@emotion/react": "^11.11.4",
         "@open-wc/rollup-plugin-html": "^1.2.5",
         "@wyw-in-js/babel-preset": "^0.5.3",
-        "@wyw-in-js/rollup": "^0.5.3"
+        "@wyw-in-js/rollup": "^0.5.3",
+        "vite": "^5.4.6"
     },
     "devDependencies": {
         "@babel/core": "^7.15.5",

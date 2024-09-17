@@ -27,27 +27,23 @@ import Footer from '../../components/Footer';
 // import { storeHandler as userStore, users$ } from '../../store/store';
 // import { useStore } from '@nanostores/react';
 
-
+import { useAtom } from "@reatom/npm-react";	
+import { numberAtom } from "../../store/store";
 
 
 const Home = () => {
 	
 	// const users = useStore(users$);
-	const inputRef = useRef(null);
+	// const inputRef = useRef(null);
 
-	// const addUser = (e) => {
-	// 	const value = inputRef.current['value'];
-	// 	if (value.length) {
-	// 		userStore.appendUser(value);
-	// 		inputRef.current['value'] = ''	
-	// 	}
-	// };
-
+	const [ globalCount, ] = useAtom(numberAtom)
 
 	return <div className={style.home}>
 
 		<h1>Home</h1>
 		<p>This is the Home component.</p>
+
+		<p>Total clicked {globalCount}</p>
 
 		{/* <input ref={inputRef} placeholder='enter user name' />
 		<button onClick={addUser}>add</button> ({users.length}) */}
