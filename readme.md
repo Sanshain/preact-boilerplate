@@ -13,6 +13,7 @@
 - [ ] `preact-routers` out of the box
 - [x] tuned tsconfig out of the box
 - **37kb** - initial template's size with redux (19kb - redux & react-redux, 5kb - compat, 13kb - preact & hooks)
+- **40kb** - the same template with combineReducers
 
 ### TODO:
 
