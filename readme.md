@@ -12,7 +12,7 @@
 - [ ] goober instead of styled components: Usage styled components via [`goober`](https://www.npmjs.com/package/goober) redices runtime (look [`App.jsx`](https://github.com/Sanshain/preact-boilerplate/blob/main/source/App.jsx)) to few kbs, but with state supports as opposed to css modules
 - [ ] `preact-routers` out of the box
 - [x] tuned tsconfig out of the box
-- **66kb** - initial template's size with redux (48kb - redux toolkit, 5kb - compat, 13kb - preact & hooks)
+- **37kb** - initial template's size with redux (19kb - redux & react-redux, 5kb - compat, 13kb - preact & hooks)
 
 ### TODO:
 
