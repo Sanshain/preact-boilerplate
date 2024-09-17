@@ -43,14 +43,16 @@ const App = ({ nameTitle, children }, context) => {
     <>
       <main>
         <h1 className={style.title}>{nameTitle}!!</h1>
-        <p>          
-            <h4 style={{ color: 'blueviolet' }}>
-              Ready to build something amazing?
-            </h4>
-            <Title />
-            <button onClick={() => store.dispatch({type: 'counter.increment', value: store.getState()})}>increment</button>
-            <hr />
-            <a href="https://github.com/natemoo-re/microsite/tree/main/docs">Read the docs</a> to get started.          
+        <p>
+          <h4 style={{ color: 'blueviolet' }}>
+            Ready to build something amazing?
+          </h4>
+          <Title />
+          <button onClick={() => store.dispatch({ type: 'counter.increment', value: store.getState() /* magic: works w/o *.counter.value */ })}>
+            increment
+          </button>          
+          <hr />
+          <a href="https://github.com/natemoo-re/microsite/tree/main/docs">Read the docs</a> to get started.
         </p>
       </main>
     </>

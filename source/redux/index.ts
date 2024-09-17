@@ -1,4 +1,4 @@
-import { createStore } from 'redux'
+import { createStore, combineReducers } from 'redux'
 
 /**
  * This is a reducer - a function that takes a current state value and an
@@ -13,9 +13,9 @@ import { createStore } from 'redux'
  * we use a switch statement, but it's not required.
  */
 
-type Actions = { type: 'counter.increment' | 'counter.decrement' | 'counter.reset'}
+type CountActions = { type: 'counter.increment' | 'counter.decrement' | 'counter.reset' }
 
-function counterReducer(state = { value: 0 }, action: Actions) {
+function counterReducer(state = { value: 0 }, action: CountActions) {
     switch (action.type) {
         case 'counter.increment': return { value: state.value + 1 }
         case 'counter.decrement': return { value: state.value - 1 }        
@@ -24,6 +24,28 @@ function counterReducer(state = { value: 0 }, action: Actions) {
     }
 }
 
+
+type UsersActions = { type: 'login' | 'logout' }
+
+function usersReducer(state: { value: string } = { value: undefined }, action: UsersActions) {
+    switch (action.type) {
+        case 'login': return { value: state.value }
+        case 'logout': return { value: undefined }
+        default:
+            return state
+    }
+}
+
+
 // Create a Redux store holding the state of your app.
 // Its API is { subscribe, dispatch, getState }.
-export const store = createStore(counterReducer)
+export const counterStore = createStore(counterReducer)
+
+const rootReducer = combineReducers({
+    counter: counterReducer,
+    user: usersReducer
+})
+
+export const store = createStore(rootReducer);
+
+
