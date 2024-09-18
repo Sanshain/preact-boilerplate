@@ -3,7 +3,13 @@
 - typescript
 - css modules 
 - reatom
-- **35kb** - built via esbuilt (reatom - 8kb, 15kb - compat, 13kb - preact+hooks)
+- **31kb** - built via esbuilt (reatom/core+react - 13kb, 5kb - compat, 13kb - preact+hooks), 
+- + **10-12kb** - onUpdate,withCache,reatomAsync from reatom/framework
+
+### Notes: 
+
+- use `rollup-plugin-commonjs-alternate` instead of standard `@rollup/plugin-commonjs`. Last one throws error
+
 
 ## Features: 
 

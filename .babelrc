@@ -1,20 +1,22 @@
 {
-  "presets": [
-    [
-      "@babel/env",
-      {
-        "modules": false
-      },
-      "@babel/react"
-    ]
-  ],
-  "plugins": [
-    [
-      "@babel/transform-react-jsx",
-      {
-        "pragma": "h",
-        "pragmaFrag": "Fragment"
-      }
-    ]
-  ]
+	"presets": [
+		[
+			"@babel/env",
+			{
+				"modules": false
+			},
+			"@babel/react"
+		]
+	],
+	"plugins": [
+		[
+			"@babel/transform-react-jsx",
+			{
+				// "pragma": "h",
+				// "pragmaFrag": "Fragment",
+				"runtime": "automatic",
+				"importSource": "preact"
+			}
+		]
+	]
 }

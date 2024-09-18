@@ -15,7 +15,8 @@ import alias from '@rollup/plugin-alias';
 import css from 'rollup-plugin-css-only';
 // import postcss from 'rollup-plugin-postcss-modules'
 import postcss from 'rollup-plugin-postcss'
-import commonjs from "@rollup/plugin-commonjs";
+// import commonjs from "@rollup/plugin-commonjs";
+import commonjs from "rollup-plugin-commonjs-alternate";
 
 
 import { execSync } from "child_process";
@@ -83,11 +84,11 @@ export default {
 		}),				
 		// css({ output: 'style/bundle.css' }),
 		/// for jsx
-		// babel({
-		// 	exclude: 'node_modules/**',
-		// 	babelHelpers: 'bundled'
-		// }),
-		jsx({ factory: 'React.createElement' }),
+		babel({
+			exclude: 'node_modules/**',
+			babelHelpers: 'bundled'
+		}),
+		// jsx({ factory: 'React.createElement' }),
 		typescript({
 			tsconfig: "./tsconfig.json",			
 			// compilerOptions: {
