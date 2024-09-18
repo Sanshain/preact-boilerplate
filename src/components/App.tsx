@@ -13,6 +13,9 @@ import Home from '../routes/home';
 import Profile from '../routes/profile';
 
 
+import Observable from "../store/index";
+
+
 const App = () => {
 
 	return <div id="app">
@@ -31,3 +34,4 @@ const App = () => {
 }
 
 export default App;
+// export default Observable(App);

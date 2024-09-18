@@ -137,6 +137,7 @@ npm run dev:u
     "target": "es2016"
     ```
 
+- Install `use-sync-external-store` because it is used within `react-rxjs` and use `rollup-plugin-commonjs-alternate` as commonjs plugin withon rollup config
 
 
 

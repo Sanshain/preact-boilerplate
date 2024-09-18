@@ -24,6 +24,8 @@ import { modularScale, hiDPI } from 'polished';
 
 
 
+import Observable from "./store/index";
+
 
 
 const fonts = {
@@ -44,7 +46,7 @@ const title: LinariaClassName = css`
 
 
 
-function App() {
+function App({ query, onChangeQuery }) {
 
   const link = "https://github.com/Sanshain/preact-boilerplate";
 
@@ -54,6 +56,8 @@ function App() {
       <p className={style.content}>
         <span>Welcome to </span>
         <a style={{ color: 'green' }} target={"_blank"} href={link}>Sanshain's preact boilerplates</a>
+        <h3>Total clicks {query}</h3>
+        <button onChange={e => onChangeQuery(query + 1)}>increase</button>
       </p>
 
       <Footer user={"friend"} />
@@ -61,4 +65,5 @@ function App() {
   );
 }
 
-export default App;
+// export default App;
+export default Observable(App);

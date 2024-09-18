@@ -36,6 +36,11 @@ import static_files from 'rollup-plugin-static-files';		// copies static files f
 import terser from '@rollup/plugin-terser';					// just for production
 
 
+/// rxjs:
+
+import commonjs from "rollup-plugin-commonjs-alternate";
+
+
 /// HTML
 
 import { htmlInliner as inline } from 'rollup-plugin-html-inline';		// ? - look on appropriate called branch - is it surely useful?
@@ -128,7 +133,8 @@ let config = {
             babelHelpers: 'bundled',
             configFile: inDevelopment ? './.dev.babelrc' : './.babelrc' // hmr           
 		}),
-		
+
+		commonjs(),
         node_resolve({
             extensions: ['.js', '.jsx', '.ts', '.tsx', '.json', '.css']
 		}),
