@@ -1,7 +1,7 @@
 import {
     createEvent,
     createStore,
-    // sample
+    sample
 } from 'effector';
 
 export const $counter = createStore<number>(0, {

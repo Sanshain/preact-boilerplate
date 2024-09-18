@@ -1,6 +1,13 @@
 #### Preact hmr template. Initially has been based on `create-nollup-app `
 
-## Features
+## The branch is working, but not very recommended because of large size of `effector` (28kb (+5kb compat) of 46kb - initial template)
+
+### Features:
+
+- HMR
+- css modules
+- effector
+- **46kb** - size (13kb - preact, 5kb - compat, 28kb - effector)
 
 ### Cheat sheets, how to install from a scratch:
 
@@ -70,7 +77,7 @@ degit Sanshain/preact-boilerplate#js_hmr_html
 #### via git: 
 
 ```sh
-git clone Sanshain/preact-boilerplate#js_hmr_html && rm -r .get && git init
+git clone Sanshain/preact-boilerplate#ts_hmr_cssmodules_efector- && cd ts_hmr_cssmodules_efector- && rm -r .git && git init
 ```
 
 ### Step 2: install
@@ -93,7 +100,17 @@ npm config set strict-ssl false
 npm i --verbose
 ```
 
+#### step 3: development
 
+```sh
+npm run dev
+```
+
+#### step 4: build
+
+```sh
+npm run build
+```
 
 
 ### Packages destinations collected by its features in the template: 
