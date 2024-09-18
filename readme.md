@@ -10,7 +10,7 @@
 - **goober** - tiny runtime styled components analogous
 - **typescript** support
 - **preact-router** - tiny simple equivalent for `react-router`
-- **32 kb** - minified template size (consisting of preact (~10kb), preact-hooks(~10kb), goober (~2kb), preact-wouter(~4kb), template's code itself(~6kb))
+- **55 kb** - minified template size (consisting of preact (~10kb), preact-hooks(~10kb), goober (~2kb), preact-wouter(~4kb), template's code itself(~6kb), effector (23kb))
 
 
 <br>
@@ -137,7 +137,7 @@ npm run dev:u
     "target": "es2016"
     ```
 
-
+- Install `use-sync-external-store` and use `rollup-plugin-commonjs-alternate` (install and tune with rollup according it's readme) to interact with it
 
 
 
