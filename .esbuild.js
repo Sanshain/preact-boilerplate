@@ -8,6 +8,8 @@ import alias from "esbuild-plugin-alias";
 import path from 'path';
 
 
+// TODO liveserver: https://github.com/zaydek/esbuild-hot-reload/blob/master/serve.js
+
 
 const watchMode = process.argv.length > 2;
 
@@ -40,6 +42,7 @@ const build = async function () {
 		outfile: './release/bundle.js',
 		minify: !watchMode,
 		sourcemap: true,
+		// incremental: true,
 		plugins: [
 			alias(absAliases),
 			// aliasesFromTypes(),		

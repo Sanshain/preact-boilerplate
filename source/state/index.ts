@@ -1,6 +1,11 @@
+import { reatomAsync, withAbort, withDataAtom, withRetry, onUpdate, sleep, withCache } from "@reatom/framework"; // prettier-ignore
+
 import { action, atom } from '@reatom/core'
 
-export const numberAtom = atom(0)
+
+console.log(reatomAsync, withAbort, withDataAtom, withRetry, onUpdate, sleep, withCache)
+
+export const numberAtom = atom(0, 'name:countStore')
 
 export const titleAtom = atom((ctx) => `Total counts ${ctx.spy(numberAtom)}!`)
 
