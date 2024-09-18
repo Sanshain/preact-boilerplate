@@ -52,13 +52,13 @@ export default {
 		sourcemap: true
 	},
 	plugins: [
-		// alias({
-		// 	entries: [
-		// 		{ find: 'react/hooks', replacement: 'preact/hooks' },
-		// 		{ find: 'react', replacement: 'preact/compat' },
-		// 		{ find: 'react-dom', replacement: 'preact/compat' }
-		// 	]
-		// }),
+		alias({
+			entries: [
+				{ find: 'react/hooks', replacement: 'preact/hooks' },
+				{ find: 'react', replacement: 'preact/compat' },
+				{ find: 'react-dom', replacement: 'preact/compat' }
+			]
+		}),
 		resolve({
 			browser: true,			
 			extensions: ['.js', '.jsx', '.ts', '.tsx', '.json', '.css']
@@ -99,7 +99,7 @@ export default {
 		commonjs(),
 		// es3(),
 
-		production && terser()
+		// production && terser()
 	],
 	/**
 	 * @typedef {{
