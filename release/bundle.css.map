@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["esbuild-css-modules-plugin-ns-css:source/style.module.css"],
+  "sourcesContent": [".style-module__title_tVDuEa__100 {\n  color: green;\n  font-size: 30px;\n}\n"],
+  "mappings": "AAAA,CAAC,gCACC,MAAO,MACP,UAAW,IACb",
+  "names": []
+}

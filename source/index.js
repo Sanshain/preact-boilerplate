@@ -19,8 +19,17 @@ import App from './App.typed'
 // xStore.useStore('count', 8)
 
 
+import { createCtx } from '@reatom/core'
+import { reatomContext } from '@reatom/npm-react'
+
+
+
+const ctx = createCtx()
+
 render(
-	<App nameTitle='Welcome to Microsite!!'> </App>,	
-	// <App />,
+	<reatomContext.Provider value={ctx}>
+		<App nameTitle='Welcome to Microsite!!'> </App>	
+	</reatomContext.Provider>,
+	// <App nameTitle='Welcome to Microsite!!'> </App>,
 	document.getElementById('root')
 )

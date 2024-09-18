@@ -1,5 +1,9 @@
 # preact-rollup bolilerplate
 
+- typescript
+- css modules 
+- reatom
+- **35kb** - built via esbuilt (reatom - 8kb, 15kb - compat, 13kb - preact+hooks)
 
 ## Features: 
 

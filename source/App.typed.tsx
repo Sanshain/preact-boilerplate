@@ -9,11 +9,17 @@ import type { FC, PropsWithChildren } from 'react';
 
 import { useAction, useAtom } from '@reatom/npm-react'
 
-import { useEffect } from "preact/hooks";
+// import { useEffect } from "preact/hooks";
+import { useEffect } from "react";
 
 // import "./style.module.css";
 
 import style from "./style.module.css";
+
+
+/// reatom:
+
+
 import { numberAtom } from './state';
 
 
@@ -32,11 +38,11 @@ const App: FC<Props> = ({ nameTitle, children }, context?: unknown) => {
 			<main>
 				<h1 className={style.title}>{nameTitle}!!</h1>
 				<p>
-					Ready to build something amazing?
+					<h4>Ready to build something amazing?</h4>
 					<a href="https://github.com/natemoo-re/microsite/tree/main/docs">Read the docs</a> to get started.
 				</p>
 				<h3>Total counts {count}</h3>
-				<button onClick={() => setCount(v => v + 1)}></button>				
+				<button onClick={() => setCount(v => v + 1)}>click</button>				
 			</main>
 		</>
 	);
