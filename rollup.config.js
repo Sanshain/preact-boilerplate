@@ -32,6 +32,10 @@ import prefresh from '@prefresh/nollup';
 import postcss from 'rollup-plugin-postcss-hot'
 
 
+/// state manager:
+
+import alias from '@rollup/plugin-alias';
+import commonjs from "rollup-plugin-commonjs-alternate";
 
 // import htmlTemplate from 'rollup-plugin-generate-html-template'; // or rollup-plugin-html-inline
 
@@ -46,85 +50,95 @@ const targetPath = 'dist';
  * @type {import('rollup').RollupOptions}
  */
 const config = {
-    input: './src/main.js',
-    output: {
-        dir: targetPath,        
-        format: 'iife',
-        assetFileNames: `[name][extname]`,   
-    },
-    plugins: [
+	input: './src/main.js',
+	output: {
+		dir: targetPath,
+		format: 'iife',
+		assetFileNames: `[name][extname]`,
+	},
+	plugins: [
 
-        // It seems this one works just in memory:
-        postcss({
-            hot: inDevelopment,                                              // hmr
-            extract: 'styles.css',        /// it could be `style/styles.css` as well
-            minimize: !inDevelopment,
-            modules: true,                                                   // css modules
-            namedExports: true
-            // extract: true
-        }),
-        babel({
-            exclude: 'node_modules/**',
-            babelHelpers: 'bundled',
-            configFile: inDevelopment ? './.dev.babelrc' : './.babelrc'      // hmr           
-        }),
+		alias({
+			entries: [
+				{ find: 'react/hooks', replacement: 'preact/hooks' },
+				{ find: 'react', replacement: 'preact/compat' },
+				{ find: 'react-dom', replacement: 'preact/compat' }
+			]
+		}),
 
-        !inDevelopment
-            ? typescript({
-                tsconfig: './tsconfig.json',
-                exclude: [
-                    './**/*.css'
-                ]
-            })
-            : esbuild({
-                // All options are optional
-                // include: /\.[jt]sx?$/, // default, inferred from `loaders` option
-                exclude: /node_modules/, // default
-                // sourceMap: true, // default            
-                minify: false,
-                tsconfig: 'tsconfig.json', // default
-                // Add extra loaders
-                loaders: {
-                    // Add .json files support
-                    // require @rollup/plugin-commonjs
-                    // '.json': 'json',
-                    // Enable JSX in .js files too
-                    '.js': 'jsx',
-                },
-            }),
+		// It seems this one works just in memory:
+		postcss({
+			hot: inDevelopment,                                              // hmr
+			extract: 'styles.css',        /// it could be `style/styles.css` as well
+			minimize: !inDevelopment,
+			modules: true,                                                   // css modules
+			namedExports: true
+			// extract: true
+		}),
+		babel({
+			exclude: 'node_modules/**',
+			babelHelpers: 'bundled',
+			configFile: inDevelopment ? './.dev.babelrc' : './.babelrc'      // hmr           
+		}),
 
+		!inDevelopment
+			? typescript({
+				tsconfig: './tsconfig.json',
+				exclude: [
+					'./**/*.css'
+				]
+			})
+			: esbuild({
+				// All options are optional
+				// include: /\.[jt]sx?$/, // default, inferred from `loaders` option
+				exclude: /node_modules/, // default
+				// sourceMap: true, // default            
+				minify: false,
+				tsconfig: 'tsconfig.json', // default
+				// Add extra loaders
+				loaders: {
+					// Add .json files support
+					// require @rollup/plugin-commonjs
+					// '.json': 'json',
+					// Enable JSX in .js files too
+					'.js': 'jsx',
+				},
+			}),
 
+		//@ts-expect-error
+		commonjs(),
+		node_resolve({
+			extensions: ['.js', '.jsx', '.ts', '.tsx', '.json', '.css']
+		}),
 
-        node_resolve({
-            extensions: ['.js', '.jsx', '.ts', '.tsx', '.json', '.css']
-        }),
-        
-        //@ts-expect-errorz
-        inDevelopment && prefresh(),                                          // hmr
-    ],
+		//@ts-expect-error
+		inDevelopment 
+			? prefresh()                                            // hmr
+			: terser()												// pro
+	],
 
-    // /**
-    //  * @description works only with rollup builder 
-    //  * @_typedef {{
-    //  * 		code: string,
-    //  * 		plugin: 'typescript',
-    //  * 		message: string
-    //  * }} WarnInfo
-    //  * @type {import('rollup').WarningHandlerWithDefault}
-    //  */
-    // onwarn: function (warning, /** @type {(arg: any) => void} */ handler) {
-        
-    //     if (warning.code == 'PLUGIN_WARNING' && warning.plugin == 'typescript') {            
+	// /**
+	//  * @description works only with rollup builder 
+	//  * @_typedef {{
+	//  * 		code: string,
+	//  * 		plugin: 'typescript',
+	//  * 		message: string
+	//  * }} WarnInfo
+	//  * @type {import('rollup').WarningHandlerWithDefault}
+	//  */
+	// onwarn: function (warning, /** @type {(arg: any) => void} */ handler) {
 
-    //         if (~warning.message.indexOf('.module.css\' or its corresponding type declarations')) {
-    //             console.log(`>> Skiped vague css modules warning with typescript plugin, despite it works fine`)
+	//     if (warning.code == 'PLUGIN_WARNING' && warning.plugin == 'typescript') {            
 
-    //             return;
-    //         }
-    //     }
+	//         if (~warning.message.indexOf('.module.css\' or its corresponding type declarations')) {
+	//             console.log(`>> Skiped vague css modules warning with typescript plugin, despite it works fine`)
 
-    //     handler(warning);
-    // }    
+	//             return;
+	//         }
+	//     }
+
+	//     handler(warning);
+	// }    
 }
 
 // if (process.env.NODE_ENV === 'production') {

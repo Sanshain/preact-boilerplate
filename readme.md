@@ -1,8 +1,6 @@
-#### Has been get started with: 
+#### Preact hmr template. Initially has been based on `create-nollup-app `
 
-```sh
-npm init nollup-app -- --name preact-app --template preact
-```
+## Features
 
 ### Cheat sheets, how to install from a scratch:
 
@@ -53,6 +51,10 @@ npm init nollup-app -- --name preact-app --template preact
       }      
     ]     
     ```
+
+- install effector dependencies: `npm i effector effector-react use-sync-external-store`
+
+- use `rollup-plugin-commonjs-alternate` with rollup config
 
 
 ## How to use: 

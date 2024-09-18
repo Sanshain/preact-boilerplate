@@ -3,6 +3,7 @@
     "scripts": {
         "clean": "shx rm -rf dist",
         "rollup": "rollup -c",
+        "dev": "node --no-experimental-fetch ./node_modules/nollup/lib/cli.js --environment NODE_ENV:development",
         "start": "nollup -c --environment NODE_ENV:development",
         "build": "rollup -c --environment NODE_ENV:production"
     },
@@ -10,7 +11,11 @@
         "rollup-plugin-postcss": "^4.0.2"
     },
     "dependencies": {
-        "preact": "^10.5.14"
+        "@rollup/plugin-alias": "^5.1.0",
+        "effector": "^23.2.2",
+        "effector-react": "^23.2.1",
+        "preact": "^10.5.14",
+        "use-sync-external-store": "^1.2.2"
     },
     "devDependencies": {
         "@babel/core": "^7.15.5",
@@ -26,6 +31,7 @@
         "nollup": "github:Sanshain/nollup",
         "react-refresh": "^0.10.0",
         "rollup": "^4.17.2",
+        "rollup-plugin-commonjs-alternate": "^0.8.0",
         "rollup-plugin-css-only": "^4.5.2",
         "rollup-plugin-esbuild": "^6.1.1",
         "rollup-plugin-hot-css": "^0.5.1",
