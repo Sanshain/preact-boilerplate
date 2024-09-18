@@ -1,5 +1,8 @@
 #### These templates are based on `create-nollup-app` template
 
+### - Is not recommended because of large size of state manager and uncorrect working (works just like local state. It seems it so designed). It seems too raw.
+### - Using raw rxjs is also investigated: props drilling is the main problem, which one makes really development to unbearable
+
 
 ## Features
 
@@ -10,7 +13,7 @@
 - **goober** - tiny runtime styled components analogous
 - **typescript** support
 - **preact-router** - tiny simple equivalent for `react-router`
-- **32 kb** - minified template size (consisting of preact (~10kb), preact-hooks(~10kb), goober (~2kb), preact-wouter(~4kb), template's code itself(~6kb))
+- **52 kb** - minified template size (consisting of preact (~10kb), preact-hooks(~10kb), goober (~2kb), preact-wouter(~4kb), template's code itself(~6kb), react-rxjs(+rxjs) ~ 20kb)
 
 
 <br>
