@@ -20,7 +20,7 @@ import style from "./style.module.css";
 /// reatom:
 
 
-import { numberAtom } from './state';
+import { numberAtom, pageUptimeAtom } from './state';
 
 
 type Props = PropsWithChildren<{ nameTitle: string }>;
@@ -32,7 +32,8 @@ const App: FC<Props> = ({ nameTitle, children }, context?: unknown) => {
 	useEffect(() => console.log('effect'), []);
 
 	const [count, setCount] = useAtom(numberAtom)
-
+	const [pageUptime, setTime] = useAtom(pageUptimeAtom)
+	
 	return (
 		<>
 			<main>
@@ -42,7 +43,10 @@ const App: FC<Props> = ({ nameTitle, children }, context?: unknown) => {
 					<a href="https://github.com/natemoo-re/microsite/tree/main/docs">Read the docs</a> to get started.
 				</p>
 				<h3>Total counts {count}</h3>
-				<button onClick={() => setCount(v => v + 1)}>click</button>				
+				<button onClick={() => { setCount(v => v + 1);  setTime(pageUptime + 2)}}>click</button>			
+				<p>
+					Uptime {pageUptime}
+				</p>
 			</main>
 		</>
 	);

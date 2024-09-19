@@ -10,8 +10,9 @@
   "scripts": {
     "clean": "rimraf dist",
     "dev": "rollup -c -w",
+	 "start": "node ./.esbuild.js",
     "build": "rollup -c",
-    "esb": "esbuild ./source/index.js --bundle --loader:.js=jsx --minify --outfile=out.js --sourcemap",
+    "esbuild": "esbuild ./source/index.js --bundle --loader:.js=jsx --minify --outfile=out.js --sourcemap",
     "serve": "serve release"
   },
   "workspaces": [

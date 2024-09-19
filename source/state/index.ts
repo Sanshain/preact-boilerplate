@@ -1,11 +1,12 @@
 import {
 	reatomAsync,
 	// withAbort,
-	// withDataAtom,
+	withDataAtom,
 	// withRetry,
 	onUpdate,
 	// sleep,
-	withCache
+	withCache,
+	withInit
 } from "@reatom/framework"; // prettier-ignore
 
 import { action, atom } from '@reatom/core'
@@ -18,12 +19,37 @@ export const numberAtom = atom(0, 'name:countStore')
 
 export const titleAtom = atom((ctx) => `Total counts ${ctx.spy(numberAtom)}!`)
 
-export const onChange = action((ctx, event) => {
+// export const onChange = action((ctx, event) => {
 
-	console.log(ctx.cause);
-	numberAtom(ctx, event.currentTarget.value);         // you can change a primitive atom by calling it as a function
-});
+// 	console.log(ctx.cause);
+// 	numberAtom(ctx, event.currentTarget.value);         // you can change a primitive atom by calling it as a function
+// })
+	// .pipe(debounce(250)), (ctx) => fetchData(ctx));
 
+// onUpdate(onChange.pipe(debounce(250)), (ctx) => fetchData(ctx))
+
+
+
+
+
+export const pageUptimeAtom = atom(0).pipe(
+	// (ctx) => {				
+	// 	// ctx(numberAtom., v => v + 2);
+	// 	return atom(10)							// <= works 
+	// 	// return pageUptimeAtom(10);				// swears
+	// },
+
+	// nanostores.onMount analogue: 
+	withInit((ctx) => {
+		setTimeout(() => pageUptimeAtom(ctx, performance.now()), 1000)
+		return performance.now()
+	}),
+)
+
+// export const fetchList = reatomAsync((ctx) => request('api/list', ctx.controller /* ctx.controller */), 'fetchList').pipe(
+// 	withAbort(),		// ~?
+// 	withDataAtom([]), // ?
+// )
 
 
 /**
