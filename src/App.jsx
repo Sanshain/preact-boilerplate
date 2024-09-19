@@ -1,3 +1,6 @@
+//@ts-check
+
+//@ts-expect-error
 import style from './style.module.css'
 
 import Title from "./components/Title";
