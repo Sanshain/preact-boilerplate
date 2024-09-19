@@ -19,5 +19,16 @@ const root = document.querySelector('#app');
 //     createRoot(root).render(<App />)
 // }
 
+import { createCtx } from '@reatom/core'
+import { reatomContext } from '@reatom/npm-react'
+
+const ctx = createCtx()
+const { Provider } = reatomContext;
+
 /// v/17:
-render(<App />, root);
+render(
+    <Provider value={ctx}>
+        <App />
+    </Provider>,
+    root
+);

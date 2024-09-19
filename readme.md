@@ -47,6 +47,12 @@ and install all dependencies:
 npm i -f   # or the same due pnpm
 ```
 
+preapare reatom dependencies: 
+
+```sh
+node .\modules\.prescript.js
+```
+
 ## How to use
 
 #### Windows
@@ -137,8 +143,45 @@ npm run dev:u
     "target": "es2016"
     ```
 
+- Copy `modules` filder with it `.prescript.js`: 
 
 
+    ```js
+    //@ts-check
+
+    import fs from "fs";
+    import path from "path";
+
+
+    replace([
+        '@reatom/npm-react',
+        '@reatom/core'
+    ]);
+
+    /**
+     * @param {string[]} paths
+     */
+    function replace(paths) {
+
+        for (var _path of paths) {
+
+            const originCode = fs.readFileSync(`../node_modules/${_path}/build/index.mjs`.slice(1)).toString();
+
+            const fixedCode = originCode.replace(/([\w\.]+) \?\?=/g, '$1 = $1 ??');
+
+            fs.writeFileSync(path.join('modules', `./${_path}.js`), fixedCode);   
+
+            console.log(`\x1b[36m✓\x1b[0m - ${_path}`)
+        }    
+    }
+    ```
+
+    and set rollup aliases in `rollup.config.js`:
+
+    ```js
+        { find: '@reatom/npm-react', replacement: '/modules/@reatom/npm-react' },
+        { find: '@reatom/core', replacement: '/modules/@reatom/core' },
+    ```
 
 
 

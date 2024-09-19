@@ -1,7 +1,7 @@
 //@ts-check
 
-//@ts-expect-error
-globalThis.fetch = null;
+
+import path from 'path';
 
 import node_resolve from '@rollup/plugin-node-resolve';
 
@@ -9,6 +9,7 @@ import node_resolve from '@rollup/plugin-node-resolve';
 // TS
 
 import typescript from '@rollup/plugin-typescript';
+import { default as typescriptParser } from 'rollup-plugin-esbuild'
 
 
 // JSX
@@ -43,6 +44,11 @@ import { htmlInliner as inline } from 'rollup-plugin-html-inline';		// ? - look 
 // import html from '@open-wc/rollup-plugin-html';
 
 
+// reatom:
+
+import commonjs from "rollup-plugin-commonjs-alternate";
+
+
 // console.log(process.env)
 const inDevelopment = process.env.NODE_ENV === 'development';
 const inProduction = process.env.NODE_ENV === 'production';
@@ -66,6 +72,8 @@ const targetPath = 'dist';
 
 
 
+
+
 let config = {
     input: './src/main.js',
     output: {
@@ -82,11 +90,29 @@ let config = {
                 { find: 'react/hooks', replacement: 'preact/hooks' },
                 { find: 'react', replacement: 'preact/compat' },
                 { find: 'react-dom', replacement: 'preact/compat' },
-                { find: 'wouter', replacement: 'wouter-preact' },
+				{ find: 'wouter', replacement: 'wouter-preact' },
+				
+				/// reatom
+
+				{ find: '@reatom/npm-react', replacement: path.join(process.cwd(), 'modules/@reatom/npm-react') },
+				{ find: '@reatom/core', replacement: path.join(process.cwd(), 'modules/@reatom/core') },
+				{ find: '@reatom/lens', replacement: path.join(process.cwd(), 'modules/@reatom/lens') },
+				{ find: '@reatom/hooks', replacement: path.join(process.cwd(), 'modules/@reatom/hooks') },
+				{ find: '@reatom/primitives', replacement: path.join(process.cwd(), 'modules/@reatom/primitives') },
             ]
 		}),
 
-		typescript(),
+		inDevelopment 
+			? typescriptParser({
+				include: /\.[jt]sx?$/,
+				tsconfig: './tsconfig.json',
+				minify: false,
+				loaders: {
+					'.js': 'jsx',
+					'.ts': 'ts'
+				}
+			})
+			: typescript(),
 		
 		/// LINARIA 
 
@@ -129,6 +155,7 @@ let config = {
             configFile: inDevelopment ? './.dev.babelrc' : './.babelrc' // hmr           
 		}),
 		
+		commonjs(),
         node_resolve({
             extensions: ['.js', '.jsx', '.ts', '.tsx', '.json', '.css']
 		}),
