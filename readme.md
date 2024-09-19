@@ -1,6 +1,8 @@
 #### These templates are based on `create-nollup-app` template
 
 
+## Not recommended as not supported for nollup ecosystem (need maunual fix for */lens) and getting `TypeError: $RefreshSig$ is not a function` error in runtime
+
 ## Features
 
 - **React** compatible api (imports from react)
