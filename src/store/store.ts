@@ -20,6 +20,11 @@ export const userScores$ = {
         // console.log(userScores$.value.get())
     },
 
+    reset() {
+
+        userScores$.value.set({me: 0})
+    },
+
     [Symbol('static constructor')]: setTimeout(() => {
         
         onSet(userScores$.value, ({ newValue, abort }) => {
