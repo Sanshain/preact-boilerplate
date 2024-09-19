@@ -1,23 +1,43 @@
 import {
     atom as createStore,                    // for numbers, boolean, strings, arrays and sealed(!) objects
     map as createMapStore,                  // for extensible objects
+    onSet,
 } from 'nanostores';
 
 
 
 export const userScores$ = {
 
-    value: createStore<Record<string, number>>({
-        Me: 0,
-        John: 0
+    value: createStore<Record<string, number> & {me: number}>({
+        me: 0,
+        john: 0
     }),
     
     setScore(user: string, score: number) {
         
-        userScores$.value.set({ ...userScores$.value.get(), [user]: score});
-    },    
+        userScores$.value.set({ ...userScores$.value.get(), [user]: score });
+        
+        // console.log(userScores$.value.get())
+    },
+
+    [Symbol('static constructor')]: setTimeout(() => {
+        
+        onSet(userScores$.value, ({ newValue, abort }) => {
+            
+            console.log(newValue.me)
+
+            if (newValue.me > 15) {
+                abort()
+            }
+            else if (newValue.me > 4) {                
+                newValue.me *= 2;
+            }
+        })        
+
+    })
 
 } as const
+
 
 
 

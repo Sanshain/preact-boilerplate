@@ -29,6 +29,7 @@ import { useStore } from '@nanostores/preact';
 const Home = () => {
 	
 	const isFriends = useStore(isFriends$.value);
+	const userScores = useStore(userScores$.value);
 
 	const inputRef = useRef(null);
 
@@ -50,6 +51,8 @@ const Home = () => {
 		<button onClick={addUser}>add</button> ({users.length}) */}
 		
 		<Button onClick={() => isFriends$.set(!isFriends$.value.get())}>{isFriends ? 'Stop be friends' : 'Become friends'}</Button>
+
+		<h3>Users score {userScores.me}</h3>
 
         <Footer>
             <a href={"https://github.com/Sanshain/preact-boilerplate"} target={"_blank"}>Sanshain's templates</a>

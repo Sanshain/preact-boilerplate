@@ -6,7 +6,7 @@ import { Router, Route } from 'preact-router';
 import Header from './Header';
 
 // Code-splitting is automated for `routes` directory
-import Home from '../routes/Home';
+import Home from '../routes/home';
 import Profile from '../routes/Profile';
 
 const App = () => (

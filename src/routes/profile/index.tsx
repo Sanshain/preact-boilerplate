@@ -3,7 +3,7 @@
 import { h } from 'preact';
 import { useEffect, useState } from "preact/hooks";
 // import { useStore } from '@nanostores/react';
-// import { users$ } from '../../store/store';
+import { userScores$ } from '../../store/store';
 
 
 import style from './style.css';
@@ -12,7 +12,7 @@ import { Link } from 'preact-router';
 
 
 // Note: `user` comes from the URL, courtesy of our router
-const Profile = ({ user }) => {
+const Profile = ({ user }: {user: string}) => {
 	const [time, setTime] = useState(Date.now());
 	const [count, setCount] = useState(10);
 	// const users = useStore(users$);
@@ -30,7 +30,7 @@ const Profile = ({ user }) => {
 			<div>Current time: {new Date(time).toLocaleString()}</div>
 
 			<p>
-				<button onClick={() => setCount((count) => count + 1)}>Click Me</button>
+				<button onClick={() => { setCount((count) => count + 1); userScores$.setScore(user, count + 1) }}>Click Me</button>
 				{' '}
 				Clicked {count} times.
 			</p>
