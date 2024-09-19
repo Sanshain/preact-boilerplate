@@ -1,8 +1,13 @@
-#### Has been get started with: 
+#### Has been get based on `create-nollup-app`
 
-```sh
-npm init nollup-app -- --name preact-app --template preact
-```
+### Preconfigurated features:
+
+- hmr
+- cssmodules
+- preact under react
+- valtio
+- **25 kb** - template's size
+
 
 ### Cheat sheets, how to install from a scratch:
 

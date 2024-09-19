@@ -25,13 +25,14 @@ import alias from '@rollup/plugin-alias';
 
 /// prod
 
-import static_files from 'rollup-plugin-static-files';
 import terser from '@rollup/plugin-terser';
 
 /// hmr:
 
+//@ts-expect-error
 import prefresh from '@prefresh/nollup';
 // import postcss from 'rollup-plugin-postcss'
+//@ts-expect-error
 import postcss from 'rollup-plugin-postcss-hot'
 
 
@@ -69,9 +70,11 @@ const config = {
     plugins: [
         alias({
             entries: [
-                { find: 'react/hooks', replacement: 'preact/hooks' },
+                // https://preactjs.com/guide/v10/getting-started/#aliasing-in-rollup
+                { find: 'react/hooks', replacement: 'preact/hooks' },       // ? 
                 { find: 'react', replacement: 'preact/compat' },
-                { find: 'react-dom', replacement: 'preact/compat' }
+                { find: 'react-dom', replacement: 'preact/compat' },
+                { find: 'react/jsx-runtime', replacement: 'preact/jsx-runtime' }
             ]
         }),
 
@@ -108,8 +111,11 @@ const config = {
         }),
         // commonjs(),
         
-        //@ts-expect-error
-        inDevelopment && prefresh(),                                          // hmr
+        //@ts-ignore
+        inDevelopment
+            ? prefresh()                                          // hmr
+            : terser()                                            // pro  
+        
     ],
 
     // /**
