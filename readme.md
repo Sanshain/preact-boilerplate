@@ -1,5 +1,8 @@
 #### Preact template based on `create-nollup-app`
 
+
+### Not recommended vecause of bad zustand support of ts
+
 ### Features
 
 - hmr 
