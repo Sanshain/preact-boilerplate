@@ -1,7 +1,7 @@
 //@ts-check
 
 import { h } from 'preact';
-import { Link } from 'preact-router/match';
+// import { Link } from 'preact-router/match';
 import { useState } from 'preact/hooks'
 import style from './style.css';
 // import './style.css';

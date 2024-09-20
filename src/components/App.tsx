@@ -1,7 +1,7 @@
 //@ts-check
 
 import { h } from 'preact';
-import { Router, Route } from 'preact-router';
+// import { Router, Route } from 'preact-router';
 
 import Header from './header';
 
@@ -17,6 +17,7 @@ type Routes = { [K in string]: (p: { params: Record<string, string> }) => h.JSX.
 
 // type Routes = { [K in string]: (p: { params: Record<K extends `${string}:${infer P extends string}` ? P : never, string> }) => h.JSX.Element }
 // type Routes = { [K in string]: (p: { params: K extends `${string}:${infer P extends string}` ? Record<P, string> : never }) => h.JSX.Element }
+
 // type O = '/profile/:user' extends `${string}:${infer P extends string}` ? P : never
 
 // const routersMatcher: { [K in string]: (p: { params: Record<string, string> }) => h.JSX.Element } = {
