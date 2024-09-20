@@ -30,9 +30,6 @@ import linaria from "@linaria/rollup";
 import postcss from 'rollup-plugin-postcss-hot'
 
 
-/// mobx:
-
-import commonjs from "rollup-plugin-commonjs-alternate";
 
 
 import static_files from 'rollup-plugin-static-files';		// copies static files from specific locations (additional optional tool for copying to production folder on prod mode)
@@ -131,16 +128,13 @@ let config = {
             configFile: inDevelopment ? './.dev.babelrc' : './.babelrc' // hmr           
 		}),
 		
-		commonjs(),
         node_resolve({
             extensions: ['.js', '.jsx', '.ts', '.tsx', '.json', '.css']
 		}),
 		
 		/// HMR
 
-		inDevelopment 
-			? prefresh()                                    // hmr
-			: terser()										// pro
+        inDevelopment && prefresh(),                                    // hmr
     ]
 }
 
