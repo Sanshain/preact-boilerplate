@@ -13,16 +13,22 @@ import { useStore } from '@nanostores/preact';
 import { createRouter } from '@nanostores/router'
 
 
+type Routes = { [K in string]: (p: { params: Record<string, string> }) => h.JSX.Element }
 
+// type Routes = { [K in string]: (p: { params: Record<K extends `${string}:${infer P extends string}` ? P : never, string> }) => h.JSX.Element }
+// type Routes = { [K in string]: (p: { params: K extends `${string}:${infer P extends string}` ? Record<P, string> : never }) => h.JSX.Element }
+// type O = '/profile/:user' extends `${string}:${infer P extends string}` ? P : never
 
-const routersMatcher = {
+// const routersMatcher: { [K in string]: (p: { params: Record<string, string> }) => h.JSX.Element } = {
+
+const routersMatcher: Routes = {
 	'/': p => <Home />,
 	'/profile': p => <Profile user={'me'} />,
-	'/profile/:user': p => <Profile user={p} />,
+	'/profile/:user': p => <Profile user={p.params.user} />,
 } 
 
 
-type Routes = { [K in keyof typeof routersMatcher]: K }
+// type Routes = { [K in keyof typeof routersMatcher]: K }
 
 
 export const $router = createRouter(
