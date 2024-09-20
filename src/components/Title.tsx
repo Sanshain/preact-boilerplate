@@ -1,7 +1,7 @@
 //@ts-check
 
 import { observer } from "mobx-react-lite";
-import { useAppStore } from "../store/Provider";
+import { useAppStore } from "../store/hooks";
 import { VNode } from "preact";
 
 // import { styled } from '@linaria/react';

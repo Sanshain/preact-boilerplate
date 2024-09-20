@@ -24,7 +24,7 @@ import { modularScale, hiDPI } from 'polished';
 
 
 import { Observer, observer, useLocalObservable, useObserver } from "mobx-react-lite"
-import { useAppStore, Context } from './store/Provider'; // index.jsx
+import { useAppStore, Context } from './store/hooks'; // index.jsx
 import { createAppStore } from './store';
 
 
