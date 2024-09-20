@@ -10,7 +10,7 @@
 - **goober** as tiny alternative of styled components
 - **preact-router** as tine router
 - **css modules** via postcss modules
-- **28kb** - minified template size (9kb - preact, 9kb - hooks, 5kb - router, 4kb - nanostores, 1kb - goober)
+- **22** - minified template size (9kb - preact, 9kb - hooks, 1kb - ns/router, 4kb - nanostores, 1kb - goober)
 
 
 ## How to use: 
