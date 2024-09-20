@@ -15,7 +15,7 @@ import { css } from '@linaria/core';
 import type { LinariaClassName } from "@linaria/core/types"
 
 // styled tag is still doesn't work:
-// import { default as Title } from "./components/Title";
+import { default as Title } from "./components/Title";
 
 
 /// LINARIA ADDITIONAL BUILD TIME FEATURES
@@ -63,12 +63,10 @@ const App = observer(() => {
           <a style={{ color: 'green' }} target={"_blank"} href={link}>Sanshain's preact boilerplates</a>
         </p>
         <hr />
-        <p className={style.content2}>
-          Timer {appStore.secondsPassed}
-        </p>
         <button onClick={e => appStore.increase()}>click time</button>
 
-        {/* <Title user={"Sasha"} /> */}
+      <Title user={"Sasha"} />
+      {/* <Title /> */}
       </div>    
   );
 
