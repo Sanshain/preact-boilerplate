@@ -10,6 +10,7 @@
     },
     "dependencies": {
         "@nanostores/preact": "^0.5.2",
+        "@nanostores/router": "^0.15.1",
         "goober": "^2.1.14",
         "nanostores": "^0.11.3",
         "preact": "^10.5.14",
