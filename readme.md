@@ -1,8 +1,6 @@
-#### Has been get started with: 
+#### Has been get based with `create-nollup-app` 
 
-```sh
-npm init nollup-app -- --name preact-app --template preact
-```
+## Not recommended to use bacause of a large size of mobx (89kb + 8kb compat for mobx-lite-react) => initial minified template is 107 kb
 
 
 ### Features
