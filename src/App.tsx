@@ -23,9 +23,9 @@ import type { LinariaClassName } from "@linaria/core/types"
 import { modularScale, hiDPI } from 'polished';
 
 
-import { observer } from "mobx-react-lite"
-import { createTimer, } from "./store/index";
-import type { StoreType } from "./store/index";
+import { Observer, observer } from "mobx-react-lite"
+import { useAppStore } from './store/Provider'; // index.jsx
+
 
 
 
@@ -47,11 +47,13 @@ const title: LinariaClassName = css`
 
 
 
-function App() {
+const App = observer(() => {
 
   const link = "https://github.com/Sanshain/preact-boilerplate";
 
-  const MApp = observer(({ timer }: {timer: StoreType}) => 
+  const appStore = useAppStore();
+
+  return (
     <div style={{ backgroundColor: 'aliceblue' }}>
       <h1 class={title}>Hello World!!!</h1>
       <p className={style.content}>
@@ -60,15 +62,16 @@ function App() {
       </p>
       <hr />
       <p className={style.content2}>
-        Timer {timer.secondsPassed}
+        Timer {appStore.secondsPassed}
       </p>
-      <button onClick={e => timer.increase()}>click time</button>
+      <button onClick={e => appStore.increase()}>click time</button>
 
       {/* <Title user={"Sasha"} /> */}
     </div>
   );
+  
+})
 
-  return <MApp timer={createTimer()} />
-}
-
+// export default () => observer(() => <App />);
 export default App;
+// export default () => <Observer><App/></Observer>;
