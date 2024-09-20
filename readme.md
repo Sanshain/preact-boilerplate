@@ -3,7 +3,7 @@
 - typescript
 - css modules 
 - reatom
-- **31kb** - built via esbuilt (reatom/core+react - 13kb, 5kb - compat, 13kb - preact+hooks), 
+- **31kb** - built via rollup (reatom/core+react - 13kb, 5kb - compat, 13kb - preact+hooks), 
 - + **10-12kb** - onUpdate,withCache,reatomAsync from reatom/framework
 
 ### Notes: 
