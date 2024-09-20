@@ -23,8 +23,9 @@ import type { LinariaClassName } from "@linaria/core/types"
 import { modularScale, hiDPI } from 'polished';
 
 
-import { Observer, observer } from "mobx-react-lite"
-import { useAppStore, MobxProvider } from './store/Provider'; // index.jsx
+import { Observer, observer, useLocalObservable, useObserver } from "mobx-react-lite"
+import { useAppStore, Context } from './store/Provider'; // index.jsx
+import { createAppStore } from './store';
 
 
 
@@ -46,15 +47,15 @@ const title: LinariaClassName = css`
 
 
 
-// const App = observer(() => {
-const App = (function () {
+const App = observer(() => {
+// const App = (function () {
 
   const link = "https://github.com/Sanshain/preact-boilerplate";
 
+
   const appStore = useAppStore();
 
-  return (
-    <MobxProvider>
+  return (    
       <div style={{ backgroundColor: 'aliceblue' }}>
         <h1 class={title}>Hello World!!!</h1>
         <p className={style.content}>
@@ -68,12 +69,17 @@ const App = (function () {
         <button onClick={e => appStore.increase()}>click time</button>
 
         {/* <Title user={"Sasha"} /> */}
-      </div>
-    </MobxProvider>
+      </div>    
   );
 
 })
 
 // export default () => observer(() => <App />);
-export default App;
+export default () => {
+  const store = useLocalObservable(() => createAppStore(10));  
+
+  return <Context.Provider value={store}>
+    <App />
+  </Context.Provider>
+}
 // export default () => <Observer><App/></Observer>;

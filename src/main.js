@@ -2,7 +2,7 @@
 //@ts-check
 
 import React from "react";
-import { MobxProvider } from "./store/Provider";
+// import { MobxProvider } from "./store/Provider";
 import { render } from 'preact';
 import App from './App';
 
