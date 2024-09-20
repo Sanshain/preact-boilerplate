@@ -15,36 +15,25 @@ import { createRouter } from '@nanostores/router'
 
 
 
-// const routersMatcher = {
-// 	home: p => <Home />,
-// 	profile: p => <Profile user={'me'} />,
-// 	profile__user: p => <Profile user={p} />,
-// } 
-
-// Object.fromEntries(Object.keys(routersMatcher).map(k => [k, k]))
-
-const routes = {
-	home: '/',
-	profile: '/profile',
-	profile__user: '/profile/:user'
-}
-
-type Routes = { [K in keyof typeof routes]: any }
+const routersMatcher = {
+	'/': p => <Home />,
+	'/profile': p => <Profile user={'me'} />,
+	'/profile/:user': p => <Profile user={p} />,
+} 
 
 
-export const $router = createRouter(routes)
+type Routes = { [K in keyof typeof routersMatcher]: K }
+
+
+export const $router = createRouter(
+	Object.fromEntries(Object.keys(routersMatcher).map(k => [k, k])) as { [K in keyof typeof routersMatcher]: K }
+)
 
 export const Layout = () => {
     
     const page = useStore($router)
 
-    return ({
-		home: p => <Home />,
-		profile: p => <Profile user={'me'} />,
-		profile__user: p => <Profile user={p} />,		
-	} as Routes)[page.route](page)
-
-    // return routes[page.route](page);
+	return routersMatcher[page.route](page)
 }
 
 
