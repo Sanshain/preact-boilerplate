@@ -4,13 +4,15 @@ import { createAppStore } from './index';
 
 const Context = createContext(null);
 
-export const xProvider = observer(({ children, ...props }) => {
+export const MobxProvider = observer(({ children, ...props }) => {
     const store = useLocalObservable(() => createAppStore(props));
+    console.log(999999999)
     return <Context.Provider value={store}>{children}</Context.Provider>;
 });
 
 export const useAppStore = (): ReturnType<typeof createAppStore> => {
     const store = useContext(Context);
+    console.log(111)
     if (!store) throw new Error('Use App store within provider!');
     return store;
 };

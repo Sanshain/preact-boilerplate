@@ -24,8 +24,7 @@ import { modularScale, hiDPI } from 'polished';
 
 
 import { Observer, observer } from "mobx-react-lite"
-import { useAppStore } from './store/Provider'; // index.jsx
-
+import { useAppStore, MobxProvider } from './store/Provider'; // index.jsx
 
 
 
@@ -47,29 +46,32 @@ const title: LinariaClassName = css`
 
 
 
-const App = observer(() => {
+// const App = observer(() => {
+const App = (function () {
 
   const link = "https://github.com/Sanshain/preact-boilerplate";
 
   const appStore = useAppStore();
 
   return (
-    <div style={{ backgroundColor: 'aliceblue' }}>
-      <h1 class={title}>Hello World!!!</h1>
-      <p className={style.content}>
-        <span>Welcome to </span>
-        <a style={{ color: 'green' }} target={"_blank"} href={link}>Sanshain's preact boilerplates</a>
-      </p>
-      <hr />
-      <p className={style.content2}>
-        Timer {appStore.secondsPassed}
-      </p>
-      <button onClick={e => appStore.increase()}>click time</button>
+    <MobxProvider>
+      <div style={{ backgroundColor: 'aliceblue' }}>
+        <h1 class={title}>Hello World!!!</h1>
+        <p className={style.content}>
+          <span>Welcome to </span>
+          <a style={{ color: 'green' }} target={"_blank"} href={link}>Sanshain's preact boilerplates</a>
+        </p>
+        <hr />
+        <p className={style.content2}>
+          Timer {appStore.secondsPassed}
+        </p>
+        <button onClick={e => appStore.increase()}>click time</button>
 
-      {/* <Title user={"Sasha"} /> */}
-    </div>
+        {/* <Title user={"Sasha"} /> */}
+      </div>
+    </MobxProvider>
   );
-  
+
 })
 
 // export default () => observer(() => <App />);
