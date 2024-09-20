@@ -9,15 +9,19 @@
         "build": "rollup -c --environment NODE_ENV:production"
     },
     "dependencies": {
+        "mobx": "^6.13.2",
+        "mobx-react-lite": "^4.0.7",
         "polished": "^4.3.1",
-        "preact": "^10.5.14"
+        "preact": "^10.5.14",
+        "use-sync-external-store": "^1.2.2"
     },
     "optionalDependencies": {
         "@emotion/css": "^11.11.2",
         "@emotion/react": "^11.11.4",
         "@open-wc/rollup-plugin-html": "^1.2.5",
         "@wyw-in-js/babel-preset": "^0.5.3",
-        "@wyw-in-js/rollup": "^0.5.3"
+        "@wyw-in-js/rollup": "^0.5.3",
+        "vite": "^5.4.6"
     },
     "devDependencies": {
         "@babel/core": "^7.15.5",
@@ -35,6 +39,7 @@
         "nollup": "github:Sanshain/nollup#fix",
         "react-refresh": "^0.10.0",
         "rollup": "^3.29.1",
+        "rollup-plugin-commonjs-alternate": "^0.8.0",
         "rollup-plugin-css-only": "^4.5.2",
         "rollup-plugin-generate-html-template": "^1.7.0",
         "rollup-plugin-hot-css": "github:Sanshain/rollup-plugin-hot-css",
