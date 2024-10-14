@@ -75,15 +75,14 @@ let config = {
             sourceMap: true
         }),
         // It seems this one works just in memory:
-        inDevelopment
-            ? hotcss({
-                include: linariaNamingPattern,                
-                hot: true,
-                file: `styles.css`  // 'styles.css' works too
-                // loaders: [postCSSLoader] || ['scss', 'less', 'stylus']
-            })
-            // : css({ output: `styles.${hash}.css` }),
-            : css({ output: `styles.css` }),    
+        hotcss({
+            include: linariaNamingPattern,                
+            hot: inDevelopment,
+            file: `styles.css`  // 'styles.css' works too
+            // loaders: [postCSSLoader] || ['scss', 'less', 'stylus']
+        }),
+        // : css({ output: `styles.${hash}.css` }),
+        // : css({ output: `styles.css` }),    
         
         postcss({
             exclude: linariaNamingPattern,
