@@ -53,7 +53,7 @@ function App() {
       <h1 class={title}>Hello World!!!</h1>
       <p className={style.content}>
         <span>Welcome to </span>
-        <a style={{ color: 'green' }} target={"_blank"} href={link}>Sanshain's preact boilerplates</a>
+        <a style={{ color: '#555' }} target={"_blank"} href={link}>Sanshain's preact boilerplates</a>
       </p>
 
       {/* <Title user={"Sasha"} /> */}

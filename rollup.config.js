@@ -93,15 +93,14 @@ let config = {
 			// sourceMap: !inDevelopment       /// <- works just with `!inDevelopment` mode (via rollup)
 			sourceMap: true
 		}),
-		inDevelopment
-			? hotcss({
-				// extensions: [],
-				include: /_[\d\w]{6,7}.css/,
-				hot: true,
-				file: `styles.css`,  // 'styles.css' works too
-				// loaders: [postCSSLoader] || ['scss', 'less', 'stylus']
-			})
-			: css({ output: `styles.css` }),			     
+		hotcss({
+			// extensions: [],
+			include: /_[\d\w]{6,7}.css/,
+			hot: inDevelopment,
+			file: `styles.css`,  // 'styles.css' works too
+			// loaders: [postCSSLoader] || ['scss', 'less', 'stylus']
+		}),
+		// : css({ output: `styles.css` }),			     
 		
 		
 		/// CSS MODULES
