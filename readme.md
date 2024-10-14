@@ -72,6 +72,8 @@ npm init nollup-app -- --name preact-app --template preact
     npm i github:Sanshain/rollup-plugin-hot-css -D
     ```
 
+- Attention: for production build `@linaria/rollup` is guaranteed compatible only with rollup `3.^` version. So you should have the version.
+
 
 ## How to use: 
 
