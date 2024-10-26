@@ -70,8 +70,10 @@ const config = [
      */
     jsdocconfig,
     importsconfig,
+    importplugin.flatConfigs.typescript, // ? <= what it does (and whether it works at all) is not clear, but at least it does not interfere with the work of others
 
-    // ...tseslint.configs.recommended, /// SPREADS RULES TO ALLOVER FILES (stylistic | recommended | all | strict) -> skipped AS NOT CONTAINING INTERESTING RULES
+    /// https://typescript-eslint.io/rules/#rules
+    /// ...tseslint.configs.recommended, /// SPREADS RULES TO ALLOVER FILES (stylistic | recommended | all | strict) -> skipped AS NOT CONTAINING INTERESTING RULES
 
     // other configuration objects...
     {
