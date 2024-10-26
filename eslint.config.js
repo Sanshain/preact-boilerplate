@@ -72,7 +72,7 @@ const config = [
     jsdocconfig,
 
 
-    ...tseslint.configs.recommended, /// SPREADS RULES TO ALLOVER FILES (stylistic | recommended | all | strict) -> skipped AS NOT CONTAINING INTERESTING RULES
+    // ...tseslint.configs.recommended, /// SPREADS RULES TO ALLOVER FILES (stylistic | recommended | all | strict) -> skipped AS NOT CONTAINING INTERESTING RULES
 
     // other configuration objects...
     {
@@ -98,7 +98,7 @@ const config = [
                     jsx: true,
                 },
             },
-            // parser: tsparser,
+            parser: tsparser,
             // parser: "babel-eslint"
         },        
         rules: {
