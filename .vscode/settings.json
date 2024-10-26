@@ -3,5 +3,8 @@
         "javascript": "jsx"
     },
     "typescript.tsdk": "node_modules\\typescript\\lib",
-    "liveServer.settings.port": 3001
+    "liveServer.settings.port": 3001,
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },    
 }

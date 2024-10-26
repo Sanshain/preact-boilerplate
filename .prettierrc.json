@@ -1,0 +1,20 @@
+{
+   "trailingComma": "es5",
+   "overrides": [
+      {
+         "files": "*.tsx",
+         "options": {
+            "tabWidth": 2
+         }
+      },
+      {
+         "files": ["*.js"],
+         "options": {
+            "tabWidth": 3
+         }
+      }
+   ],
+   "tabWidth": 3,
+   "semi": true,
+   "singleQuote": false
+}

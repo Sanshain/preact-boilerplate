@@ -1,35 +1,26 @@
 //@ts-check
 
-
 /// CSS MODULES:
 
 // import './style.css';
-import style from './style.css';
-
+import style from "./style.css";
 
 /// LINARIA:
 
-
 // till just with css:
-import { css } from '@linaria/core';
-import type { LinariaClassName } from "@linaria/core/types"
+import { css } from "@linaria/core";
+import type { LinariaClassName } from "@linaria/core/types";
 
 // styled tag is still doesn't work:
 // import { default as Title } from "./components/Title";
 
-
 /// LINARIA ADDITIONAL BUILD TIME FEATURES
 
-import { modularScale, hiDPI } from 'polished';
-
-
-
-
+import { modularScale, hiDPI } from "polished";
 
 const fonts = {
-  header: 'Arial'
-} as const
-
+  header: "Arial",
+} as const;
 
 const title: LinariaClassName = css`
   text-transform: uppercase;
@@ -42,18 +33,17 @@ const title: LinariaClassName = css`
   } */
 `;
 
-
-
 function App() {
-
   const link = "https://github.com/Sanshain/preact-boilerplate";
 
   return (
-    <div style={{ backgroundColor: 'aliceblue' }}>
+    <div style={{ backgroundColor: "aliceblue" }}>
       <h1 class={title}>Hello World!!!</h1>
       <p className={style.content}>
         <span>Welcome to </span>
-        <a style={{ color: '#555' }} target={"_blank"} href={link}>Sanshain's preact boilerplates</a>
+        <a style={{ color: "#555" }} target={"_blank"} href={link}>
+          Sanshain's preact boilerplates
+        </a>
       </p>
 
       {/* <Title user={"Sasha"} /> */}

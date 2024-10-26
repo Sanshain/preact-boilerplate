@@ -12,6 +12,7 @@ import importsconfig from "./.eslint/imports.config.js";
 
 import react from 'eslint-plugin-react';                        /// enabled to research useful rules
 import reactHooks from 'eslint-plugin-react-hooks';             /// has usefull rules out of the box
+import prettier from "eslint-config-prettier";
 
 
 //@ts-expect-error - https://github.com/import-js/eslint-plugin-import/issues/3090
@@ -124,6 +125,7 @@ const config = [
     //     eslint.configs.recommended,
     //     ...tseslint.configs.recommended,
     // )
+    prettier,       /// <- THIS ONE DISABLES CONFLICTS WITH PRETTIER
 ];
 
 export default config;
