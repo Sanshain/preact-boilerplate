@@ -6,28 +6,27 @@ import { fixupPluginRules } from "@eslint/compat";
 
 import jsdoc from 'eslint-plugin-jsdoc';
 import jsdocconfig from "./.eslint/jsdoc.config.js";
+import importsconfig from "./.eslint/imports.config.js";
 
 
-// import eslintConfigPrettier from "eslint-config-prettier";
 
-import eslint from "@eslint/js";
-
-// import jsdoc from 'eslint-plugin-jsdoc';
 import react from 'eslint-plugin-react';                        /// enabled to research useful rules
 import reactHooks from 'eslint-plugin-react-hooks';             /// has usefull rules out of the box
 
 
+//@ts-expect-error - https://github.com/import-js/eslint-plugin-import/issues/3090
+import importplugin from 'eslint-plugin-import';
+import eslint from "@eslint/js";
+// import typescriptEslint from "@typescript-eslint/eslint-plugin";
 import tseslint from 'typescript-eslint';
+
 
 //@ts-expect-error
 import * as tsparser from "@typescript-eslint/parser";
-// import typescriptEslint from "@typescript-eslint/eslint-plugin";
 
+// import eslintConfigPrettier from "eslint-config-prettier";
+// import jsdoc from 'eslint-plugin-jsdoc';
 
-//@ts-expect-error - https://github.com/import-js/eslint-plugin-import/issues/3090
-import importplugin from 'eslint-plugin-import';
-// import importsplugin from 'eslint-plugin-import';                // <= w/o ts-expect-error breaks vscode's intellisence at all
-// import { configs as importsconfig } from 'eslint-plugin-import'; // doesn't work as plugin - just as rules, but w/o plugin its useless
 
 
 
@@ -55,12 +54,12 @@ const config = [
      * @description https://github.com/import-js/eslint-plugin-import?tab=readme-ov-file#helpful-warnings
     */
 
-    importplugin.flatConfigs.recommended,
-    // importsconfig.recommended, // <- A config object has a "plugins" key defined as an array of strings (fixupPluginRules doesn't help with)
-    // importsconfig.typescript,
+    // importplugin.flatConfigs.recommended,      // recommended rules with mostly useless rules (but there is a few helpful) => dropped in favour of importsconfig
+    // importplugin.recommended,                  // error <- a CONFIG OBJECT HAS A "plugins" KEY DEFINED AS AN ARRAY OF STRINGS (fixupPluginRules doesn't help with)
+    // importplugin.typescript,                   // error
 
-    // reactplugin.configs?.flat['recommended'],
-    // hooks.configs['flat/recommended'],
+    // reactplugin.configs?.flat['recommended'],  // too common
+    // hooks.configs['flat/recommended'],         // too common
 
     /**
      * @desc check jsdocs for all files matched cli pattern:
@@ -70,7 +69,7 @@ const config = [
      * @desc check jsdocs just for *.js files:
      */
     jsdocconfig,
-
+    importsconfig,
 
     // ...tseslint.configs.recommended, /// SPREADS RULES TO ALLOVER FILES (stylistic | recommended | all | strict) -> skipped AS NOT CONTAINING INTERESTING RULES
 
@@ -86,8 +85,7 @@ const config = [
              * @ceveats https://stackoverflow.com/questions/76183413/integration-of-eslint-plugin-react-hooks-recommended-with-eslint-config-js
              */
             'react-hooks': hooks,
-            // 'import': fixupPluginRules(importsconfig), 
-
+            // 'import': fixupPluginRules(importsconfig),             
 
             // '@typescript-eslint': tseslint.plugin       // IF SET AS IS -> CANN'T PARSE TSX FILES (BUT FOR PURE TS IS OK) -> use it just for ts files
             // ...tseslint.configs.recommended,            // DOESN'T WORK AT ALL             
@@ -111,7 +109,7 @@ const config = [
             /// USED W INCLUDED `...tseslint.configs.recommended`, WHICH ONE WAS COMMNETED BEFORE BECAUSE OF WAS SKIPPED AS USELESS
             // "@typescript-eslint/no-unused-vars": "off", 
 
-            'import/no-dynamic-require': 'warn',
+            // 'import/no-dynamic-require': 'warn',
         },
         ignores: [
             "node_modules/"
