@@ -98,7 +98,7 @@ const config = [
                     jsx: true,
                 },
             },
-            parser: tsparser,
+            // parser: tsparser,
             // parser: "babel-eslint"
         },        
         rules: {
