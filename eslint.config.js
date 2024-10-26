@@ -55,7 +55,7 @@ const config = [
      * @description https://github.com/import-js/eslint-plugin-import?tab=readme-ov-file#helpful-warnings
     */
 
-    // importplugin.flatConfigs.recommended,
+    importplugin.flatConfigs.recommended,
     // importsconfig.recommended, // <- A config object has a "plugins" key defined as an array of strings (fixupPluginRules doesn't help with)
     // importsconfig.typescript,
 
@@ -111,7 +111,7 @@ const config = [
             /// USED W INCLUDED `...tseslint.configs.recommended`, WHICH ONE WAS COMMNETED BEFORE BECAUSE OF WAS SKIPPED AS USELESS
             // "@typescript-eslint/no-unused-vars": "off", 
 
-            // 'import/no-dynamic-require': 'warn',
+            'import/no-dynamic-require': 'warn',
         },
         ignores: [
             "node_modules/"
