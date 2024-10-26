@@ -18,6 +18,9 @@ import reactHooks from 'eslint-plugin-react-hooks';             /// has usefull 
 
 
 import tseslint from 'typescript-eslint';
+
+//@ts-expect-error
+import * as tsparser from "@typescript-eslint/parser";
 // import typescriptEslint from "@typescript-eslint/eslint-plugin";
 
 
@@ -69,7 +72,7 @@ const config = [
     jsdocconfig,
 
 
-    // ...tseslint.configs.recommended, /// SPREADS RULES TO ALLOVER FILES (stylistic | recommended | all | strict) -> skipped AS NOT CONTAINING INTERESTING RULES
+    ...tseslint.configs.recommended, /// SPREADS RULES TO ALLOVER FILES (stylistic | recommended | all | strict) -> skipped AS NOT CONTAINING INTERESTING RULES
 
     // other configuration objects...
     {
@@ -95,7 +98,9 @@ const config = [
                     jsx: true,
                 },
             },
-        },
+            parser: tsparser,
+            // parser: "babel-eslint"
+        },        
         rules: {
             /** @description Disallow React to be incorrectly marked as unused */ 'react/jsx-uses-react': 'warn',
             /** @description Disallow variables used in JSX to be incorrectly marked as unused */ 'react/jsx-uses-vars': 'warn',
