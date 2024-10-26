@@ -6,7 +6,9 @@
         "-legacy-start": "nollup -c --environment NODE_ENV:development",
         "dev:w": "node --no-experimental-fetch ./node_modules/nollup/lib/cli.js --environment NODE_ENV:development",
         "dev:u": "NODE_ENV=development node --no-experimental-fetch ./node_modules/nollup/lib/cli.js",
-        "build": "rollup -c --environment NODE_ENV:production"
+        "build": "rollup -c --environment NODE_ENV:production",
+        "eslint": "eslint src/**",
+        "eslint-fix": "eslint --fix src/**"
     },
     "dependencies": {
         "polished": "^4.3.1",
@@ -23,6 +25,8 @@
     "devDependencies": {
         "@babel/core": "^7.15.5",
         "@babel/plugin-transform-react-jsx": "^7.14.9",
+        "@eslint/compat": "^1.2.1",
+        "@eslint/js": "^9.13.0",
         "@linaria/babel-preset": "^5.0.4",
         "@linaria/react": "^6.2.1",
         "@linaria/rollup": "^5.0.4",
@@ -33,6 +37,15 @@
         "@rollup/plugin-node-resolve": "^15.2.3",
         "@rollup/plugin-terser": "^0.4.4",
         "@rollup/plugin-typescript": "^11.1.6",
+        "@types/eslint__js": "^8.42.3",
+        "@typescript-eslint/parser": "^8.11.0",
+        "eslint": "^9.13.0",
+        "eslint-import-resolver-typescript": "^3.6.3",
+        "eslint-plugin-import": "^2.31.0",
+        "eslint-plugin-jsdoc": "^50.4.3",
+        "eslint-plugin-react": "^7.37.2",
+        "eslint-plugin-react-hooks": "^5.0.0",
+        "globals": "^15.11.0",
         "nollup": "github:Sanshain/nollup#fix",
         "react-refresh": "^0.10.0",
         "rollup": "^3.29.1",
@@ -44,6 +57,7 @@
         "rollup-plugin-static-files": "^0.2.0",
         "shx": "^0.3.3",
         "typescript": "^5.5.4",
+        "typescript-eslint": "^8.11.0",
         "typescript-plugin-css-modules": "^5.1.0"
     },
     "name": "app",

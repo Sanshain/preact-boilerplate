@@ -74,6 +74,8 @@ npm init nollup-app -- --name preact-app --template preact
 
 - Attention: for production build `@linaria/rollup` is guaranteed compatible only with rollup `3.^` version. So you should have the version.
 
+- Just start `npm eslint --init` and follow them, and it'll do all the work.
+
 
 ## How to use: 
 
