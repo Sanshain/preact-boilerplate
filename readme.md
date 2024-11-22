@@ -1,16 +1,43 @@
 # preact-rollup bolilerplate
 
 
-
 ## Features: 
 
-- Usage styled components via [`goober`](https://www.npmjs.com/package/goober) with minimal runtime (look [`App.jsx`](https://github.com/Sanshain/preact-boilerplate/blob/main/source/App.jsx)) 
-- Isolated styles via postcss modules (like `react-css-modules`)
-- Typescript out of the box (`ts-config` branch)
-- `preact-routers` out of the box
+- [x] rollup builder as the best production builder (2.8ms cold build)
+- [x] preact as more optimal analogous to react library (12 kb - template minified size)
+- [x] live reloading (450ms reloading)
+- [ ] xi-store as embed workspace
+- [x] jsx via babel (yes, still via this one)
+- [x] css modules via `rollup-plugin-postcss` plugin for builder and `typescript-plugin-css-modules` for typescript (isolates styles instead of `react-css-modules`) (sometimes gets some error of import in terminal, but applies fine. Just ignore it)
+- [ ] goober instead of styled components: Usage styled components via [`goober`](https://www.npmjs.com/package/goober) redices runtime (look [`App.jsx`](https://github.com/Sanshain/preact-boilerplate/blob/main/source/App.jsx)) to few kbs, but with state supports as opposed to css modules
+- [ ] `preact-routers` out of the box
+- [x] tuned tsconfig out of the box
+- **66kb** - initial template's size with redux (48kb - redux toolkit, 5kb - compat, 13kb - preact & hooks)
+
+### TODO:
+
 - prerender out of the box
 
-- Created on Preact 10.* + Rollup 2.* + Babel 7 template for SPAs.
+### Ver Info:
+
+- Created on Preact 10.* + Rollup 4.* + Babel 7 template for SPAs.
+
+
+## Requires for CSS modules feature:
+
+#### Plugins for VSCode:
+
+- `CSS Modules`
+- `Path Autocomplete`
+- `typescript-plugin-css-modules` (installed via npm and settled with `tsconfig.json`)
+
+#### Plugins for rollup: 
+
+- `rollup-plugin-postcss`
+
+### plugins for tsconfig: 
+
+- `typescript-plugin-css-modules`
 
 ## Setup
 

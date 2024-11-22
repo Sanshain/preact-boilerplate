@@ -1,5 +1,7 @@
+//@ts-check
+
 import { h } from 'preact';
-import { Router } from 'preact-router';
+import { Router, Route } from 'preact-router';
 
 import Header from './header';
 
@@ -11,9 +13,12 @@ const App = () => (
 	<div id="app">
 		<Header />
 		<Router>
-			<Home path="/" />
-			<Profile path="/profile/" user="me" />
-			<Profile path="/profile/:user" />
+			{/* <Home path="/" /> */}			
+			<Route path="/" component={Home} />
+			<Route path="/profile" component={Profile} user="me" />
+			<Route path="/profile/:user" component={Profile} />
+			{/* <Profile path="/profile/" user="me" /> */}
+			{/* <Profile path="/profile/:user" /> */}
 		</Router>
 	</div>
 )

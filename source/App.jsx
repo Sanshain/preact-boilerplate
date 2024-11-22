@@ -1,48 +1,69 @@
 //@ts-check
 
-import { h, Fragment } from 'preact'
+/**
+ * required for correct typings:
+ */
+// import React from 'react';
+
+/**
+ * differences with react:
+ */
+import { h } from 'preact'
+
+import { Fragment } from 'preact/compat'
 import { useState } from 'preact/hooks'
 
 import { styled, css, setup } from 'goober';
 
-import { useStore, initStore } from "./store/source/state";
+import { useStore, initStore } from "./store/source/store";
 import Button from "./button";
-
 
 
 
 setup(h);
 
-const Title = styled("h1")`
-  text-align: center;
-  color: red;
-`;
 
 const BtnClassName = css`
   background-color: lightgray;
 `;
 
 
+const Title = styled('h1')`
+  font-size: 2rem;
+  text-align: center;
+  color: ${props => props.color};
+`;
+
+
+const LargeTitle = styled(Title)`
+  font-size: 2rem;
+  color: brown;
+  font-family: Verdana;
+`;
+
+
 
 const App = props => {
 
-	const [message] = useState('Preact App')
+	const [message, setMessage] = useState('App component')	
 
-	const [count, setCount] = useStore('count')
+	//@ts-ignore
+	// const [count, setCount] = x.useState('count')
 
-	// const { dispatch, count } = useStoreon('count')
+	const [count, setCount] = useStore('count');
 
+	// const { dispatch, count } = useStoreon('count')	
 
 	return <>
 		<header />
 		<main className={BtnClassName}>
-			<h1 className='title'>{message}</h1>
+			<LargeTitle className='title'>{message}</LargeTitle>			
 			<button onClick={(e) => setCount(count + 1)}>
-				{count}
+				add {count}
 			</button>
 		</main>
 		<Button />		
-		<Title>789</Title>
+		<Title color={count >= 0 ? 'green' : 'red'}>color status</Title>
 	</>
 }
 
