@@ -1,55 +1,52 @@
 {
-  "private": true,
-  "name": "preact-rollup",
-  "version": "1.0.0",
-  "description": "Preact + Rollup template.",
-  "main": "src/index.js",
-  "author": "Sanshain",
-  "license": "MIT",
-  "scripts": {
-    "prestart": "rimraf dist",
-    "start": "rollup -c -w",
-    "prebuild": "rimraf dist",
-    "build": "rollup -c",
-    "esb": "esbuild ./source/index.js --bundle --loader:.js=jsx --minify --outfile=out.js --sourcemap",
-    "serve": "serve release"
-  },
-  "workspaces":[
-	  "./source/store/*",
-	  "!source/store/examples/**"
-  ],
-  "devDependencies": {
-    "@babel/core": "^7.10.5",
-    "@babel/plugin-transform-react-jsx": "^7.10.4",
-    "@babel/preset-env": "^7.10.4",
-    "@rollup/plugin-commonjs": "^18.0.0",
-    "babel-plugin-import": "^1.13.3",
-    "less": "^4.1.1",
-    "preact-render-to-string": "^5.1.19",
-    "rimraf": "^3.0.2",
-    "rollup": "^2.23.0",
-    "rollup-plugin-babel": "^4.4.0",
-    "rollup-plugin-copy": "^3.3.0",
-    "rollup-plugin-livereload": "^1.3.0",
-    "rollup-plugin-node-resolve": "^5.2.0",
-    "rollup-plugin-postcss": "^3.1.3",
-    "rollup-plugin-serve": "^1.0.3",
-    "rollup-plugin-terser": "^6.1.0",
-    "serve": "^11.3.2",
-    "stylus": "^0.54.8"
-  },
-  "dependencies": {
-    "@babel/plugin-proposal-class-properties": "^7.13.0",
-    "@rollup/plugin-alias": "^3.1.2",
-    "goober": "^2.0.37",
-    "preact": "^10.4.6",
-    "preact-jsx-runtime": "^1.2.0",
-    "preact-router": "^3.2.1",
-    "react-css-modules": "^4.7.11",
-    "rollup-plugin-css-only": "^3.1.0",
-    "rollup-plugin-es3": "^1.1.0",
-    "rollup-plugin-typescript2": "^0.30.0",
-    "storeon": "^3.1.4",
-    "typescript": "^4.2.4"
-  }
+    "type": "module",
+    "scripts": {
+        "clean": "shx rm -rf dist",
+        "rollup": "rollup -c",
+        "-legacy-start": "nollup -c --environment NODE_ENV:development",
+        "dev:w": "node --no-experimental-fetch ./node_modules/nollup/lib/cli.js --environment NODE_ENV:development",
+        "dev:u": "NODE_ENV=development node --no-experimental-fetch ./node_modules/nollup/lib/cli.js",
+        "build": "rollup -c --environment NODE_ENV:production"
+    },
+    "dependencies": {
+        "@nanostores/preact": "^0.5.2",
+        "goober": "^2.1.14",
+        "nanostores": "^0.11.3",
+        "preact": "^10.5.14",
+        "preact-router": "^4.1.2"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.15.5",
+        "@babel/plugin-transform-react-jsx": "^7.14.9",
+        "@linaria/rollup": "^5.0.4",
+        "@open-wc/rollup-plugin-html": "^1.2.5",
+        "@prefresh/babel-plugin": "^0.5.1",
+        "@prefresh/nollup": "https://gitpkg.now.sh/Sanshain/prefresh/packages/nollup?main",
+        "@rollup/plugin-babel": "^6.0.4",
+        "@rollup/plugin-node-resolve": "^15.2.3",
+        "@rollup/plugin-terser": "^0.4.4",
+        "@rollup/plugin-typescript": "^11.1.6",
+        "csstype": "^3.1.3",
+        "nollup": "github:Sanshain/nollup#fix",
+        "react-refresh": "^0.10.0",
+        "rollup": "^4.17.2",
+        "rollup-plugin-css-only": "^4.5.2",
+        "rollup-plugin-esbuild": "^6.1.1",
+        "rollup-plugin-generate-html-template": "^1.7.0",
+        "rollup-plugin-hot-css": "github:Sanshain/rollup-plugin-hot-css",
+        "rollup-plugin-html-inline": "^1.0.12",
+        "rollup-plugin-postcss-hot": "github:Sanshain/rollup-plugin-postcss-hot#dev",
+        "rollup-plugin-static-files": "^0.2.0",
+        "shx": "^0.3.3",
+        "source-map": "github:mozilla/source-map#60adcb0",
+        "typescript": "^5.6.2",
+        "typescript-plugin-css-modules": "^5.1.0"
+    },
+    "name": "preact-hmr-app",
+    "version": "",
+    "optionalDependencies": {
+        "@rollup/plugin-swc": "^0.4.0",
+        "@swc/core": "^1.7.26",
+        "vite": "^5.4.4"
+    }
 }

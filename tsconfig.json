@@ -1,6 +1,28 @@
 {
-	"compilerOptions": {
-	  "jsx": "react-jsx",
-	  "jsxImportSource": "preact"
-	}
- }
+    "compilerOptions": {
+        "target": "ES2016",
+        "outDir": "./dist/built",
+        "jsx": "react-jsx",
+        "jsxImportSource": "preact",
+        "allowJs": true,
+        "esModuleInterop": true,
+        "module": "ES2015",
+        "moduleResolution": "Node",        
+        "plugins": [
+            {
+                "name": "typescript-plugin-css-modules",
+                "options": {
+                    "customMatcher": "\\.(c|le)ss$"
+                }
+            }
+        ],
+    },
+    "include": [
+        // "./source/**/*.ts",
+        // "./source/**/*.js",
+        // "./source/**/*.jsx",
+        // "./source/**/*.tsx",
+        // "./source/**/*.css"
+        "./src/**/*"
+    ]
+}
